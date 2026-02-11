@@ -12,21 +12,16 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# --- Project Data (Ignore content, keep structure) ---
+# --- Project Data ---
 data/raw/*
 data/processed/*
 data/logs/*
 
-# Allow tracking of .gitkeep to maintain folder visibility on GitHub
+# Exceptions: Allow these specific files to be tracked/updated by GitHub Actions
+!data/raw/news_stream_history.csv
+!data/processed/smoothed_indicators.csv
+
+# Allow tracking of .gitkeep to maintain folder visibility
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/logs/.gitkeep
-
-# --- IDE Settings ---
-.vscode/
-.idea/
-
-# --- Output ---
-# We ignore charts by default so we don't bloat the repo history
-output/*.png
-output/*.pdf
