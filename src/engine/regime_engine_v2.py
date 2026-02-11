@@ -32,29 +32,31 @@ def determine_regime_v2():
 
     # 4. Advanced Factor Logic
     def classify_v2(row):
+        # A. Hard Metrics
         inf_yo_y = row.get('Inflation_YoY', 0)
         yield_spread = row.get('Yield_Curve_10Y2Y', 0)
         
-        # Soft Metrics
+        # B. Soft Metrics (News Pillars)
         fed = row.get('Monetary_Policy', 0)
         labor = row.get('Labor_Market', 0)
         mfg = row.get('Manufacturing', 0)
-        prices = row.get('Inflation_Sentiment', 0)
+        prices = row.get('Inflation_Sentiment', 0) 
 
-        # Composite Growth Pulse
+        # C. Composite Scores
         growth_pulse = (labor * 0.6) + (mfg * 0.4)
-        
+        inflation_pressure = inf_yo_y + (abs(prices) if prices < 0 else 0)
+
+        # --- REGIME CLASSIFICATION ---
         # 1. RECESSION CHECK (Hard constraint)
-        # If the yield curve is inverted AND growth news is negative
         if yield_spread < 0 and growth_pulse < 0:
             return "Deflationary Recession (Confirmed)"
 
         # 2. STAGFLATION CHECK
-        if inf_yo_y > 3.5 and prices < -0.2 and growth_pulse < 0:
+        if inflation_pressure > 3.5 and growth_pulse < 0:
             return "Stagflation (High Risk)"
 
         # 3. GOLDILOCKS CHECK
-        if 1.0 < inf_yo_y < 3.0 and growth_pulse > 0.1:
+        if 1.0 < inflation_pressure < 3.0 and growth_pulse > 0.1:
             if fed < -0.15: 
                 return "Goldilocks -> Tightening (Warning)"
             return "Goldilocks (Growth)"
@@ -67,13 +69,22 @@ def determine_regime_v2():
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     combined.to_csv(OUTPUT_PATH)
 
-    # Final Summary Report
+    # Final Summary Report for latest timestamp
     latest = combined.iloc[-1]
+    
+    # Re-calculating Growth Pulse for the printout
+    latest_labor = latest.get('Labor_Market', 0)
+    latest_mfg = latest.get('Manufacturing', 0)
+    latest_growth_pulse = (latest_labor * 0.6) + (latest_mfg * 0.4)
+    
+    latest_prices = latest.get('Inflation_Sentiment', 0)
+    latest_inf_pressure = latest['Inflation_YoY'] + (abs(latest_prices) if latest_prices < 0 else 0)
+
     print("\n--- MACRO SENTINEL V2.5 STATUS ---")
     print(f"Timestamp:       {combined.index[-1]}")
     print(f"Detected Regime:  {latest['Regime_V2']}")
-    print(f"Growth Pulse:    {((labor * 0.6) + (mfg * 0.4)):.2f}")
-    print(f"Inflation Press: {latest['Inflation_YoY'] + (abs(prices) if prices < 0 else 0):.2f}%")
+    print(f"Growth Pulse:    {latest_growth_pulse:.2f}")
+    print(f"Inflation Press: {latest_inf_pressure:.2f}%")
     print(f"Fed Mood:        {latest.get('Monetary_Policy', 0):.2f}")
     print("----------------------------------")
 
