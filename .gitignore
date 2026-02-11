@@ -16,12 +16,22 @@ Thumbs.db
 data/raw/*
 data/processed/*
 data/logs/*
+output/*
 
-# Exceptions: Allow these specific files to be tracked/updated by GitHub Actions
+# --- ALLOW LIST (Action-generated files) ---
+# Allow the Hard Data (FRED)
+!data/raw/macro_indicators_raw.csv
+# Allow the News Stream
 !data/raw/news_stream_history.csv
+# Allow the Smoothed Signals
 !data/processed/smoothed_indicators.csv
+# Allow the Final Regime Results
+!data/processed/regime_v2_status.csv
+# Allow the Dashboard Image
+!output/macro_sentinel_dashboard.png
 
-# Allow tracking of .gitkeep to maintain folder visibility
+# Maintain folder visibility
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/logs/.gitkeep
+!output/.gitkeep

@@ -5,9 +5,17 @@ on:
     - cron: "0 * * * *" # Runs at the start of every hour
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    # Move env here so it's available to ALL steps
+    env:
+      FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+      NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
 
     steps:
       - name: Checkout Repository
@@ -23,14 +31,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Initialize Directories
+        run: mkdir -p data/raw data/processed output
+
       - name: Data Acquisition & Smoothing
-        env:
-          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
-          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
         run: |
           python src/collectors/fred_collector.py
           python src/collectors/news_collector.py
           python src/engine/sentiment_smoother.py
+
+      - name: Debug - Verify Files Created
+        run: ls -R data/
 
       - name: Regime Classification (The Analyst)
         run: python src/engine/regime_engine_v2.py
@@ -43,9 +54,8 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-          # Use folder-level adding to prevent "pathspec" errors if a file is missing
+          # Stage all data and output changes
           git add data/raw/ data/processed/ output/
 
-          # commit and push only if there are changes
-          git commit -m "auto: hourly macro update and dashboard refresh [skip ci]" || echo "No changes to commit"
-          git push origin main
+          # Commit only if changes exist, otherwise skip to prevent errors
+          git diff --quiet && git diff --staged --quiet || (git commit -m "auto: hourly macro update and dashboard refresh [skip ci]" && git push origin main)

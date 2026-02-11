@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import sys
 
 # Environment-Agnostic Path Management
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -10,8 +11,8 @@ OUTPUT_PATH = os.path.join(BASE_DIR, "data", "processed", "regime_v2_status.csv"
 
 def determine_regime_v2():
     if not os.path.exists(MACRO_RAW) or not os.path.exists(SMOOTHED_NEWS):
-        print("[ERROR] Required data files missing. Ensure collectors and smoother have run.")
-        return
+        print(f"[ERROR] Missing: {MACRO_RAW} or {SMOOTHED_NEWS}")
+        sys.exit(1) # This tells GitHub the job FAILED
 
     print("[INFO] Executing Regime Engine V2 (Multi-Factor Analysis)...")
 
