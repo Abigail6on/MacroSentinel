@@ -1,0 +1,32 @@
+# --- Security (CRITICAL) ---
+.env
+
+# --- Python Environment ---
+venv/
+env/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# --- Operating System ---
+.DS_Store
+Thumbs.db
+
+# --- Project Data (Ignore content, keep structure) ---
+data/raw/*
+data/processed/*
+data/logs/*
+
+# Allow tracking of .gitkeep to maintain folder visibility on GitHub
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/logs/.gitkeep
+
+# --- IDE Settings ---
+.vscode/
+.idea/
+
+# --- Output ---
+# We ignore charts by default so we don't bloat the repo history
+output/*.png
+output/*.pdf
