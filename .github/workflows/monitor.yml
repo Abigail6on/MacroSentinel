@@ -2,8 +2,7 @@ name: MacroSentinel Real-Time Monitor
 
 on:
   schedule:
-    # Runs at the start of every hour (UTC)
-    - cron: "0 * * * *"
+    - cron: "0 * * * *" # Runs at the start of every hour
   workflow_dispatch:
 
 jobs:
@@ -24,19 +23,28 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Indicator Collector
+      - name: Data Acquisition & Smoothing
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
-        run: python src/collectors/news_collector.py
+        run: |
+          python src/collectors/news_collector.py
+          python src/engine/sentiment_smoother.py
 
-      - name: Run Sentiment Smoother
-        run: python src/engine/sentiment_smoother.py
+      - name: Regime Classification (The Analyst)
+        run: python src/engine/regime_engine_v2.py
 
-      - name: Commit and Push Changes
+      - name: Generate Dashboard (The Visualization)
+        run: python src/visualization/dashboard.py
+
+      - name: Commit and Push Updates
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add data/raw/news_stream_history.csv data/processed/smoothed_indicators.csv
-          git commit -m "auto: update news stream and smoothed indicators [skip ci]" || echo "No changes to commit"
+          # Add data history, regime status, and the generated dashboard image
+          git add data/raw/news_stream_history.csv \
+                  data/processed/smoothed_indicators.csv \
+                  data/processed/regime_v2_status.csv \
+                  output/macro_sentinel_dashboard.png
+          git commit -m "auto: hourly macro update and dashboard refresh [skip ci]" || echo "No changes to commit"
           git push
