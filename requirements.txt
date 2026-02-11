@@ -3,13 +3,14 @@ fredapi
 requests
 python-dotenv
 
-# Data Processing & Analysis
+# Data Processing
 pandas
 numpy
 scikit-learn
 
-# Sentiment Analysis
+# Sentiment & NLP
 vaderSentiment
 
-# Dashboard (For future Phase)
-streamlit
+# Visualization
+matplotlib
+seaborn
