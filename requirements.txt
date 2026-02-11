@@ -1,0 +1,19 @@
+# Data
+fredapi
+yfinance
+requests
+python-dotenv
+
+# Analysis & ML
+pandas>=2.1.0
+numpy
+scikit-learn
+hmmlearn         # Hidden Markov Models for Regime Detection
+statsmodels      # Econometrics and Time Series
+
+# Visualization
+matplotlib
+seaborn
+plotly           # Interactive charts for the dashboard
+streamlit        # The UI framework for your Weather Dashboard
+vaderSentiment      # For sentiment analysis of news headlines
