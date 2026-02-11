@@ -28,8 +28,7 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
         run: |
-          # Ensure you run the macro collector so the CSV is created
-          python src/collectors/macro_collector.py 
+          python src/collectors/fred_collector.py
           python src/collectors/news_collector.py
           python src/engine/sentiment_smoother.py
 
