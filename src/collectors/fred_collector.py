@@ -3,6 +3,8 @@ import pandas as pd
 from fredapi import Fred
 from dotenv import load_dotenv
 import ssl
+
+# Fix for potential SSL certificate issues on some macOS environments
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # 1. Load Environment
@@ -10,12 +12,13 @@ load_dotenv()
 FRED_KEY = os.getenv("FRED_API_KEY")
 
 # 2. Configuration: The "Macro Watchlist"
-# CPI = Inflation, T10Y2Y = Yield Curve, FEDFUNDS = Interest Rates, UNRATE = Unemployment
+# Added VIXCLS (CBOE Volatility Index) to provide a "Fear Filter"
 INDICATORS = {
     'CPIAUCSL': 'Inflation_CPI',
     'T10Y2Y': 'Yield_Curve_10Y2Y',
     'FEDFUNDS': 'Fed_Funds_Rate',
-    'UNRATE': 'Unemployment_Rate'
+    'UNRATE': 'Unemployment_Rate',
+    'VIXCLS': 'VIX_Index'
 }
 
 def fetch_macro_data():
@@ -31,25 +34,26 @@ def fetch_macro_data():
     for code, name in INDICATORS.items():
         print(f"   [FETCHING] {name} ({code})...")
         try:
-            # Fetch latest 5 years of data
+            # Fetch latest data
             series = fred.get_series(code)
             macro_df[name] = series
         except Exception as e:
             print(f"   [ERROR] Failed to fetch {code}: {e}")
 
     # 3. Clean and Save
-    # Forward fill missing values (economic data is often monthly/quarterly)
+    # Forward fill missing values (macro data is monthly, VIX is daily)
     macro_df = macro_df.ffill().dropna()
     
-    # Save to Raw data folder
-    output_path = "../../data/raw/macro_indicators_raw.csv"
+    # Path Management
+    SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+    BASE_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
+    output_path = os.path.join(BASE_DIR, "data", "raw", "macro_indicators_raw.csv")
     
-    # Ensure directory exists (helper for relative path execution)
+    # Ensure directory exists
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     
     macro_df.to_csv(output_path)
-    print(f"\n✅ SUCCESS: Macro data saved to {output_path}")
-    print(f"📊 Dataset Shape: {macro_df.shape}")
+    print(f"[SUCCESS] Macro data (including VIX) saved to {output_path}")
 
 if __name__ == "__main__":
     fetch_macro_data()
