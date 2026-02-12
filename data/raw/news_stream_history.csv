@@ -1039,3 +1039,61 @@ Timestamp,Published_At,Indicator,Sentiment,Headline
 2026-02-12 11:32:16.230247,2026-02-11T10:28:28Z,Inflation_Sentiment,0.6369,Commerzbank Q4 Earnings Call Highlights
 2026-02-12 11:32:16.230538,2026-02-11T10:20:46Z,Inflation_Sentiment,0.9501,"Lenskart Q3 Results: Cons profit skyrockets 6,983% YoY to Rs 131 crore, revenue jumps 38%"
 2026-02-12 11:32:16.230635,2026-02-11T10:00:49Z,Inflation_Sentiment,-0.6966,Employees are wasting thousands of hours a month on admin - so is AI the answer?
+2026-02-12 12:35:18.968497,2026-02-11T12:03:08Z,Monetary_Policy,0.0627,"Powell’s parting gift from the Fed may be more rate cuts than expected, courtesy of deteriorating data"
+2026-02-12 12:35:18.968731,2026-02-11T10:54:38Z,Monetary_Policy,-0.1531,"Fed to hold rates through May, but Warsh may be too loose with policy, economists say"
+2026-02-12 12:35:18.969023,2026-02-11T06:23:13Z,Monetary_Policy,-0.8979,The $108 Oil War: Can the Middle East crash the world economy?
+2026-02-12 12:35:18.969190,2026-02-11T04:00:16Z,Monetary_Policy,-0.8176,$108 oil threat: Can Middle East conflicts disrupt the world economy?
+2026-02-12 12:35:18.969316,2026-02-11T01:46:47Z,Monetary_Policy,0.5719,"S&P 500, Nasdaq dip with economic data, earnings in focus"
+2026-02-12 12:35:18.969577,2026-02-11T00:59:09Z,Monetary_Policy,0.1531,"Global Market Today: Asian stocks hold near record before US jobs data, gold up"
+2026-02-12 12:35:18.969631,2026-02-11T00:46:04Z,Monetary_Policy,0.2263,'Surprised by market reaction to Kevin Warsh's nomination to the US Fed'
+2026-02-12 12:35:18.969861,2026-02-10T14:58:34Z,Monetary_Policy,0.6124,US stock market today: Why is Dow surging today? Dow up over 270 points while S&P 500 and Nasdaq are in the red - Gold holds firm and bitcoin slips again
+2026-02-12 12:35:18.969975,2026-02-10T14:14:06Z,Monetary_Policy,0.8466,"What are today's mortgage interest rates: February 10, 2026?"
+2026-02-12 12:35:18.970027,2026-02-10T11:30:00Z,Monetary_Policy,0.0,How much power does the Fed chair really have?
+2026-02-12 12:35:18.970310,2026-02-09T17:05:46Z,Monetary_Policy,-0.7845,Why Bitcoin faces a brutal liquidity trap because China’s $298B of US Treasuries are up for sale
+2026-02-12 12:35:18.970582,2026-02-09T17:00:00Z,Monetary_Policy,-0.9186,The Silver Psychological Attack: How Friday’s Crash Was an Engineered Demolition
+2026-02-12 12:35:18.970651,2026-02-09T16:38:47Z,Monetary_Policy,0.4019,Affiliate Marketing Playbook for WordPress Bloggers
+2026-02-12 12:35:18.970834,2026-02-09T14:46:00Z,Monetary_Policy,0.5574,"Europe Agricultural Machinery Industry Report 2026: Rapid Model Upgrades in Agricultural Machinery, EU and National Subsidies are Accelerating Mechanization - Growth Forecasts 2025-2031"
+2026-02-12 12:35:18.971010,2026-02-09T14:00:00Z,Monetary_Policy,0.7184,Impact of protected areas on deforestation in Madagascar from 2000 to 2023: A pre-analysis plan
+2026-02-12 12:35:19.300524,2026-02-11T12:26:14Z,Labor_Market,-0.5719,Transcript: Krugman Catches Trump Adviser Admitting to a Big MAGA Scam
+2026-02-12 12:35:19.300681,2026-02-11T12:18:11Z,Labor_Market,0.2732,Why the January jobs report matters more than usual — key revisions ahead
+2026-02-12 12:35:19.300993,2026-02-11T12:15:08Z,Labor_Market,-0.8271,"US hiring rate falls to 3.3%, matching COVID-era lows and signaling Recession fears"
+2026-02-12 12:35:19.301195,2026-02-11T12:03:08Z,Labor_Market,0.0627,"Powell’s parting gift from the Fed may be more rate cuts than expected, courtesy of deteriorating data"
+2026-02-12 12:35:19.301436,2026-02-11T11:55:09Z,Labor_Market,-0.6486,The economy is booming. So why is the job market lagging?
+2026-02-12 12:35:19.301649,2026-02-11T11:47:06Z,Labor_Market,-0.624,"Stocks, dollar jump after US jobs data beat; AI worries simmer below the surface"
+2026-02-12 12:35:19.301901,2026-02-11T11:27:34Z,Labor_Market,0.8708,Why are gold and silver prices rising again and what do precious metals market analysts say? Gold and silver rise explained. Here's what should investors do now
+2026-02-12 12:35:19.302040,2026-02-11T11:08:04Z,Labor_Market,0.2263,"높은 물가, 낮은 고용과 소비침체"
+2026-02-12 12:35:19.302193,2026-02-11T10:59:18Z,Labor_Market,0.2263,Show HN: On-chain credit score for AI agent-to-agent payments
+2026-02-12 12:35:19.302265,2026-02-11T10:55:35Z,Labor_Market,0.296,World shares are mixed ahead of update on US employment
+2026-02-12 12:35:19.302455,2026-02-11T10:54:38Z,Labor_Market,-0.1531,"Fed to hold rates through May, but Warsh may be too loose with policy, economists say"
+2026-02-12 12:35:19.302717,2026-02-11T10:47:32Z,Labor_Market,0.9081,"Stock Market Highlights: Sensex, Nifty trade in narrow range amid cautious investor sentiment"
+2026-02-12 12:35:19.302770,2026-02-11T10:13:14Z,Labor_Market,0.0,Google’s AI boss Demis Hassabis has a 4-step plan to return the tech giant to its ‘golden era’
+2026-02-12 12:35:19.302855,2026-02-11T10:00:41Z,Labor_Market,0.3182,Jobs data will shine a fresh light on the first year of Trump's term
+2026-02-12 12:35:19.464314,2026-02-11T12:01:14Z,Manufacturing,0.5647,What Is Hybrid Meat? The Healthy Eating Hack Explained
+2026-02-12 12:35:19.464454,2026-02-11T11:30:00Z,Manufacturing,0.4939,SunHydrogen and CTF Solar Sign Agreement to Accelerate Hydrogen Panel Manufacturing
+2026-02-12 12:35:19.464653,2026-02-11T11:23:00Z,Manufacturing,0.6369,Solid State Battery Market is Set to Reach Valuation of US$ 30.50 Billion by 2035 | Astute Analytica
+2026-02-12 12:35:19.464869,2026-02-11T11:00:00Z,Manufacturing,-0.4199,Meet the Candidate Challenging Iowa’s Most Sacred Cow: Ethanol
+2026-02-12 12:35:19.465051,2026-02-11T10:00:12Z,Manufacturing,0.677,‘Truly Beyond Words!’: Tesla’s Conflict with a German Labor Union Is Getting Out of Hand
+2026-02-12 12:35:19.465154,2026-02-11T09:00:00Z,Manufacturing,0.0,How Nissan introduced the car industry to retro design
+2026-02-12 12:35:19.465247,2026-02-11T08:06:28Z,Manufacturing,0.0,"Malaysian-built Peugeot 408 exported to Taiwan – Stellantis Gurun plant also supplies Thai, Cambodia"
+2026-02-12 12:35:19.465488,2026-02-11T07:48:57Z,Manufacturing,0.4019,Bangladesh election offers hope to garment sector battered by tariffs and unrest
+2026-02-12 12:35:19.465534,2026-02-11T07:03:42Z,Manufacturing,0.0,"iQIYI Opens First Tech-Enabled Immersive Theme Park, Bringing Chinese IP to Real Life"
+2026-02-12 12:35:19.465768,2026-02-11T06:55:46Z,Manufacturing,0.7096,Estonia's defence capabilities will be strengthened this year with a medium-range air defence system
+2026-02-12 12:35:19.465920,2026-02-11T06:41:31Z,Manufacturing,0.8442,Cisco enhances security for enterprise AI adoption
+2026-02-12 12:35:19.466036,2026-02-11T06:20:22Z,Manufacturing,0.743,aligntune added to PyPI
+2026-02-12 12:35:19.466205,2026-02-11T06:00:00Z,Manufacturing,0.5267,"Manufacturing Analytics Market to Surpass USD 78.37 Billion by 2035, Driven by Industry 4.0 and Smart Factory Adoption | Research by SNS Insider"
+2026-02-12 12:35:19.466392,2026-02-11T05:57:01Z,Manufacturing,0.8074,Indian auto component makers race to go digital as new opportunity opens up
+2026-02-12 12:35:19.633231,2026-02-11T12:30:00Z,Inflation_Sentiment,0.1027,Trump’s Lust for Greenland’s Rare Earth Minerals Faces Harsh Arctic Realities
+2026-02-12 12:35:19.633362,2026-02-11T12:23:37Z,Inflation_Sentiment,-0.6369,Policy shifts and sales fluctuations continue to affect China market
+2026-02-12 12:35:19.633558,2026-02-11T12:21:00Z,Inflation_Sentiment,-0.2263,"Impact Modifier Market to Reach US$ 8,991.61 Million by 2033 | Recycled Plastics Adoption and EU Packaging Regulations Accelerate Demand, Says Astute Analytica"
+2026-02-12 12:35:19.633763,2026-02-11T12:11:14Z,Inflation_Sentiment,0.7964,"Shopify issues upbeat quarterly forecasts, $2 billion stock buyback plan; shares surge"
+2026-02-12 12:35:19.633980,2026-02-11T12:10:43Z,Inflation_Sentiment,0.8316,Working for the common good and learning to learn — Finland's vision for the schools of 2045
+2026-02-12 12:35:19.634292,2026-02-11T12:10:00Z,Inflation_Sentiment,0.802,U.S. Flexible Packaging Market to Worth Over US$ 91.95 Billion by 2032 | Astute Analytica
+2026-02-12 12:35:19.634431,2026-02-11T12:08:22Z,Inflation_Sentiment,-0.9337,Worrying surge in violence against bus drivers
+2026-02-12 12:35:19.634572,2026-02-11T12:03:04Z,Inflation_Sentiment,-0.8271,Japan Fights Back Against Muslim Migration
+2026-02-12 12:35:19.634717,2026-02-11T12:01:00Z,Inflation_Sentiment,0.7346,Microsoft bets on power-saving 'HTS' cables to tame AI's energy appetite — saving space with more efficiently designed data centers
+2026-02-12 12:35:19.635038,2026-02-11T12:00:56Z,Inflation_Sentiment,0.7845,Why Medicare must cover atrial fibrillation screening to prevent strokes
+2026-02-12 12:35:19.635235,2026-02-11T12:00:49Z,Inflation_Sentiment,-0.497,"Strategy Unfazed By Bitcoin Crash, Michael Saylor Vows Quarterly Purchases"
+2026-02-12 12:35:19.635384,2026-02-11T12:00:48Z,Inflation_Sentiment,0.5859,Aben Gold Appoints VP Exploration and Qualified Person
+2026-02-12 12:35:19.635580,2026-02-11T11:46:59Z,Inflation_Sentiment,0.886,"Benchmarks end flat; Nifty above 25,950 amid caution before US jobs data"
+2026-02-12 12:35:19.635658,2026-02-11T11:46:31Z,Inflation_Sentiment,0.0,Tim Walz expects immigration crackdown to end within days with Minnesota in ‘trust but verify mode’
+2026-02-12 12:35:19.635733,2026-02-11T11:45:57Z,Inflation_Sentiment,0.0,Health and Wellbeing in the Age of Diagnosis
