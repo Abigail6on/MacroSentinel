@@ -40,7 +40,7 @@ def run_backtest():
 
     # 1. Load Regime History (Timezone-Agnostic)
     df = pd.read_csv(REGIME_DATA, parse_dates=['Timestamp'])
-    df['Timestamp'] = pd.to_datetime(df['Timestamp']).dt.tz_localize(None)
+    df['Timestamp'] = pd.to_datetime(df['Timestamp']).dt.tz_localize(None).astype('datetime64[ns]')
     
     # Resample to hourly to collapse multiple bot runs into clean buckets
     df = df.sort_values('Timestamp').set_index('Timestamp').resample('h').last().ffill().reset_index()
@@ -56,7 +56,7 @@ def run_backtest():
         print("[ERROR] Market data download failed.")
         return
 
-    prices.index = pd.to_datetime(prices.index).tz_localize(None)
+    prices.index = pd.to_datetime(prices.index).tz_localize(None).astype('datetime64[ns]')
     returns = prices.pct_change()
 
     # 3. Fuzzy Merge and Truth-Testing (Shift Returns)
