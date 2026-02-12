@@ -30,6 +30,7 @@ output/*
 
 !data/processed/target_allocation.csv
 !data/processed/live_prices.csv
+!data/processed/backtest_results.csv
 # Allow the Dashboard Image
 !output/macro_sentinel_dashboard.png
 !output/performance_comparison.png

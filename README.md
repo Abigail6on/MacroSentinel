@@ -1,4 +1,4 @@
-# 🛡️ MacroSentinel: Sentiment-Driven Regime Engine
+# MacroSentinel: Sentiment-Driven Regime Engine
 
 MacroSentinel is a quantitative framework designed to detect macroeconomic "weather" patterns and dynamically rotate assets between Tech, Energy, Gold, and Bonds.
 
