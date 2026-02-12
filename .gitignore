@@ -32,6 +32,7 @@ output/*
 !data/processed/live_prices.csv
 # Allow the Dashboard Image
 !output/macro_sentinel_dashboard.png
+!output/performance_comparison.png
 
 # Maintain folder visibility
 !data/raw/.gitkeep
