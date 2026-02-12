@@ -56,6 +56,9 @@ jobs:
       - name: Market Price Sync
         run: python src/portfolio/price_tracker.py
 
+      - name: Run Alpha Backtest
+        run: python src/backtest/performance_engine.py
+
       - name: Generate Dashboard (The Visualization)
         run: python src/visualization/dashboard.py
 
