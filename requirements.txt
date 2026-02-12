@@ -14,3 +14,5 @@ vaderSentiment
 # Visualization
 matplotlib
 seaborn
+
+yfinance

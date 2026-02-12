@@ -53,6 +53,9 @@ jobs:
       - name: Tactical Allocation (The Trader)
         run: python src/portfolio/allocator.py
 
+      - name: Market Price Sync
+        run: python src/portfolio/price_tracker.py
+
       - name: Generate Dashboard (The Visualization)
         run: python src/visualization/dashboard.py
 
