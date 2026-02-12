@@ -27,10 +27,11 @@ output/*
 !data/processed/smoothed_indicators.csv
 # Allow the Final Regime Results
 !data/processed/regime_v2_status.csv
-# Allow the Dashboard Image
-!output/macro_sentinel_dashboard.png
 
 !data/processed/target_allocation.csv
+!data/processed/live_prices.csv
+# Allow the Dashboard Image
+!output/macro_sentinel_dashboard.png
 
 # Maintain folder visibility
 !data/raw/.gitkeep
