@@ -3,8 +3,9 @@ name: MacroSentinel Real-Time Monitor
 on:
   schedule:
     - cron: "0 * * * *" # Runs at the start of every hour
-  workflow_dispatch:
+  workflow_dispatch: # Allows you to run it manually for testing
 
+# CRITICAL: Grants the robot permission to save files back to your repository
 permissions:
   contents: write
 
@@ -12,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # Move env here so it's available to ALL steps
+    # Global environment variables accessible by ALL scripts
     env:
       FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
       NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
@@ -36,8 +37,11 @@ jobs:
 
       - name: Data Acquisition & Smoothing
         run: |
+          # Fetch Hard Data (FRED)
           python src/collectors/fred_collector.py
+          # Fetch Soft Data (News)
           python src/collectors/news_collector.py
+          # Process raw news into trend lines
           python src/engine/sentiment_smoother.py
 
       - name: Debug - Verify Files Created
@@ -45,6 +49,9 @@ jobs:
 
       - name: Regime Classification (The Analyst)
         run: python src/engine/regime_engine_v2.py
+
+      - name: Tactical Allocation (The Trader)
+        run: python src/portfolio/allocator.py
 
       - name: Generate Dashboard (The Visualization)
         run: python src/visualization/dashboard.py
@@ -54,8 +61,10 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-          # Stage all data and output changes
+          # Stage all generated data and the final dashboard image
           git add data/raw/ data/processed/ output/
 
-          # Commit only if changes exist, otherwise skip to prevent errors
+          # Professional Commit Logic:
+          # This line checks if there are actual changes. If yes, it commits and pushes.
+          # The [skip ci] tag is vital—it prevents the action from triggering itself in a loop.
           git diff --quiet && git diff --staged --quiet || (git commit -m "auto: hourly macro update and dashboard refresh [skip ci]" && git push origin main)
