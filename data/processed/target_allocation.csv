@@ -1,5 +1,5 @@
 Ticker,Weight,Regime,Strategy
-QQQ,0.3,Goldilocks -> Tightening (Warning),Defensive Growth
-SPY,0.4,Goldilocks -> Tightening (Warning),Defensive Growth
-GLD,0.15,Goldilocks -> Tightening (Warning),Defensive Growth
-TLT,0.15,Goldilocks -> Tightening (Warning),Defensive Growth
+SPY,0.4,Neutral / Transitioning,Balanced
+QQQ,0.2,Neutral / Transitioning,Balanced
+TLT,0.2,Neutral / Transitioning,Balanced
+GLD,0.2,Neutral / Transitioning,Balanced
