@@ -2,7 +2,8 @@ name: MacroSentinel Real-Time Monitor
 
 on:
   schedule:
-    - cron: "0 * * * *" # Runs at the start of every hour
+    # Runs every hour from 9 AM to 5 PM EST, Monday through Friday
+    - cron: "0 14-22 * * 1-5"
   workflow_dispatch: # Allows you to run it manually for testing
 
 # CRITICAL: Grants the robot permission to save files back to your repository

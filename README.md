@@ -40,13 +40,35 @@ _Tracking the **MacroSentinel Strategy** against the **S&P 500 (SPY)**. Shaded a
 
 ---
 
-## 🛠️ Technical Stack
+## 🚀 Recent Engineering Milestones
 
-- **Automation:** GitHub Actions (Full Pipeline Orchestration)
+### **The "Fear Filter" Integration**
+
+We recently integrated the **CBOE Volatility Index (VIX)** as a logic gatekeeper. The model now ignores "Hawkish" news noise unless the VIX confirms actual market panic (> 20.0). This has significantly reduced defensive over-rotation and improved Alpha during resilient market rallies.
+
+### **Operational Resilience**
+
+- **Precision Alignment:** Standardized all data streams to `datetime64[ns]` to ensure seamless "As-Of" merging between news and price data.
+- **Truth-Testing:** Implemented `shift(-1)` logic on returns to eliminate look-ahead bias, ensuring the model only trades on information available _before_ the market moves.
+
+---
+
+## 🛠️ System Architecture
+
+1. **Indicator Harvesters:** Real-time collectors for FRED indicators and Global News APIs.
+2. **Sentiment Smoother:** A noise-reduction engine using a 6-hour rolling average to transform volatile headlines into actionable trends.
+3. **Regime Engine V2:** A hysteresis-aware classifier that manages transitions between _Goldilocks, Tightening, Stagflation,_ and _Recession_.
+4. **Performance Engine:** A high-fidelity backtester calculating Alpha, Max Drawdown, and Annualized Volatility.
+
+---
+
+## 📈 Technical Stack
+
+- **Automation:** GitHub Actions (Full CI/CD Pipeline)
 - **Data Science:** Pandas, NumPy, Scikit-learn
 - **Market Data:** `yfinance` API
+- **NLP:** VADER Sentiment Analysis
 - **Visualization:** Matplotlib, Seaborn
-- **Environment:** Python 3.12
 
 ---
 
