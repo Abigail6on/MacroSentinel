@@ -68,8 +68,8 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-          # Stage all generated data and the final dashboard image
-          git add data/raw/ data/processed/ output/
+          # Explicitly add the images and CSVs to ensure Git tracks the bit-level changes
+          git add data/processed/*.csv output/*.png
 
           # Professional Commit Logic:
           # This line checks if there are actual changes. If yes, it commits and pushes.
