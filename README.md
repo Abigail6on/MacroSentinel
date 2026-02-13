@@ -18,6 +18,13 @@ _This dashboard is regenerated hourly, showing current sentiment momentum, macro
 ![Performance Comparison](output/performance_comparison.png)
 _Tracking the **MacroSentinel Strategy** against the **S&P 500 (SPY)**. Shaded areas represent active regimes identified by the model during market hours._
 
+### 🕒 A Note on Timestamps
+
+The system operates on **UTC (Coordinated Universal Time)** to ensure synchronization across GitHub’s global runners.
+
+- **Ontario/NY Time (EST):** UTC - 5 hours.
+- **Example:** A chart timestamp of `16:00` represents the market activity as of `11:00 AM EST`.
+
 ---
 
 ## 🚀 The Development Journey
