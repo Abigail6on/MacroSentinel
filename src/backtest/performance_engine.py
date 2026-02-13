@@ -12,7 +12,12 @@ REGIME_DATA = os.path.join(BASE_DIR, "data", "processed", "regime_v2_status.csv"
 PERFORMANCE_REPORT = os.path.join(BASE_DIR, "data", "processed", "backtest_results.csv")
 PERFORMANCE_CHART = os.path.join(BASE_DIR, "output", "performance_comparison.png")
 
-# Strategy Allocation Weights
+# --- PHASE A PARAMETERS ---
+FRICTION_COST = 0.0002       # 0.02% (2 bps) cost per regime change
+MAX_QQQ_WEIGHT = 0.50        
+MIN_QQQ_WEIGHT = 0.10        
+SENTIMENT_SENSITIVITY = 1.5  
+
 STRATEGY_MAP = {
     "Goldilocks (Growth)": {"QQQ": 0.5, "SPY": 0.3, "GLD": 0.2},
     "Goldilocks -> Tightening (Warning)": {"QQQ": 0.2, "SPY": 0.2, "GLD": 0.4, "SHY": 0.2},
@@ -21,10 +26,6 @@ STRATEGY_MAP = {
     "Neutral / Transitioning": {"SPY": 0.5, "SHY": 0.5},
     "Overheat (Inflationary)": {"XLE": 0.4, "DBC": 0.3, "GLD": 0.3}
 }
-
-# --- NEW PARAMETER: Transaction Friction ---
-# 0.0002 = 0.02% (2 basis points). This covers typical commissions and slippage.
-FRICTION_COST = 0.0002 
 
 REGIME_COLORS = {
     "Goldilocks (Growth)": "#2ecc71",
@@ -35,64 +36,52 @@ REGIME_COLORS = {
 }
 
 def run_backtest():
-    print("[INFO] Initializing Real-Time Performance Health Check (with Friction)...")
+    print("[INFO] Running High-Fidelity Performance Engine...")
     
-    if not os.path.exists(REGIME_DATA):
-        print("[ERROR] No regime history found.")
-        return
+    if not os.path.exists(REGIME_DATA): return
 
-    # 1. Load Regime History (Standardizing to ns precision for Merge)
+    # 1. Load & Standardize Precision (Fixes the MergeError)
     df = pd.read_csv(REGIME_DATA, parse_dates=['Timestamp'])
     df['Timestamp'] = pd.to_datetime(df['Timestamp']).dt.tz_localize(None).astype('datetime64[ns]')
-    
-    # Resample to hourly to collapse multiple bot runs into clean buckets
     df = df.sort_values('Timestamp').set_index('Timestamp').resample('h').last().ffill().reset_index()
 
-    # 2. Fetch Market Data
+    # 2. Fetch & Shift Market Returns
     all_tickers = ["SPY", "QQQ", "GLD", "TLT", "DBC", "XLE", "SHY"]
     start_date = (df['Timestamp'].min() - pd.Timedelta(days=7)).strftime('%Y-%m-%d')
-    
-    print(f"[INFO] Syncing market prices for {all_tickers}...")
     prices = yf.download(all_tickers, start=start_date, interval="1h")['Close']
-    
-    if prices.empty:
-        print("[ERROR] Market data download failed.")
-        return
-
-    # Standardize precision to match regime data
     prices.index = pd.to_datetime(prices.index).tz_localize(None).astype('datetime64[ns]')
+    
     returns = prices.pct_change()
+    for t in all_tickers:
+        if t in returns.columns: returns[t] = returns[t].shift(-1) # The "Time Machine" fix
 
-    # Shift returns: Signal at 9 AM gets the return between 9 AM and 10 AM
-    for ticker in all_tickers:
-        if ticker in returns.columns:
-            returns[ticker] = returns[ticker].shift(-1)
+    # 3. Align Data
+    merged = pd.merge_asof(df.sort_values('Timestamp'), returns.sort_index(), 
+                          left_on='Timestamp', right_index=True, direction='backward')
+    merged = merged[merged['Timestamp'].dt.hour.between(9, 16)].dropna(subset=['SPY'])
 
-    # 3. Fuzzy Merge (As-Of)
-    merged = pd.merge_asof(df.sort_values('Timestamp'), 
-                          returns.sort_index(), 
-                          left_on='Timestamp', 
-                          right_index=True, 
-                          direction='backward')
-
-    # 4. Filter for US Market Hours & Clean Data
-    merged = merged[merged['Timestamp'].dt.hour.between(9, 16)]
-    merged = merged.dropna(subset=['SPY'])
-
-    # 5. Performance Math with Transaction Friction
+    # 4. Math: Dynamic Scaling + Friction
     strat_rets = []
     prev_regime = None
     trade_count = 0
 
     for _, row in merged.iterrows():
         regime = row['Regime_V2']
-        weights = STRATEGY_MAP.get(regime, STRATEGY_MAP["Neutral / Transitioning"])
         
-        # Base hourly return calculation
+        # Scaling Logic
+        labor = row.get('Labor_Market', 0)
+        mfg = row.get('Manufacturing', 0)
+        confidence = np.clip(((labor * 0.6) + (mfg * 0.4)) * SENTIMENT_SENSITIVITY, 0, 1)
+
+        if regime == "Goldilocks (Growth)":
+            qqq_w = MIN_QQQ_WEIGHT + (confidence * (MAX_QQQ_WEIGHT - MIN_QQQ_WEIGHT))
+            weights = {"QQQ": qqq_w, "SPY": 0.8 - qqq_w, "GLD": 0.2}
+        else:
+            weights = STRATEGY_MAP.get(regime, STRATEGY_MAP["Neutral / Transitioning"])
+        
         h_ret = sum(row[t] * w for t, w in weights.items() if t in row and pd.notnull(row[t]))
         
-        # APPLY FRICTION: Detect a change in regime
-        if prev_regime is not None and regime != prev_regime:
+        if prev_regime and regime != prev_regime:
             h_ret -= FRICTION_COST
             trade_count += 1
             
@@ -100,53 +89,40 @@ def run_backtest():
         prev_regime = regime
 
     merged['Strategy_Return'] = strat_rets
-    merged['Benchmark_Return'] = merged['SPY']
     merged['Strategy_Value'] = (1 + merged['Strategy_Return']).cumprod()
-    merged['Benchmark_Value'] = (1 + merged['Benchmark_Return']).cumprod()
+    merged['Benchmark_Value'] = (1 + merged['SPY']).cumprod()
     merged['Alpha_Basis'] = (merged['Strategy_Value'] - merged['Benchmark_Value']) * 100
 
-    # 6. Health Check Metrics
+    # 5. Risk Metrics (Now fully used)
     merged['Peak'] = merged['Strategy_Value'].cummax()
-    merged['Drawdown'] = (merged['Strategy_Value'] / merged['Peak']) - 1
-    max_dd = merged['Drawdown'].min() * 100
+    max_dd = ((merged['Strategy_Value'] / merged['Peak']) - 1).min() * 100
     vol = merged['Strategy_Return'].std() * np.sqrt(252 * 6.5) * 100
-
     final_alpha = merged['Alpha_Basis'].iloc[-1]
 
-    # Save Results
-    merged.to_csv(PERFORMANCE_REPORT, index=False)
-
-    # 7. Visualization
+    # 6. Visualization
     plt.style.use('seaborn-v0_8-whitegrid')
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(16, 12), gridspec_kw={'height_ratios': [3, 1]}, sharex=True)
 
-    ax1.plot(merged['Timestamp'], merged['Strategy_Value'], label='Macro Sentinel (Net of Friction)', lw=4, color='#2c3e50', zorder=5)
-    ax1.plot(merged['Timestamp'], merged['Benchmark_Value'], label='S&P 500 (Benchmark)', lw=2, ls='--', color='#bdc3c7', zorder=4)
+    # Top Panel
+    ax1.plot(merged['Timestamp'], merged['Strategy_Value'], label='Macro Sentinel (Dynamic)', lw=4, color='#2c3e50')
+    ax1.plot(merged['Timestamp'], merged['Benchmark_Value'], label='S&P 500', lw=2, ls='--', color='#bdc3c7')
+    
+    # NEW: Volatility is now integrated into the Title
+    ax1.set_title(f"Alpha: {final_alpha:.4f}% | Max DD: {max_dd:.2f}% | Vol: {vol:.1f}%", 
+                  fontsize=18, fontweight='bold', pad=20)
     
     for i in range(len(merged)-1):
-        regime = merged['Regime_V2'].iloc[i]
-        color = REGIME_COLORS.get(regime, "#ffffff")
-        ax1.axvspan(merged['Timestamp'].iloc[i], merged['Timestamp'].iloc[i+1], color=color, alpha=0.15, lw=0)
+        ax1.axvspan(merged['Timestamp'].iloc[i], merged['Timestamp'].iloc[i+1], 
+                    color=REGIME_COLORS.get(merged['Regime_V2'].iloc[i], "#fff"), alpha=0.15, lw=0)
 
-    ax1.set_title(f"Cumulative Alpha: {final_alpha:.4f}% | Max DD: {max_dd:.2f}%", fontsize=20, fontweight='bold', pad=20)
-    ax1.set_ylabel("Portfolio Growth ($1 Initial)", fontsize=14)
-    ax1.legend(loc='upper left', frameon=True, fontsize=12)
-
+    # Bottom Panel
     ax2.fill_between(merged['Timestamp'], merged['Alpha_Basis'], color='#2ecc71', alpha=0.3)
-    ax2.plot(merged['Timestamp'], merged['Alpha_Basis'], color='#27ae60', lw=2)
-    ax2.axhline(0, color='black', lw=1, ls='-')
-    ax2.set_ylabel("Alpha (Basis Points)", fontsize=14)
     ax2.xaxis.set_major_formatter(mdates.DateFormatter('%b %d\n%H:%M'))
 
     plt.tight_layout()
     plt.savefig(PERFORMANCE_CHART, dpi=180)
-
-    print(f"\n--- PERFORMANCE HEALTH CHECK (NET) ---")
-    print(f"Final Alpha: {final_alpha:.4f}%")
-    print(f"Max Drawdown: {max_dd:.4f}%")
-    print(f"Annualized Vol: {vol:.2f}%")
-    print(f"Trades Executed: {trade_count}")
-    print(f"--------------------------------------\n")
+    merged.to_csv(PERFORMANCE_REPORT, index=False)
+    print(f"[SUCCESS] Final Alpha: {final_alpha:.4f}% | Vol: {vol:.2f}%")
 
 if __name__ == "__main__":
     run_backtest()
