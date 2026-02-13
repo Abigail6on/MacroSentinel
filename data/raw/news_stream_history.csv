@@ -1752,3 +1752,62 @@ Timestamp,Published_At,Indicator,Sentiment,Headline
 2026-02-13 01:07:12.979226,2026-02-11T23:11:28Z,Inflation_Sentiment,0.6765,New Zealand still deserves better than marketing
 2026-02-13 01:07:12.979353,2026-02-11T22:58:55Z,Inflation_Sentiment,0.7906,Avowed’s success shows how Game Pass can turn a mid‑budget RPG into a hit
 2026-02-13 01:07:12.979529,2026-02-11T21:56:48Z,Inflation_Sentiment,0.3885,"Apple Acquires ‘Severance’ As It Grows In-House Studio; Series Eyes Summer S3 Start, 4-Season Run & Universe Expansion; Fifth Season To EP"
+2026-02-13 04:09:17.955453,2026-02-12T03:56:43Z,Monetary_Policy,0.4404,Revised CPI may give RBI reason to keep interest rates on hold
+2026-02-13 04:09:17.955644,2026-02-12T02:08:20Z,Monetary_Policy,0.4404,New CPI index may give RBI reason to keep interest rates on hold
+2026-02-13 04:09:17.955768,2026-02-12T01:36:34Z,Monetary_Policy,-0.3182,India’s inflation revamp may give Reserve Bank a reason to stay on hold
+2026-02-13 04:09:17.956006,2026-02-11T15:36:51Z,Monetary_Policy,-0.5996,"US stock market crashes today: Why Dow, S&P 500 and Nasdaq turn deep red suddenly — Stock market down today despite strong jobs data"
+2026-02-13 04:09:17.956063,2026-02-11T15:20:00Z,Monetary_Policy,-0.0516,Beyond the Cliff
+2026-02-13 04:09:17.956132,2026-02-11T15:00:23Z,Monetary_Policy,0.0,"Tiny Homes, Big Ambitions: Matt Mahan’s Run for Governor Spotlights His Shelter Strategy"
+2026-02-13 04:09:17.956223,2026-02-11T14:54:44Z,Monetary_Policy,0.5859,Nightmarish labor market finally shows signs of letting up—and some ‘vindication’ for Jerome Powell
+2026-02-13 04:09:17.956349,2026-02-11T14:41:38Z,Monetary_Policy,0.296,Odds Bank of Japan raises rates hits 80% with Bitcoin on the sideline – one hidden signal decides everything
+2026-02-13 04:09:17.956525,2026-02-11T12:03:08Z,Monetary_Policy,0.0627,"Powell’s parting gift from the Fed may be more rate cuts than expected, courtesy of deteriorating data"
+2026-02-13 04:09:17.956729,2026-02-11T10:54:38Z,Monetary_Policy,-0.1531,"Fed to hold rates through May, but Warsh may be too loose with policy, economists say"
+2026-02-13 04:09:17.956992,2026-02-11T06:23:13Z,Monetary_Policy,-0.8979,The $108 Oil War: Can the Middle East crash the world economy?
+2026-02-13 04:09:17.957132,2026-02-11T04:00:16Z,Monetary_Policy,-0.8176,$108 oil threat: Can Middle East conflicts disrupt the world economy?
+2026-02-13 04:09:17.957239,2026-02-11T01:46:47Z,Monetary_Policy,0.5719,"S&P 500, Nasdaq dip with economic data, earnings in focus"
+2026-02-13 04:09:17.957473,2026-02-11T00:59:09Z,Monetary_Policy,0.1531,"Global Market Today: Asian stocks hold near record before US jobs data, gold up"
+2026-02-13 04:09:17.957524,2026-02-11T00:46:04Z,Monetary_Policy,0.2263,'Surprised by market reaction to Kevin Warsh's nomination to the US Fed'
+2026-02-13 04:09:18.153682,2026-02-12T04:01:36Z,Labor_Market,0.7096,"Lefty activist group that’s sued LA, hates cops and wealth generation to be handed $6.6 million by City"
+2026-02-13 04:09:18.153863,2026-02-12T03:54:26Z,Labor_Market,0.7964,"WATCH: Buddhist monks reach Lincoln Memorial, a look back at the 2,300 mile walk for peace"
+2026-02-13 04:09:18.153970,2026-02-12T03:39:43Z,Labor_Market,-0.7003,How Iran’s current unrest can be traced back to the 1979 revolution
+2026-02-13 04:09:18.154099,2026-02-12T03:23:40Z,Labor_Market,0.25,Exclusive -- Sen. Sheehy on Jobs Numbers: U.S. Businesses 'Investing in American Jobs in America'
+2026-02-13 04:09:18.154337,2026-02-12T02:57:11Z,Labor_Market,0.9451,Most Asia markets rise as traders welcome US jobs
+2026-02-13 04:09:18.154568,2026-02-12T02:08:17Z,Labor_Market,0.9118,"Gold, silver dip as dollar rises after strong US jobs data"
+2026-02-13 04:09:18.154814,2026-02-12T01:45:49Z,Labor_Market,-0.0762,Wall Street ends muted after strong jobs data nibbles at Fed rate cut bets
+2026-02-13 04:09:18.155053,2026-02-12T01:39:26Z,Labor_Market,-0.743,Oil prices rise on concerns about US-Iran tensions
+2026-02-13 04:09:18.155304,2026-02-12T01:05:19Z,Labor_Market,0.9393,"Global Market Today: Asian stocks rise, Treasuries fall after strong US jobs data"
+2026-02-13 04:09:18.155439,2026-02-12T01:05:17Z,Labor_Market,-0.6705,"Protesters, police clash at protest over Milei labor reform"
+2026-02-13 04:09:18.155616,2026-02-12T00:56:39Z,Labor_Market,0.8885,Breitbart Business Digest: The Great Reprivatization and the Amazing January Jobs Report
+2026-02-13 04:09:18.155799,2026-02-12T00:00:00Z,Labor_Market,0.2263,Pakistan: Where Politics And Economics Collide?
+2026-02-13 04:09:18.155974,2026-02-11T23:50:11Z,Labor_Market,-0.5574,Revised economic numbers inject uncertainty into jobs market
+2026-02-13 04:09:18.156117,2026-02-11T23:48:10Z,Labor_Market,0.4019,"Treasuries Dip, Stocks Waver After US Jobs Surge: Markets Wrap"
+2026-02-13 04:09:18.156196,2026-02-11T23:13:45Z,Labor_Market,-0.3818,WATCH: NBA on-court brawl leads to 4 player suspensions
+2026-02-13 04:09:18.332739,2026-02-12T03:50:45Z,Manufacturing,0.4019,"A year into Trump tariffs, Chinese factories and ports are buzzing with activity"
+2026-02-13 04:09:18.332902,2026-02-12T03:21:21Z,Manufacturing,-0.4215,'China shock': Germany struggles as key market turns business rival
+2026-02-13 04:09:18.332959,2026-02-12T02:56:35Z,Manufacturing,0.0,Will AI Really replaces Humans?
+2026-02-13 04:09:18.333047,2026-02-12T01:55:29Z,Manufacturing,0.0,ECDS to set up medical equipment manufacturing unit with ₹780 cr investment
+2026-02-13 04:09:18.333122,2026-02-12T01:04:33Z,Manufacturing,0.0,"Original-Owner, 8k-Mile 1996 Porsche 911 Turbo"
+2026-02-13 04:09:18.333193,2026-02-12T00:40:16Z,Manufacturing,0.0,19k-Mile 2007 Porsche 911 GT3 RS
+2026-02-13 04:09:18.333266,2026-02-12T00:05:07Z,Manufacturing,0.0,1969 Pontiac Firebird Trans Am Ram Air III
+2026-02-13 04:09:18.333480,2026-02-11T23:37:09Z,Manufacturing,-0.8625,NAFDAC’s sachet alcohol ban: Public health or economic pain?
+2026-02-13 04:09:18.333633,2026-02-11T23:31:00Z,Manufacturing,0.8402,"Wellness Wednesday: Mental health, food labels, AI and health care"
+2026-02-13 04:09:18.333881,2026-02-11T23:26:31Z,Manufacturing,0.9001,The Policy Risk Of Closing Off New Paths To Value Too Early
+2026-02-13 04:09:18.333993,2026-02-11T23:15:11Z,Manufacturing,-0.296,1955 Ford Thunderbird at No Reserve
+2026-02-13 04:09:18.334095,2026-02-11T22:22:56Z,Manufacturing,-0.296,2000 Porsche Boxster at No Reserve
+2026-02-13 04:09:18.334246,2026-02-11T22:20:50Z,Manufacturing,-0.5423,Andy Wingo: free trade and the left
+2026-02-13 04:09:18.334313,2026-02-11T22:02:17Z,Manufacturing,0.6369,The Sledgehammer Restomod Completes Mercedes’ Unfinished Business With a Massive V12
+2026-02-13 04:09:18.334364,2026-02-11T21:47:36Z,Manufacturing,0.0,Show HN: Podium Voices are multi-agent AI hosts for events (turn coordination)
+2026-02-13 04:09:18.538686,2026-02-12T04:08:48Z,Inflation_Sentiment,0.0,India's trade surplus with US may cross $90 billion within a year after India-US deal: SBI Report
+2026-02-13 04:09:18.538850,2026-02-12T03:19:20Z,Inflation_Sentiment,0.8299,Can ferrets be housebroken?
+2026-02-13 04:09:18.539002,2026-02-12T03:11:26Z,Inflation_Sentiment,0.9022,India poised for surge in agricultural exports to US after trade deal: APEDA Chairman
+2026-02-13 04:09:18.539123,2026-02-12T02:59:14Z,Inflation_Sentiment,0.6249,India's trade surplus with US may cross USD 90 billion within a year after India-US deal: SBI Report
+2026-02-13 04:09:18.539263,2026-02-12T02:57:19Z,Inflation_Sentiment,0.5574,"India-US trade deal: New Delhi's trade surplus with Washington may cross $90 billion within a year, says SBI Report"
+2026-02-13 04:09:18.539357,2026-02-12T02:50:00Z,Inflation_Sentiment,0.6808,Surge Copper Announces Upsize of Private Placement to $20 Million
+2026-02-13 04:09:18.539537,2026-02-12T02:49:18Z,Inflation_Sentiment,-0.885,Why are apes going extinct?
+2026-02-13 04:09:18.539721,2026-02-12T02:37:31Z,Inflation_Sentiment,0.6662,Do ferrets get carsick?
+2026-02-13 04:09:18.539801,2026-02-12T02:28:46Z,Inflation_Sentiment,0.4939,"Affordability roundtable: Gov. Evers visited Racine Feb. 11 to focus on housing, health care, wages and more"
+2026-02-13 04:09:18.539908,2026-02-12T02:21:37Z,Inflation_Sentiment,0.6868,Should I force feed my ferret?
+2026-02-13 04:09:18.540218,2026-02-12T01:41:16Z,Inflation_Sentiment,-0.9513,'No one to back us': Arab bus drivers in Israel grapple with racist attacks
+2026-02-13 04:09:18.540432,2026-02-12T01:39:26Z,Inflation_Sentiment,-0.743,Oil prices rise on concerns about US-Iran tensions
+2026-02-13 04:09:18.540570,2026-02-12T01:16:16Z,Inflation_Sentiment,-0.6199,Can you raise a baby possum as a pet?
+2026-02-13 04:09:18.540666,2026-02-12T01:13:57Z,Inflation_Sentiment,0.5267,Real Ways AI Is Replacing Jobs And Creating New Ones
