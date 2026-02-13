@@ -22,7 +22,10 @@ STRATEGY_MAP = {
     "Overheat (Inflationary)": {"XLE": 0.4, "DBC": 0.3, "GLD": 0.3}
 }
 
-# Visualization Colors
+# --- NEW PARAMETER: Transaction Friction ---
+# 0.0002 = 0.02% (2 basis points). This covers typical commissions and slippage.
+FRICTION_COST = 0.0002 
+
 REGIME_COLORS = {
     "Goldilocks (Growth)": "#2ecc71",
     "Goldilocks -> Tightening (Warning)": "#f1c40f",
@@ -32,13 +35,13 @@ REGIME_COLORS = {
 }
 
 def run_backtest():
-    print("[INFO] Initializing Real-Time Performance Health Check...")
+    print("[INFO] Initializing Real-Time Performance Health Check (with Friction)...")
     
     if not os.path.exists(REGIME_DATA):
         print("[ERROR] No regime history found.")
         return
 
-    # 1. Load Regime History (Timezone-Agnostic)
+    # 1. Load Regime History (Standardizing to ns precision for Merge)
     df = pd.read_csv(REGIME_DATA, parse_dates=['Timestamp'])
     df['Timestamp'] = pd.to_datetime(df['Timestamp']).dt.tz_localize(None).astype('datetime64[ns]')
     
@@ -56,38 +59,45 @@ def run_backtest():
         print("[ERROR] Market data download failed.")
         return
 
+    # Standardize precision to match regime data
     prices.index = pd.to_datetime(prices.index).tz_localize(None).astype('datetime64[ns]')
     returns = prices.pct_change()
 
-    # 3. Fuzzy Merge and Truth-Testing (Shift Returns)
-    # merged = pd.merge_asof(df.sort_values('Timestamp'), 
-    #                       returns.sort_index(), 
-    #                       left_on='Timestamp', 
-    #                       right_index=True, 
-    #                       direction='backward')
-
-    # Shift returns forward: Today's signal earns tomorrow's return (Removes Look-ahead Bias)
+    # Shift returns: Signal at 9 AM gets the return between 9 AM and 10 AM
     for ticker in all_tickers:
         if ticker in returns.columns:
             returns[ticker] = returns[ticker].shift(-1)
 
+    # 3. Fuzzy Merge (As-Of)
     merged = pd.merge_asof(df.sort_values('Timestamp'), 
                           returns.sort_index(), 
                           left_on='Timestamp', 
                           right_index=True, 
                           direction='backward')
 
-    # 4. Filter for US Market Trading Hours (Ottawa/NY Time)
+    # 4. Filter for US Market Hours & Clean Data
     merged = merged[merged['Timestamp'].dt.hour.between(9, 16)]
     merged = merged.dropna(subset=['SPY'])
 
-    # 5. Performance Math
+    # 5. Performance Math with Transaction Friction
     strat_rets = []
+    prev_regime = None
+    trade_count = 0
+
     for _, row in merged.iterrows():
         regime = row['Regime_V2']
         weights = STRATEGY_MAP.get(regime, STRATEGY_MAP["Neutral / Transitioning"])
+        
+        # Base hourly return calculation
         h_ret = sum(row[t] * w for t, w in weights.items() if t in row and pd.notnull(row[t]))
+        
+        # APPLY FRICTION: Detect a change in regime
+        if prev_regime is not None and regime != prev_regime:
+            h_ret -= FRICTION_COST
+            trade_count += 1
+            
         strat_rets.append(h_ret)
+        prev_regime = regime
 
     merged['Strategy_Return'] = strat_rets
     merged['Benchmark_Return'] = merged['SPY']
@@ -95,30 +105,24 @@ def run_backtest():
     merged['Benchmark_Value'] = (1 + merged['Benchmark_Return']).cumprod()
     merged['Alpha_Basis'] = (merged['Strategy_Value'] - merged['Benchmark_Value']) * 100
 
-    # 6. Health Check Metrics (Risk Analysis)
-    # Max Drawdown
+    # 6. Health Check Metrics
     merged['Peak'] = merged['Strategy_Value'].cummax()
     merged['Drawdown'] = (merged['Strategy_Value'] / merged['Peak']) - 1
     max_dd = merged['Drawdown'].min() * 100
-
-    # Volatility
     vol = merged['Strategy_Return'].std() * np.sqrt(252 * 6.5) * 100
 
-    # Capture latest point for reporting (Captured Bloomberg Plunge)
     final_alpha = merged['Alpha_Basis'].iloc[-1]
 
-    # Save Results (PERFORMANCE_REPORT)
+    # Save Results
     merged.to_csv(PERFORMANCE_REPORT, index=False)
 
-    # 7. High-Fidelity Visualization
+    # 7. Visualization
     plt.style.use('seaborn-v0_8-whitegrid')
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(16, 12), gridspec_kw={'height_ratios': [3, 1]}, sharex=True)
 
-    # TOP PANEL: Equity Curve + Shading
-    ax1.plot(merged['Timestamp'], merged['Strategy_Value'], label='Macro Sentinel (Strategy)', lw=4, color='#2c3e50', zorder=5)
+    ax1.plot(merged['Timestamp'], merged['Strategy_Value'], label='Macro Sentinel (Net of Friction)', lw=4, color='#2c3e50', zorder=5)
     ax1.plot(merged['Timestamp'], merged['Benchmark_Value'], label='S&P 500 (Benchmark)', lw=2, ls='--', color='#bdc3c7', zorder=4)
     
-    # Add Regime Background Shading
     for i in range(len(merged)-1):
         regime = merged['Regime_V2'].iloc[i]
         color = REGIME_COLORS.get(regime, "#ffffff")
@@ -128,7 +132,6 @@ def run_backtest():
     ax1.set_ylabel("Portfolio Growth ($1 Initial)", fontsize=14)
     ax1.legend(loc='upper left', frameon=True, fontsize=12)
 
-    # BOTTOM PANEL: Alpha Spread (The Edge)
     ax2.fill_between(merged['Timestamp'], merged['Alpha_Basis'], color='#2ecc71', alpha=0.3)
     ax2.plot(merged['Timestamp'], merged['Alpha_Basis'], color='#27ae60', lw=2)
     ax2.axhline(0, color='black', lw=1, ls='-')
@@ -138,12 +141,12 @@ def run_backtest():
     plt.tight_layout()
     plt.savefig(PERFORMANCE_CHART, dpi=180)
 
-    print(f"\n--- PERFORMANCE HEALTH CHECK ---")
+    print(f"\n--- PERFORMANCE HEALTH CHECK (NET) ---")
     print(f"Final Alpha: {final_alpha:.4f}%")
-    print(f"Max Drawdown: {max_dd:.4f}% (Peak-to-Trough Pain)")
+    print(f"Max Drawdown: {max_dd:.4f}%")
     print(f"Annualized Vol: {vol:.2f}%")
-    print(f"Status: Trading session sync complete.")
-    print(f"--------------------------------\n")
+    print(f"Trades Executed: {trade_count}")
+    print(f"--------------------------------------\n")
 
 if __name__ == "__main__":
     run_backtest()
