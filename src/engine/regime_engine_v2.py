@@ -23,13 +23,18 @@ def determine_regime_v2():
         print(f"[ERROR] Missing data files.")
         sys.exit(1)
 
-    print("[INFO] Phase B: Applying Sector Rotation Truth Filter...")
+    print("[INFO] Phase B: Calculating Inflation YoY and Applying Sector Filter...")
 
     # 1. Load Data
     macro_df = pd.read_csv(MACRO_RAW, index_col=0)
     news_df = pd.read_csv(SMOOTHED_NEWS, index_col=0)
-
-    # Force both indices to nanosecond precision to ensure a match
+    
+    # NEW: Calculate Inflation YoY (Year-over-Year)
+    # Since FRED data is monthly, a 12-month change gives us the YoY %
+    if 'Inflation_CPI' in macro_df.columns:
+        macro_df['Inflation_YoY'] = macro_df['Inflation_CPI'].pct_change(12) * 100
+    
+    # Standardize precision to [ns] to fix the previous MergeError
     macro_df.index = pd.to_datetime(macro_df.index).tz_localize(None).astype('datetime64[ns]')
     news_df.index = pd.to_datetime(news_df.index).tz_localize(None).astype('datetime64[ns]')
 
@@ -46,16 +51,12 @@ def determine_regime_v2():
     for i in range(len(combined)):
         row = combined.iloc[i]
         
-        # Signals
+        # Signals (Now with the calculated Inflation_YoY)
         inf = row.get('Inflation_YoY', 0)
         fed = row.get('Monetary_Policy', 0)
         vix = row.get('VIX_Index', 0)
         ratio_trend = row.get('Ratio_Trend', 0)
-        
-        # Growth Pulse calculation
-        labor = row.get('Labor_Market', 0)
-        mfg = row.get('Manufacturing', 0)
-        growth_pulse = (labor * 0.6) + (mfg * 0.4)
+        growth_pulse = (row.get('Labor_Market', 0) * 0.6) + (row.get('Manufacturing', 0) * 0.4)
 
         # A. DEFENSIVE REGIMES
         if inf < THRESHOLDS["Inflation_Risk"]["Target"] and growth_pulse < -0.1:
@@ -66,7 +67,7 @@ def determine_regime_v2():
         # B. GROWTH REGIMES
         else:
             if growth_pulse > THRESHOLDS["Goldilocks"]["Entry"]:
-                # --- PHASE B TRUTH FILTER ---
+                # Phase B Truth Filter: Check if sectors agree with news
                 if ratio_trend < -THRESHOLDS["Rotation_Sensitivity"]:
                     current_state = "Neutral / Transitioning"
                 else:
@@ -82,6 +83,8 @@ def determine_regime_v2():
         regimes.append(current_state)
 
     combined['Regime_V2'] = regimes
+    
+    # Save processed data (Dashboard will now find 'Inflation_YoY' here)
     combined.to_csv(OUTPUT_PATH)
     print(f"[SUCCESS] Regime History updated. Final State: {current_state}")
 
