@@ -28,10 +28,10 @@ def determine_regime_v2():
     # 1. Load Data
     macro_df = pd.read_csv(MACRO_RAW, index_col=0)
     news_df = pd.read_csv(SMOOTHED_NEWS, index_col=0)
-    
-    # FIX: Explicitly convert to datetime before localizing
-    macro_df.index = pd.to_datetime(macro_df.index).tz_localize(None)
-    news_df.index = pd.to_datetime(news_df.index).tz_localize(None)
+
+    # Force both indices to nanosecond precision to ensure a match
+    macro_df.index = pd.to_datetime(macro_df.index).tz_localize(None).astype('datetime64[ns]')
+    news_df.index = pd.to_datetime(news_df.index).tz_localize(None).astype('datetime64[ns]')
 
     combined = pd.merge_asof(news_df.sort_index(), macro_df.sort_index(), 
                             left_index=True, right_index=True, direction='backward')
