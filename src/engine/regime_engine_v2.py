@@ -28,11 +28,13 @@ def determine_regime_v2():
     # 1. Load Data
     macro_df = pd.read_csv(MACRO_RAW, index_col=0)
     news_df = pd.read_csv(SMOOTHED_NEWS, index_col=0)
-    
-    # NEW: Calculate Inflation YoY (Year-over-Year)
+
     # Since FRED data is monthly, a 12-month change gives us the YoY %
-    if 'Inflation_CPI' in macro_df.columns:
-        macro_df['Inflation_YoY'] = macro_df['Inflation_CPI'].pct_change(12) * 100
+    # Use the pre-fetched historical CPI to calculate YoY even with limited rows
+    if 'Inflation_CPI' in macro_df.columns and 'Inflation_CPI_LastYear' in macro_df.columns:
+        macro_df['Inflation_YoY'] = ((macro_df['Inflation_CPI'] / macro_df['Inflation_CPI_LastYear']) - 1) * 100
+    else:
+        macro_df['Inflation_YoY'] = 0 # Fallback
     
     # Standardize precision to [ns] to fix the previous MergeError
     macro_df.index = pd.to_datetime(macro_df.index).tz_localize(None).astype('datetime64[ns]')
