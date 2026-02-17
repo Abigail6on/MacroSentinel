@@ -19,47 +19,57 @@ INDICATORS = {
 
 def fetch_macro_data():
     if not FRED_KEY: return
-    print("--- Phase C: Restoring 2026 Data Bridge ---")
+    print("--- Phase C: Harvesting Macro & Market Signals ---")
     fred = Fred(api_key=FRED_KEY)
     
+    # 1. Fetch FULL Macro History (Monthly)
     macro_frames = []
     for code, name in INDICATORS.items():
         try:
-            # Fetching full series ensures we have 2024 (for bridge) and 2026 (current)
             series = fred.get_series(code)
             macro_frames.append(pd.DataFrame({name: series}))
         except Exception as e:
-            print(f"Error fetching {name}: {e}")
+            print(f"   [FRED ERROR] {name}: {e}")
     
     macro_df = pd.concat(macro_frames, axis=1, sort=False).ffill()
 
+    # 2. Fetch Recent Market Data (Hourly)
+    print("   [FETCHING] XLF, XLU, and SPY...")
     try:
-        # Fetching SPY for Phase C RSI and XLF/XLU for Truth Filter
         data = yf.download(["XLF", "XLU", "SPY"], period="1mo", interval="1h")
-        sectors = data['Close'] if isinstance(data.columns, pd.MultiIndex) else data
-        sectors.index = sectors.index.tz_localize(None)
         
-        # This reindex is the 'Bridge'. It pulls the 2024/2025 data into 2026 slots
-        final_df = macro_df.reindex(sectors.index, method='ffill')
+        # Extract 'Close' prices
+        if isinstance(data.columns, pd.MultiIndex):
+            market_data = data['Close']
+        else:
+            market_data = data
+            
+        market_data.index = market_data.index.tz_localize(None)
         
-        for t in ["XLF", "XLU", "SPY"]:
-            if t in sectors.columns: final_df[t] = sectors[t]
+        # 3. THE BRIDGE: Align Monthly Macro to Hourly Market
+        final_df = macro_df.reindex(market_data.index, method='ffill')
         
-        # CALCULATE THE HISTORICAL ANCHOR
-        # We find the CPI value from exactly 1 year ago for every hour in Feb 2026
-        full_cpi = macro_df['Inflation_CPI']
+        # Add the actual hourly prices
+        for ticker in ["XLF", "XLU", "SPY"]:
+            if ticker in market_data.columns:
+                final_df[ticker] = market_data[ticker]
+        
+        # 4. INFLATION BRIDGE: Look back exactly 1 year for every hour
+        full_cpi_series = macro_df['Inflation_CPI']
         final_df['Inflation_CPI_LastYear'] = [
-            full_cpi.asof(t - pd.DateOffset(years=1)) for t in final_df.index
+            full_cpi_series.asof(t - pd.DateOffset(years=1)) for t in final_df.index
         ]
 
+        # 5. Save to Project Root
         ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         output_dir = os.path.join(ROOT_DIR, "data", "raw")
         os.makedirs(output_dir, exist_ok=True)
+        
         final_df.to_csv(os.path.join(output_dir, "macro_indicators_raw.csv"))
-        print("[SUCCESS] Data generated for 2026 with 1-year historical lookback.")
+        print(f"[SUCCESS] Saved hourly merged data to macro_indicators_raw.csv")
 
     except Exception as e:
-        print(f"[ERROR] Collector failed: {e}")
+        print(f"   [MARKET ERROR] {e}")
 
 if __name__ == "__main__":
     fetch_macro_data()

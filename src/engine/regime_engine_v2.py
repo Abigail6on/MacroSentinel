@@ -20,25 +20,23 @@ def calculate_rsi(series, period=14):
 def determine_regime_v2():
     if not os.path.exists(MACRO_RAW): return
 
-    # LOAD DATA
+    # 1. Load and Sanitize
     macro_df = pd.read_csv(MACRO_RAW, index_col=0)
     news_df = pd.read_csv(SMOOTHED_NEWS, index_col=0)
     
-    # --- CRITICAL X-AXIS FIX ---
-    # Ensure every index is a proper datetime object for the charts
     macro_df.index = pd.to_datetime(macro_df.index).tz_localize(None).astype('datetime64[ns]')
     news_df.index = pd.to_datetime(news_df.index).tz_localize(None).astype('datetime64[ns]')
 
+    # 2. Merge
     combined = pd.merge_asof(news_df.sort_index(), macro_df.sort_index(), 
                             left_index=True, right_index=True, direction='backward')
 
-    # CALCULATE INFLATION (The YoY Bridge)
+    # 3. Tactical Calcs (RSI & Inflation)
     if 'Inflation_CPI_LastYear' in combined.columns:
         combined['Inflation_YoY'] = ((combined['Inflation_CPI'] / combined['Inflation_CPI_LastYear']) - 1) * 100
     else:
         combined['Inflation_YoY'] = 0
 
-    # CALCULATE TACTICAL RSI
     combined['RSI'] = calculate_rsi(combined['SPY']) if 'SPY' in combined.columns else 50
 
     regimes = []
@@ -47,21 +45,19 @@ def determine_regime_v2():
     for i in range(len(combined)):
         row = combined.iloc[i]
         inf, rsi = row.get('Inflation_YoY', 0), row.get('RSI', 50)
-        growth_pulse = (row.get('Labor_Market', 0) * 0.6) + (row.get('Manufacturing', 0) * 0.4)
-
-        # Logic for Phase C states
-        if growth_pulse > 0.15:
+        growth = (row.get('Labor_Market', 0) * 0.6) + (row.get('Manufacturing', 0) * 0.4)
+        
+        if growth > 0.15:
             if rsi > 70: current_state = "Goldilocks (Overbought - Trim)"
             elif rsi < 30: current_state = "Goldilocks (Oversold - Opportunity)"
             else: current_state = "Goldilocks (Growth)"
         else:
             current_state = "Neutral / Transitioning"
-
         regimes.append(current_state)
 
     combined['Regime_V2'] = regimes
     combined.to_csv(OUTPUT_PATH)
-    print(f"[SUCCESS] Dashboard and Performance data sanitized for 2026.")
+    print(f"[SUCCESS] Regime logic updated with RSI: {rsi:.1f}")
 
 if __name__ == "__main__":
     determine_regime_v2()
