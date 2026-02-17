@@ -1,5 +1,5 @@
 Ticker,Weight,Regime,Strategy
-QQQ,0.7,Goldilocks (Growth),Aggressive Growth
-SPY,0.2,Goldilocks (Growth),Aggressive Growth
-GLD,0.05,Goldilocks (Growth),Aggressive Growth
-TLT,0.05,Goldilocks (Growth),Aggressive Growth
+SPY,0.4,Deflationary Recession,Balanced
+QQQ,0.2,Deflationary Recession,Balanced
+TLT,0.2,Deflationary Recession,Balanced
+GLD,0.2,Deflationary Recession,Balanced
