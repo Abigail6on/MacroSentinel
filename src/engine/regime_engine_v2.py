@@ -39,46 +39,42 @@ def determine_regime_v2():
     combined = pd.merge_asof(news_df.sort_index(), macro_df.sort_index(), 
                             left_index=True, right_index=True, direction='backward')
 
-    # Calculations
-    combined['Inflation_YoY'] = ((combined['Inflation_CPI'] / combined['Inflation_CPI_LastYear']) - 1) * 100
-    combined['Sector_Ratio'] = combined['XLF'] / combined['XLU']
-    combined['Ratio_Trend'] = combined['Sector_Ratio'].pct_change(6)
-    combined['RSI'] = calculate_rsi(combined['SPY'])
+    # Defensive Calculations
+    if 'Inflation_CPI_LastYear' in combined.columns:
+        combined['Inflation_YoY'] = ((combined['Inflation_CPI'] / combined['Inflation_CPI_LastYear']) - 1) * 100
+    else:
+        combined['Inflation_YoY'] = 0
+
+    if 'SPY' in combined.columns:
+        combined['RSI'] = calculate_rsi(combined['SPY'])
+    else:
+        combined['RSI'] = 50
 
     regimes = []
     current_state = "Neutral / Transitioning"
 
     for i in range(len(combined)):
         row = combined.iloc[i]
-        inf, vix, rsi = row.get('Inflation_YoY', 0), row.get('VIX_Index', 0), row.get('RSI', 50)
+        inf, rsi = row.get('Inflation_YoY', 0), row.get('RSI', 50)
         growth_pulse = (row.get('Labor_Market', 0) * 0.6) + (row.get('Manufacturing', 0) * 0.4)
 
-        # A. DEFENSIVE
-        if inf < THRESHOLDS["Inflation_Risk"]["Target"] and growth_pulse < -0.1:
-            current_state = "Deflationary Recession"
-        elif inf > THRESHOLDS["Inflation_Risk"]["High"] and growth_pulse < 0:
+        if inf > THRESHOLDS["Inflation_Risk"]["High"] and growth_pulse < 0:
             current_state = "Stagflation (High Risk)"
-        # B. GROWTH
+        elif growth_pulse > THRESHOLDS["Goldilocks"]["Entry"]:
+            if rsi > THRESHOLDS["RSI"]["Overbought"]:
+                current_state = "Goldilocks (Overbought - Trim)"
+            elif rsi < THRESHOLDS["RSI"]["Oversold"]:
+                current_state = "Goldilocks (Oversold - Opportunity)"
+            else:
+                current_state = "Goldilocks (Growth)"
         else:
-            if growth_pulse > THRESHOLDS["Goldilocks"]["Entry"]:
-                if row.get('Ratio_Trend', 0) < -THRESHOLDS["Rotation_Sensitivity"]:
-                    current_state = "Neutral / Transitioning"
-                else:
-                    # --- PHASE C: TACTICAL OVERRIDE ---
-                    if rsi > THRESHOLDS["RSI"]["Overbought"]:
-                        current_state = "Goldilocks (Overbought - Trim)"
-                    elif rsi < THRESHOLDS["RSI"]["Oversold"]:
-                        current_state = "Goldilocks (Oversold - Opportunity)"
-                    else:
-                        current_state = "Goldilocks (Growth)"
-            elif growth_pulse < THRESHOLDS["Goldilocks"]["Exit"]:
-                current_state = "Neutral / Transitioning"
+            current_state = "Neutral / Transitioning"
 
         regimes.append(current_state)
 
     combined['Regime_V2'] = regimes
     combined.to_csv(OUTPUT_PATH)
-    print(f"[SUCCESS] Phase C Complete. Current: {current_state} (RSI: {rsi:.1f})")
+    print(f"[SUCCESS] Regime determined: {current_state}")
 
 if __name__ == "__main__":
     determine_regime_v2()
