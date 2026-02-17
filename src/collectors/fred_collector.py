@@ -4,14 +4,12 @@ import yfinance as yf
 from fredapi import Fred
 from dotenv import load_dotenv
 import ssl
+from datetime import datetime
 
-# Fix for SSL certificate issues
 ssl._create_default_https_context = ssl._create_unverified_context
-
 load_dotenv()
 FRED_KEY = os.getenv("FRED_API_KEY")
 
-# Configuration: slow macro facts
 INDICATORS = {
     'CPIAUCSL': 'Inflation_CPI',
     'T10Y2Y': 'Yield_Curve_10Y2Y',
@@ -21,66 +19,46 @@ INDICATORS = {
 }
 
 def fetch_macro_data():
-    if not FRED_KEY:
-        print("[ERROR] No FRED_API_KEY found!")
-        return
-
-    print("--- Phase B & C: Harvesting Macro, Sector, and Price Signals ---")
+    if not FRED_KEY: return
+    print("--- Phase C Collector: Syncing 2026 Data ---")
     fred = Fred(api_key=FRED_KEY)
     
-    # 1. Fetch FULL FRED history to support YoY calculations
+    # 1. Fetch FULL history to bridge the 2024-2026 gap
     macro_frames = []
     for code, name in INDICATORS.items():
-        print(f"   [FETCHING FRED] {name}...")
         try:
             series = fred.get_series(code)
             macro_frames.append(pd.DataFrame({name: series}))
-        except Exception as e:
-            print(f"   [ERROR] Failed to fetch {code}: {e}")
+        except: continue
     
-    # Standardize macro dataframe
     macro_df = pd.concat(macro_frames, axis=1, sort=False).ffill()
 
-    # 2. Fetch Recent Market Data (Added SPY for Phase C RSI)
-    print("   [FETCHING MARKET] XLF, XLU, and SPY...")
+    # 2. Fetch Market Data (Added SPY for Phase C RSI)
+    print("   [FETCHING] XLF, XLU, and SPY for Tactical RSI...")
     try:
-        # Fetching 1 month of hourly data
         data = yf.download(["XLF", "XLU", "SPY"], period="1mo", interval="1h")
-        
-        # Handle MultiIndex columns from yfinance
-        if isinstance(data.columns, pd.MultiIndex):
-            sectors = data['Close']
-        else:
-            sectors = data
-            
+        sectors = data['Close'] if isinstance(data.columns, pd.MultiIndex) else data
         sectors.index = sectors.index.tz_localize(None)
         
-        # Align macro data to the hourly market index
+        # Align macro data to hourly market time
         final_df = macro_df.reindex(sectors.index, method='ffill')
+        for t in ["XLF", "XLU", "SPY"]:
+            if t in sectors.columns: final_df[t] = sectors[t]
         
-        # Safely assign market columns
-        for ticker in ["XLF", "XLU", "SPY"]:
-            if ticker in sectors.columns:
-                final_df[ticker] = sectors[ticker]
-        
-        # --- THE INFLATION BRIDGE FIX ---
-        # Look up the CPI value from exactly 1 year ago for every hourly timestamp
-        full_cpi_series = macro_df['Inflation_CPI']
+        # --- THE FIX: Look back 1 year from the CURRENT hour ---
+        full_cpi = macro_df['Inflation_CPI']
         final_df['Inflation_CPI_LastYear'] = [
-            full_cpi_series.asof(t - pd.DateOffset(years=1)) for t in final_df.index
+            full_cpi.asof(t - pd.DateOffset(years=1)) for t in final_df.index
         ]
 
-        # 3. Save to Project Root
+        # 3. Save to Root
         ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         output_dir = os.path.join(ROOT_DIR, "data", "raw")
         os.makedirs(output_dir, exist_ok=True)
-        
-        output_path = os.path.join(output_dir, "macro_indicators_raw.csv")
-        final_df.to_csv(output_path)
-        print(f"[SUCCESS] Data saved with 1-year Inflation Bridge and SPY data.")
-
+        final_df.to_csv(os.path.join(output_dir, "macro_indicators_raw.csv"))
+        print(f"[SUCCESS] 2026 Data Bridge Active. Inflation anchor found.")
     except Exception as e:
-        print(f"   [ERROR] Market data processing failed: {e}")
+        print(f"[ERROR] Collector failed: {e}")
 
 if __name__ == "__main__":
     fetch_macro_data()
