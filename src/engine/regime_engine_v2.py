@@ -12,19 +12,13 @@ OUTPUT_PATH = os.path.join(BASE_DIR, "data", "processed", "regime_v2_status.csv"
 
 def calculate_rsi(series, period=14):
     """Calculates the 14-period RSI Speedometer"""
-    # Defensive check: ensure series is numeric
     series = pd.to_numeric(series, errors='coerce')
-    
     delta = series.diff()
     gain = (delta.where(delta > 0, 0)).rolling(window=period).mean()
     loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
-    
-    # Avoid division by zero
     loss = loss.replace(0, np.nan)
     rs = gain / loss
     rsi = 100 - (100 / (1 + rs))
-    
-    # Fill NaNs (start of series) with 50 (Neutral)
     return rsi.fillna(50)
 
 def determine_regime_v2():
@@ -36,43 +30,54 @@ def determine_regime_v2():
     macro_df = pd.read_csv(MACRO_RAW, index_col=0)
     news_df = pd.read_csv(SMOOTHED_NEWS, index_col=0)
     
-    # Standardize Timestamps
     macro_df.index = pd.to_datetime(macro_df.index).tz_localize(None).astype('datetime64[ns]')
     news_df.index = pd.to_datetime(news_df.index).tz_localize(None).astype('datetime64[ns]')
 
-    # 2. PRE-CALCULATION (The Fix)
-    # Calculate RSI on the hourly data BEFORE merging with high-freq news
-    # This ensures we capture price moves, not flat lines.
+    # 2. PRE-CALCULATION
     if 'SPY' in macro_df.columns:
-        print("[INFO] Calculating RSI on hourly macro data...")
         macro_df['RSI'] = calculate_rsi(macro_df['SPY'])
     else:
-        print("[WARNING] SPY column missing. RSI defaulting to 50.")
         macro_df['RSI'] = 50
 
-    # 3. Merge (Carry over the pre-calculated RSI)
+    # 3. Merge
     combined = pd.merge_asof(news_df.sort_index(), macro_df.sort_index(), 
                             left_index=True, right_index=True, direction='backward')
 
-    # 4. Inflation Bridge Logic
+    # 4. MACRO CALCS (Inflation & Liquidity)
+    # Inflation YoY
     if 'Inflation_CPI_LastYear' in combined.columns:
         combined['Inflation_YoY'] = ((combined['Inflation_CPI'] / combined['Inflation_CPI_LastYear']) - 1) * 100
     else:
         combined['Inflation_YoY'] = 0
 
-    regimes = []
-    current_state = "Neutral / Transitioning"
+    # --- PHASE D: LIQUIDITY ENGINE ---
+    # Real Liquidity = M2 Growth - Inflation
+    if 'Liquidity_M2' in combined.columns and 'Liquidity_M2_LastYear' in combined.columns:
+        combined['M2_YoY'] = ((combined['Liquidity_M2'] / combined['Liquidity_M2_LastYear']) - 1) * 100
+        combined['Real_Liquidity'] = combined['M2_YoY'] - combined['Inflation_YoY']
+    else:
+        # Fallback if M2 is missing (assume neutral)
+        combined['Real_Liquidity'] = 0.0
 
-    # 5. Regime Logic
+    regimes = []
+    
+    # 5. DECISION TREE
     for i in range(len(combined)):
         row = combined.iloc[i]
         rsi = row.get('RSI', 50)
+        real_liq = row.get('Real_Liquidity', 0)
         
-        # Growth Pulse Calculation
+        # Growth Pulse
         growth_pulse = (row.get('Labor_Market', 0) * 0.6) + (row.get('Manufacturing', 0) * 0.4)
         
-        # Phase C Logic
-        if growth_pulse > 0.15:
+        # --- THE UPGRADE: LIQUIDITY VETO ---
+        # If Real Liquidity is negative, the Fed is draining money.
+        # It doesn't matter if Growth is good. Without money, assets fall.
+        if real_liq < -1.0: 
+            current_state = "Liquidity Crunch (Defensive)"
+        
+        # Standard Logic
+        elif growth_pulse > 0.15:
             if rsi > 70: 
                 current_state = "Goldilocks (Overbought - Trim)"
             elif rsi < 30: 
@@ -85,10 +90,11 @@ def determine_regime_v2():
         regimes.append(current_state)
 
     combined['Regime_V2'] = regimes
-    
-    # Save
     combined.to_csv(OUTPUT_PATH, index=True, index_label="Timestamp")
-    print(f"[SUCCESS] Regime Engine Complete. Latest RSI: {combined['RSI'].iloc[-1]:.2f}")
+    
+    # Status Report
+    liq_status = "CRUNCH" if combined['Real_Liquidity'].iloc[-1] < -1.0 else "NORMAL"
+    print(f"[SUCCESS] Regime Engine V2 Updated. Liquidity: {combined['Real_Liquidity'].iloc[-1]:.2f}% [{liq_status}]")
 
 if __name__ == "__main__":
     determine_regime_v2()

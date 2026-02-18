@@ -63,6 +63,9 @@ jobs:
       - name: Generate Dashboard (The Visualization)
         run: python src/visualization/dashboard.py
 
+      - name: Update README Stats
+        run: python src/visualization/simple_pnl.py
+
       - name: Commit and Push Updates
         run: |
           git config --local user.email "action@github.com"
