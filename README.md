@@ -8,11 +8,11 @@ The system dynamically rotates assets between Tech (QQQ), S&P 500 (SPY), Gold (G
 
 ## 📊 Live Performance Stats
 
-| Metric               | Strategy (Macro Sentinel) | S&P 500 (Benchmark)  |
-| :------------------- | :------------------------ | :------------------- |
-| **Total Return (%)** | _Awaiting First Run_      | _Awaiting First Run_ |
-| **Net Alpha**        | **0.00%**                 | --                   |
-| **Status**           | 🛡️ Defensive              | --                   |
+| Metric               | Strategy (Macro Sentinel) | S&P 500 (Benchmark) |
+| :------------------- | :------------------------ | :------------------ |
+| **Total Return (%)** | _Pending_                 | _Pending_           |
+| **Net Alpha**        | **0.00%**                 | --                  |
+| **Status**           | 🛡️ Defensive              | --                  |
 
 _Last Updated: 2026-02-18_
 
@@ -74,12 +74,3 @@ source venv/bin/activate
 # 3. Install dependencies
 pip install -r requirements.txt
 ```
-
-MacroSentinel/
-├── .github/workflows/ # Automation Logic (GitHub Actions)
-├── data/ # Raw FRED data & Processed Regimes
-├── src/
-│ ├── engine/ # Macro Logic & Liquidity Veto
-│ ├── backtest/ # Performance Engine & Alpha tracking
-│ └── visualization/ # P&L Attribution & README injection
-└── output/ # Live Charts (Light Mode)

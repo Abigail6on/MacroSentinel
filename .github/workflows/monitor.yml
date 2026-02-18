@@ -64,7 +64,7 @@ jobs:
         run: python src/visualization/dashboard.py
 
       - name: Update README Stats
-        run: python src/visualization/simple_pnl.py
+        run: python src/visualization/pnl_to_readme.py
 
       - name: Commit and Push Updates
         run: |
