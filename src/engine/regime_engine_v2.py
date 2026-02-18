@@ -11,12 +11,21 @@ SMOOTHED_NEWS = os.path.join(BASE_DIR, "data", "processed", "smoothed_indicators
 OUTPUT_PATH = os.path.join(BASE_DIR, "data", "processed", "regime_v2_status.csv")
 
 def calculate_rsi(series, period=14):
-    """Calculates the 14-period RSI Speedometer for Tactical RSI logic"""
+    """Calculates the 14-period RSI Speedometer"""
+    # Defensive check: ensure series is numeric
+    series = pd.to_numeric(series, errors='coerce')
+    
     delta = series.diff()
     gain = (delta.where(delta > 0, 0)).rolling(window=period).mean()
     loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
+    
+    # Avoid division by zero
+    loss = loss.replace(0, np.nan)
     rs = gain / loss
-    return 100 - (100 / (1 + rs))
+    rsi = 100 - (100 / (1 + rs))
+    
+    # Fill NaNs (start of series) with 50 (Neutral)
+    return rsi.fillna(50)
 
 def determine_regime_v2():
     if not os.path.exists(MACRO_RAW) or not os.path.exists(SMOOTHED_NEWS):
@@ -27,37 +36,42 @@ def determine_regime_v2():
     macro_df = pd.read_csv(MACRO_RAW, index_col=0)
     news_df = pd.read_csv(SMOOTHED_NEWS, index_col=0)
     
-    # PRECISION FIX: Standardize to Nanoseconds to resolve 'Timeline Zero' errors
+    # Standardize Timestamps
     macro_df.index = pd.to_datetime(macro_df.index).tz_localize(None).astype('datetime64[ns]')
     news_df.index = pd.to_datetime(news_df.index).tz_localize(None).astype('datetime64[ns]')
 
-    # 2. Merge - Aligning Monthly Macro data onto the Hourly Sentiment grid
+    # 2. PRE-CALCULATION (The Fix)
+    # Calculate RSI on the hourly data BEFORE merging with high-freq news
+    # This ensures we capture price moves, not flat lines.
+    if 'SPY' in macro_df.columns:
+        print("[INFO] Calculating RSI on hourly macro data...")
+        macro_df['RSI'] = calculate_rsi(macro_df['SPY'])
+    else:
+        print("[WARNING] SPY column missing. RSI defaulting to 50.")
+        macro_df['RSI'] = 50
+
+    # 3. Merge (Carry over the pre-calculated RSI)
     combined = pd.merge_asof(news_df.sort_index(), macro_df.sort_index(), 
                             left_index=True, right_index=True, direction='backward')
 
-    # 3. THE INFLATION BRIDGE FIX
-    # 
+    # 4. Inflation Bridge Logic
     if 'Inflation_CPI_LastYear' in combined.columns:
         combined['Inflation_YoY'] = ((combined['Inflation_CPI'] / combined['Inflation_CPI_LastYear']) - 1) * 100
     else:
         combined['Inflation_YoY'] = 0
 
-    # 4. TACTICAL RSI CALCULATION (Phase C)
-    # 
-    combined['RSI'] = calculate_rsi(combined['SPY']) if 'SPY' in combined.columns else 50
-
     regimes = []
     current_state = "Neutral / Transitioning"
 
-    # 5. Regime Logic Loop
+    # 5. Regime Logic
     for i in range(len(combined)):
         row = combined.iloc[i]
-        inf, rsi = row.get('Inflation_YoY', 0), row.get('RSI', 50)
+        rsi = row.get('RSI', 50)
         
-        # Calculate the Growth Pulse (Weighted Labor and Manufacturing)
+        # Growth Pulse Calculation
         growth_pulse = (row.get('Labor_Market', 0) * 0.6) + (row.get('Manufacturing', 0) * 0.4)
         
-        # Phase C: State Logic with Tactical RSI Overlays
+        # Phase C Logic
         if growth_pulse > 0.15:
             if rsi > 70: 
                 current_state = "Goldilocks (Overbought - Trim)"
@@ -72,9 +86,9 @@ def determine_regime_v2():
 
     combined['Regime_V2'] = regimes
     
-    # Save the output with the Timestamp preserved as a column
+    # Save
     combined.to_csv(OUTPUT_PATH, index=True, index_label="Timestamp")
-    print(f"[SUCCESS] Engine complete. Latest Inflation: {inf:.2f}% | State: {current_state}")
+    print(f"[SUCCESS] Regime Engine Complete. Latest RSI: {combined['RSI'].iloc[-1]:.2f}")
 
 if __name__ == "__main__":
     determine_regime_v2()
