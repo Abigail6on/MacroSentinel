@@ -8,8 +8,6 @@ import numpy as np
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
 REGIME_DATA = os.path.join(BASE_DIR, "data", "processed", "regime_v2_status.csv")
-# We need to re-calculate performance to get attribution, or use the backtest results if they have component returns
-# Let's use the backtest results directly if available, otherwise recalculate
 BACKTEST_RESULTS = os.path.join(BASE_DIR, "data", "processed", "backtest_results.csv")
 OUTPUT_CHART = os.path.join(BASE_DIR, "output", "performance_dashboard.png")
 
