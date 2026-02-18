@@ -15,7 +15,7 @@ _This dashboard is regenerated hourly, showing current sentiment momentum, macro
 
 ## 📈 Strategy Performance (Alpha Tracking)
 
-![Performance Comparison](output/performance_comparison.png)
+![Performance Comparison](output/performance_dashboard.png)
 _Tracking the **MacroSentinel Strategy** against the **S&P 500 (SPY)**. Shaded areas represent active regimes identified by the model during market hours._
 
 ### 🕒 A Note on Timestamps

@@ -34,6 +34,7 @@ output/*
 # Allow the Dashboard Image
 !output/macro_sentinel_dashboard.png
 !output/performance_comparison.png
+!output/performance_dashboard.png
 
 # Maintain folder visibility
 !data/raw/.gitkeep
