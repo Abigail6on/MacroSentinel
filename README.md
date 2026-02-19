@@ -64,6 +64,18 @@ The model utilizes a **Triple-Veto** system to determine tactical asset exposure
 - **Logic:** Integrated Yield Curve (10Y2Y) triggers. Implemented dynamic tilts: XLF (Financials) for steep curves (>0.7) and XLU (Utilities) for flat curves (<0.4).
 - **Result:** Transitioned from a static broad-market model to a multi-factor tactical allocator.
 
+### **Session 5: Data Integrity & Sector Returns**
+
+- **Issue:** Technical gap in backtest matrix where tactical sector returns (XLF/XLU) were not being tracked.
+- **Solution:** Updated the `performance_engine.py` logic to calculate a comprehensive shifted-return matrix for all candidate ETFs.
+- **Result:** Fully populated data environment, enabling a recovery in Alpha from -3.81% to -3.77% and preparing the system for advanced optimization.
+
+### **Session 6: Portfolio Optimization (Mean-Variance)**
+
+- **Objective:** Move from heuristic (fixed) weights to a mathematically optimized asset mix.
+- **Logic:** Integrated a Scipy-based quadratic optimizer to calculate the Minimum Variance Portfolio. The system now analyzes the 30-hour covariance matrix of QQQ, SPY, XLF, and XLU to find the allocation with the lowest historical volatility.
+- **Result:** Replaced static 60/40 growth weights with dynamic, correlation-aware weights.
+
 ---
 
 ## 🚀 Getting Started
