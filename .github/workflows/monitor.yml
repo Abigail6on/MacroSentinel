@@ -35,13 +35,13 @@ jobs:
       - name: Data Pipeline
         run: |
           # 1. Harvest & Process
-          python src/data/fred_collector.py
-          python src/data/news_collector.py
+          python src/collectors/fred_collector.py
+          python src/collectors/news_collector.py
           python src/engine/sentiment_smoother.py
 
           # 2. Analyze & Backtest
           python src/engine/regime_engine_v2.py
-          python src/engine/allocator.py
+          python src/portfolio/allocator.py
           python src/backtest/performance_engine.py
 
           # 3. Visualize
