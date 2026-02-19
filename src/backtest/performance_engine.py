@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
 REGIME_DATA = os.path.join(BASE_DIR, "data", "processed", "regime_v2_status.csv")
 PERFORMANCE_REPORT = os.path.join(BASE_DIR, "data", "processed", "backtest_results.csv")
 
-# --- STRATEGY MAP ---
+# Strategy Map - Aligned with allocator.py
 STRATEGY_MAP = {
     "Goldilocks (Growth)": {"QQQ": 0.6, "SPY": 0.4},
     "Goldilocks (Overbought - Trim)": {"QQQ": 0.2, "SPY": 0.2, "SHY": 0.6},
@@ -17,8 +17,7 @@ STRATEGY_MAP = {
     "Liquidity Crunch (Defensive)": {"SHY": 1.0}
 }
 
-# --- STEP 3: THE VOLATILITY GOVERNOR ---
-VIX_THRESHOLD = 20.0  # Level where we trigger the "Safety Belt"
+VIX_THRESHOLD = 20.0
 FRICTION_COST = 0.0002 
 
 def run_performance_engine():
@@ -31,58 +30,64 @@ def run_performance_engine():
         print("[ERROR] Required data columns missing.")
         return
 
-    # 1. Prepare Returns
+    # 1. Data Sanitization
     df['Timestamp'] = pd.to_datetime(df['Timestamp']).dt.tz_localize(None)
-    df = df.sort_values('Timestamp')
+    df = df.sort_values('Timestamp').reset_index(drop=True)
     
+    # 2. Return Calculation with Look-Ahead Mitigation
+    # We calculate the pct_change for the NEXT interval.
+    # This means Return_at_T is the profit/loss between T and T+1.
     tickers = ["QQQ", "SPY", "GLD", "SHY"]
     for t in tickers:
-        df[f"{t}_Ret"] = df[t].pct_change()
+        df[f"{t}_Ret"] = df[t].pct_change().shift(-1) 
 
-    # 2. Backtest with Dynamic Governor
+    # 3. Execution Simulation
     strat_rets = []
     last_regime = None
     
     for i in range(len(df)):
+        # At the very last row, we have no "next" return to calculate, so we break
+        if i == len(df) - 1:
+            strat_rets.append(0)
+            break
+            
         row = df.iloc[i]
         regime = row['Regime_V2']
         vix = row['VIX_Index']
         
-        # Get base weights from the skeleton
+        # Determine Weights based on current info
         base_weights = STRATEGY_MAP.get(regime, STRATEGY_MAP["Neutral / Transitioning"])
         final_weights = base_weights.copy()
         
-        # APPLY THE GOVERNOR: If VIX is high, cut Equity risk by 50%
+        # Apply VIX Governor
         if vix > VIX_THRESHOLD:
             equity_tickers = ['QQQ', 'SPY']
             reduction_pool = 0
-            
             for ticker in equity_tickers:
                 if ticker in final_weights:
                     original_w = final_weights[ticker]
-                    final_weights[ticker] = original_w * 0.5  # Cut in half
+                    final_weights[ticker] = original_w * 0.5
                     reduction_pool += (original_w * 0.5)
-            
-            # Reallocate the "safety" portion into SHY (Cash)
             final_weights['SHY'] = final_weights.get('SHY', 0) + reduction_pool
 
-        # Calculate Returns
+        # Calculate Returns (Apply T weights to T+1 returns)
         hourly_ret = sum(df[f"{k}_Ret"].iloc[i] * v for k, v in final_weights.items() if f"{k}_Ret" in df.columns)
         
-        # Account for trading costs on regime change
+        # Transaction Costs (Slippage/Commission)
         if last_regime and regime != last_regime:
             hourly_ret -= FRICTION_COST
             
         strat_rets.append(hourly_ret)
         last_regime = regime
 
-    # 3. Finalize Stats
+    # 4. Metric Finalization
     df['Strategy_Value'] = (1 + pd.Series(strat_rets).fillna(0)).cumprod()
+    # Benchmark also needs to be shifted for an apples-to-apples comparison
     df['Benchmark_Value'] = (1 + df['SPY_Ret'].fillna(0)).cumprod()
     df['Alpha_Basis'] = (df['Strategy_Value'] - df['Benchmark_Value']) * 100
 
     df.to_csv(PERFORMANCE_REPORT, index=False)
-    print(f"[SUCCESS] Performance Engine updated with VIX Governor. Final Alpha: {df['Alpha_Basis'].iloc[-1]:.2f}%")
+    print(f"[SUCCESS] Alpha Integrity Check Complete. Final Alpha: {df['Alpha_Basis'].iloc[-1]:.2f}%")
 
 if __name__ == "__main__":
     run_performance_engine()
