@@ -32,7 +32,7 @@ output/*
 !data/processed/live_prices.csv
 !data/processed/backtest_results.csv
 # Allow the Dashboard Image
-!output/sentinel_pro_dashboard.png.png
+!output/sentinel_pro_dashboard.png
 
 # Maintain folder visibility
 !data/raw/.gitkeep
