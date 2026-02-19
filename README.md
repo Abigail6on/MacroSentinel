@@ -1,4 +1,4 @@
-# 🛡️ MacroSentinel: Sentiment-Driven Regime Engine
+# MacroSentinel: Sentiment-Driven Regime Engine
 
 MacroSentinel is a quantitative framework designed to protect capital and generate alpha by fusing **"Hard"** economic indicators (FRED) with **"Soft"** alternative data (Real-time News Sentiment).
 
