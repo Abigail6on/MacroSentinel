@@ -58,6 +58,12 @@ The model utilizes a **Triple-Veto** system to determine tactical asset exposure
 - **Solution:** Implemented a one-period return shift (`shift(-1)`). The model now allocates at time $T$ and realizes returns at $T+1$.
 - **Result:** Validated an "Honest Alpha" of -3.81%, establishing a realistic performance baseline.
 
+### **Session 4: Tactical Sector Rotation**
+
+- **Objective:** Recover alpha by pivoting equity exposure based on the yield curve environment.
+- **Logic:** Integrated Yield Curve (10Y2Y) triggers. Implemented dynamic tilts: XLF (Financials) for steep curves (>0.7) and XLU (Utilities) for flat curves (<0.4).
+- **Result:** Transitioned from a static broad-market model to a multi-factor tactical allocator.
+
 ---
 
 ## 🚀 Getting Started

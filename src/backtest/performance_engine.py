@@ -8,15 +8,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
 REGIME_DATA = os.path.join(BASE_DIR, "data", "processed", "regime_v2_status.csv")
 PERFORMANCE_REPORT = os.path.join(BASE_DIR, "data", "processed", "backtest_results.csv")
 
-# Strategy Map - Aligned with allocator.py
-STRATEGY_MAP = {
-    "Goldilocks (Growth)": {"QQQ": 0.6, "SPY": 0.4},
-    "Goldilocks (Overbought - Trim)": {"QQQ": 0.2, "SPY": 0.2, "SHY": 0.6},
-    "Goldilocks (Oversold - Opportunity)": {"QQQ": 0.7, "SPY": 0.3},
-    "Neutral / Transitioning": {"SHY": 1.0},
-    "Liquidity Crunch (Defensive)": {"SHY": 1.0}
-}
-
+# Constants
+STEEP_THRESHOLD = 0.70  
+FLAT_THRESHOLD = 0.40   
 VIX_THRESHOLD = 20.0
 FRICTION_COST = 0.0002 
 
@@ -26,27 +20,26 @@ def run_performance_engine():
         return
         
     df = pd.read_csv(REGIME_DATA)
-    if 'SPY' not in df.columns or 'VIX_Index' not in df.columns:
-        print("[ERROR] Required data columns missing.")
-        return
-
+    
     # 1. Data Sanitization
     df['Timestamp'] = pd.to_datetime(df['Timestamp']).dt.tz_localize(None)
     df = df.sort_values('Timestamp').reset_index(drop=True)
     
-    # 2. Return Calculation with Look-Ahead Mitigation
-    # We calculate the pct_change for the NEXT interval.
-    # This means Return_at_T is the profit/loss between T and T+1.
-    tickers = ["QQQ", "SPY", "GLD", "SHY"]
+    # 2. THE FIX: Comprehensive Return Calculation
+    # We include all potential assets in the ticker list
+    tickers = ["QQQ", "SPY", "GLD", "SHY", "XLF", "XLU"]
+    
     for t in tickers:
-        df[f"{t}_Ret"] = df[t].pct_change().shift(-1) 
+        if t in df.columns:
+            # Shift -1 ensures we are matching today's decision with tomorrow's return
+            df[f"{t}_Ret"] = df[t].pct_change().shift(-1)
+        else:
+            print(f"[WARNING] Ticker {t} not found in input data.")
 
-    # 3. Execution Simulation
     strat_rets = []
     last_regime = None
     
     for i in range(len(df)):
-        # At the very last row, we have no "next" return to calculate, so we break
         if i == len(df) - 1:
             strat_rets.append(0)
             break
@@ -54,40 +47,51 @@ def run_performance_engine():
         row = df.iloc[i]
         regime = row['Regime_V2']
         vix = row['VIX_Index']
+        yield_curve = row['Yield_Curve_10Y2Y']
         
-        # Determine Weights based on current info
-        base_weights = STRATEGY_MAP.get(regime, STRATEGY_MAP["Neutral / Transitioning"])
-        final_weights = base_weights.copy()
-        
-        # Apply VIX Governor
-        if vix > VIX_THRESHOLD:
-            equity_tickers = ['QQQ', 'SPY']
-            reduction_pool = 0
-            for ticker in equity_tickers:
-                if ticker in final_weights:
-                    original_w = final_weights[ticker]
-                    final_weights[ticker] = original_w * 0.5
-                    reduction_pool += (original_w * 0.5)
-            final_weights['SHY'] = final_weights.get('SHY', 0) + reduction_pool
+        # Determine Base Weights
+        if regime == "Goldilocks (Growth)":
+            if yield_curve > STEEP_THRESHOLD:
+                weights = {"QQQ": 0.50, "SPY": 0.30, "XLF": 0.20}
+            elif yield_curve < FLAT_THRESHOLD:
+                weights = {"QQQ": 0.50, "SPY": 0.30, "XLU": 0.20}
+            else:
+                weights = {"QQQ": 0.60, "SPY": 0.40}
+        elif regime == "Goldilocks (Overbought - Trim)":
+            weights = {"QQQ": 0.2, "SPY": 0.2, "SHY": 0.6}
+        elif regime == "Goldilocks (Oversold - Opportunity)":
+            weights = {"QQQ": 0.7, "SPY": 0.3}
+        else:
+            weights = {"SHY": 1.0}
 
-        # Calculate Returns (Apply T weights to T+1 returns)
+        # Apply VIX Governor
+        final_weights = weights.copy()
+        if vix > VIX_THRESHOLD:
+            equity_list = ["QQQ", "SPY", "XLF", "XLU"]
+            reduction_pool = 0
+            for t, w in weights.items():
+                if t in equity_list:
+                    final_weights[t] = w * 0.5
+                    reduction_pool += (w * 0.5)
+            final_weights["SHY"] = final_weights.get("SHY", 0) + reduction_pool
+
+        # 3. Calculate Strategy Return
+        # The 'if f"{k}_Ret" in df.columns' handles the lookup for XLF_Ret/XLU_Ret
         hourly_ret = sum(df[f"{k}_Ret"].iloc[i] * v for k, v in final_weights.items() if f"{k}_Ret" in df.columns)
         
-        # Transaction Costs (Slippage/Commission)
         if last_regime and regime != last_regime:
             hourly_ret -= FRICTION_COST
             
         strat_rets.append(hourly_ret)
         last_regime = regime
 
-    # 4. Metric Finalization
+    # 4. Finalize Metrics
     df['Strategy_Value'] = (1 + pd.Series(strat_rets).fillna(0)).cumprod()
-    # Benchmark also needs to be shifted for an apples-to-apples comparison
     df['Benchmark_Value'] = (1 + df['SPY_Ret'].fillna(0)).cumprod()
     df['Alpha_Basis'] = (df['Strategy_Value'] - df['Benchmark_Value']) * 100
 
     df.to_csv(PERFORMANCE_REPORT, index=False)
-    print(f"[SUCCESS] Alpha Integrity Check Complete. Final Alpha: {df['Alpha_Basis'].iloc[-1]:.2f}%")
+    print(f"[SUCCESS] Sector returns integrated. Final Alpha: {df['Alpha_Basis'].iloc[-1]:.2f}%")
 
 if __name__ == "__main__":
     run_performance_engine()
