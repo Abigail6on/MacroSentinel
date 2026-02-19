@@ -1,3 +1,5 @@
 Ticker,Weight,Regime,Strategy
-QQQ,0.6,Goldilocks (Growth),Pure Growth (Neutral Curve)
-SPY,0.4,Goldilocks (Growth),Pure Growth (Neutral Curve)
+QQQ,0.25,Goldilocks (Growth),Optimized Minimum Variance Growth
+SPY,0.25,Goldilocks (Growth),Optimized Minimum Variance Growth
+XLF,0.25,Goldilocks (Growth),Optimized Minimum Variance Growth
+XLU,0.25,Goldilocks (Growth),Optimized Minimum Variance Growth
