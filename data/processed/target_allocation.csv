@@ -1,2 +1,5 @@
 Ticker,Weight,Regime,Strategy
-SHY,1.0,Neutral / Transitioning,Capital Preservation
+QQQ,0.25,Goldilocks (Growth),Optimized Minimum Variance Growth
+SPY,0.25,Goldilocks (Growth),Optimized Minimum Variance Growth
+XLF,0.25,Goldilocks (Growth),Optimized Minimum Variance Growth
+XLU,0.25,Goldilocks (Growth),Optimized Minimum Variance Growth
