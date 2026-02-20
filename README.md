@@ -82,6 +82,12 @@ The model utilizes a **Triple-Veto** system to determine tactical asset exposure
 - **Logic:** Integrated the VADER NLP library (`SentimentIntensityAnalyzer`) to parse raw news headlines. Applied a custom "Intensity Multiplier" (1.5x) to extreme compound scores (abs(score) > 0.8) and implemented noise reduction (0.5x) for ambiguous headlines.
 - **Result:** Increased the Signal-to-Noise Ratio (SNR) of the regime engine, filtering out market noise while reacting faster to high-conviction macroeconomic events.
 
+### **Session 8: Institutional Risk Management (Circuit Breakers)**
+
+- **Objective:** Add reactive, path-dependent risk controls to protect against flash crashes or lagging macro indicators.
+- **Logic:** Engineered a dynamic "High-Water Mark" trailing stop-loss in the performance engine. If the strategy's equity drops ≥5% from its all-time peak, the algorithm overrides all NLP/Optimizer logic and executes an emergency liquidation into 100% Cash (SHY).
+- **Result:** Successfully implemented a hard mathematical risk ceiling, ensuring the portfolio will mathematically cap maximum drawdowns even in unpredicted 'Black Swan' events.
+
 ---
 
 ## 🚀 Getting Started
