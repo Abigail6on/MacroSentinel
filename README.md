@@ -76,6 +76,12 @@ The model utilizes a **Triple-Veto** system to determine tactical asset exposure
 - **Logic:** Integrated a Scipy-based quadratic optimizer to calculate the Minimum Variance Portfolio. The system now analyzes the 30-hour covariance matrix of QQQ, SPY, XLF, and XLU to find the allocation with the lowest historical volatility.
 - **Result:** Replaced static 60/40 growth weights with dynamic, correlation-aware weights.
 
+### **Session 7: Advanced Sentiment Filtering (NLP)**
+
+- **Objective:** Move from naive sentiment tracking to intensity-weighted Natural Language Processing.
+- **Logic:** Integrated the VADER NLP library (`SentimentIntensityAnalyzer`) to parse raw news headlines. Applied a custom "Intensity Multiplier" (1.5x) to extreme compound scores (abs(score) > 0.8) and implemented noise reduction (0.5x) for ambiguous headlines.
+- **Result:** Increased the Signal-to-Noise Ratio (SNR) of the regime engine, filtering out market noise while reacting faster to high-conviction macroeconomic events.
+
 ---
 
 ## 🚀 Getting Started
