@@ -88,6 +88,12 @@ The model utilizes a **Triple-Veto** system to determine tactical asset exposure
 - **Logic:** Engineered a dynamic "High-Water Mark" trailing stop-loss in the performance engine. If the strategy's equity drops ≥5% from its all-time peak, the algorithm overrides all NLP/Optimizer logic and executes an emergency liquidation into 100% Cash (SHY).
 - **Result:** Successfully implemented a hard mathematical risk ceiling, ensuring the portfolio will mathematically cap maximum drawdowns even in unpredicted 'Black Swan' events.
 
+### **Session 9: Walk-Forward Validation (Out-of-Sample)**
+
+- **Objective:** Eliminate Look-Ahead Bias and validate the Mean-Variance Optimizer on out-of-sample data.
+- **Logic:** Upgraded the performance engine to a rolling Walk-Forward architecture. The Scipy optimizer now trains exclusively on a trailing 30-period in-sample covariance matrix and projects optimal weights onto the t+1 out-of-sample return step.
+- **Result:** Successfully generated an 'honest', mathematically rigorous Alpha. Risk-adjusted Alpha improved to -1.86%, proving the dynamic asset weighting is superior to static heuristics on unseen data.
+
 ---
 
 ## 🚀 Getting Started
