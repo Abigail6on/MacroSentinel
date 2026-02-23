@@ -25,7 +25,7 @@ INDICATORS = {
 def fetch_macro_data():
     if not FRED_KEY: 
         print("[ERROR] FRED API Key missing in environment.")
-        sys.exit(1)  # CRITICAL: Forces GitHub Action to fail and glow RED
+        sys.exit(1)
         
     print("--- Phase C: Harvesting Macro & Liquidity Data ---")
     fred = Fred(api_key=FRED_KEY)
@@ -43,27 +43,32 @@ def fetch_macro_data():
         print("[ERROR] All FRED indicator fetches failed.")
         sys.exit(1)
         
-    # Added sort=False to silence the Pandas warning
+    # We use sort=False to silence the warning, but then explicitly sort the index chronologically
     macro_df = pd.concat(macro_frames, axis=1, sort=False)
+    macro_df = macro_df.sort_index()  # <--- THE FIX
+    macro_df = macro_df[~macro_df.index.duplicated(keep='first')] # Drop bizarre duplicates
     
     # 1. Fetch Market Data 
     print("Downloading market data...")
     try:
-        # We rely entirely on yfinance's native curl_cffi integration to bypass blocks
         market_data = yf.download(TICKERS, period="1mo", interval="1h")
         
         if market_data.empty:
-            print("[ERROR] Failed to fetch market data from Yahoo Finance (Empty DataFrame returned).")
+            print("[ERROR] Failed to fetch market data from Yahoo Finance.")
             sys.exit(1)
             
         market_data = market_data['Close'] if isinstance(market_data.columns, pd.MultiIndex) else market_data
         market_data.index = market_data.index.tz_localize(None)
         
+        # Bulletproof the market data index as well
+        market_data = market_data.sort_index()
+        market_data = market_data[~market_data.index.duplicated(keep='first')]
+        
     except Exception as e:
         print(f"[ERROR] Yahoo Finance Download Crashed: {e}")
         sys.exit(1)
         
-    # 2. Align Macro to the Hourly Market Grid
+    # 2. Align Macro to the Hourly Market Grid (Requires Monotonic Index)
     final_df = macro_df.reindex(market_data.index, method='ffill')
     
     # 3. Add Market Tickers
