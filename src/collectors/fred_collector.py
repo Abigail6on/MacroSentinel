@@ -5,7 +5,6 @@ import yfinance as yf
 from fredapi import Fred
 from dotenv import load_dotenv
 import ssl
-import requests
 
 ssl._create_default_https_context = ssl._create_unverified_context
 load_dotenv()
@@ -44,16 +43,14 @@ def fetch_macro_data():
         print("[ERROR] All FRED indicator fetches failed.")
         sys.exit(1)
         
-    macro_df = pd.concat(macro_frames, axis=1)
+    # Added sort=False to silence the Pandas warning
+    macro_df = pd.concat(macro_frames, axis=1, sort=False)
     
-    # 1. Fetch Market Data with Custom Session (Bypasses GitHub Action Blocks)
+    # 1. Fetch Market Data 
     print("Downloading market data...")
     try:
-        session = requests.Session()
-        # Spoofing a standard Google Chrome browser so Yahoo doesn't block GitHub's IP
-        session.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"})
-        
-        market_data = yf.download(TICKERS, period="1mo", interval="1h", session=session)
+        # We rely entirely on yfinance's native curl_cffi integration to bypass blocks
+        market_data = yf.download(TICKERS, period="1mo", interval="1h")
         
         if market_data.empty:
             print("[ERROR] Failed to fetch market data from Yahoo Finance (Empty DataFrame returned).")
@@ -91,7 +88,6 @@ def fetch_macro_data():
     output_path = os.path.join(output_dir, "macro_indicators_raw.csv")
     final_df.to_csv(output_path)
     
-    # Matching your custom print statement from local log
     columns_updated = ['Inflation_CPI', 'Yield_Curve_10Y2Y', 'Fed_Funds_Rate', 'Unemployment_Rate', 'VIX_Index', 'Liquidity_M2', 'SPY', 'QQQ', 'GLD', 'SHY', 'XLF', 'XLU', 'Inflation_CPI_LastYear', 'Liquidity_M2_LastYear']
     print(f"[SUCCESS] Updated raw data with {columns_updated}")
 
