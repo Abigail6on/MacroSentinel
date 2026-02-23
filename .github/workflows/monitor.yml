@@ -53,7 +53,7 @@ jobs:
           git config --local user.name "GitHub Action"
 
           # Track the specific output and data files
-          git add data/processed/*.csv output/*.png
+          git add data/raw/*.csv data/processed/*.csv output/*.png
 
           # Only push if data actually changed
           git diff --quiet && git diff --staged --quiet || (git commit -m "auto: hourly sentinel refresh [skip ci]" && git push origin main)
