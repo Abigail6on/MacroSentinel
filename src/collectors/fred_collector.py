@@ -43,10 +43,13 @@ def fetch_macro_data():
         print("[ERROR] All FRED indicator fetches failed.")
         sys.exit(1)
         
-    # We use sort=False to silence the warning, but then explicitly sort the index chronologically
+    # We use sort=False to silence the warning, explicitly sort the index chronologically, and drop duplicates
     macro_df = pd.concat(macro_frames, axis=1, sort=False)
-    macro_df = macro_df.sort_index()  # <--- THE FIX
-    macro_df = macro_df[~macro_df.index.duplicated(keep='first')] # Drop bizarre duplicates
+    macro_df = macro_df.sort_index()  
+    macro_df = macro_df[~macro_df.index.duplicated(keep='first')] 
+    
+    # Forward-fill the monthly data (CPI/M2) across the daily rows before merging with hourly market data
+    macro_df = macro_df.ffill()
     
     # 1. Fetch Market Data 
     print("Downloading market data...")
