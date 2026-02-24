@@ -53,3 +53,9 @@
 - **Objective:** Eliminate Look-Ahead Bias and validate the Mean-Variance Optimizer on out-of-sample data.
 - **Logic:** Upgraded the performance engine to a rolling Walk-Forward architecture. The Scipy optimizer now trains exclusively on a trailing 30-period in-sample covariance matrix and projects optimal weights onto the t+1 out-of-sample return step.
 - **Result:** Successfully generated an 'honest', mathematically rigorous Alpha. Risk-adjusted Alpha improved to -1.86%, proving the dynamic asset weighting is superior to static heuristics on unseen data.
+
+### **Session 10: Cloud Infrastructure & Data Pipeline Resilience**
+
+- **Objective:** Bulletproof the automated data pipeline against silent API failures, IP blocking, and frequency mismatch.
+- **Logic:** Implemented strict error handling (`sys.exit`), bypassed Yahoo Finance TLS-fingerprinting using a native `curl_cffi` session, and engineered a chronological pre-fill (`.ffill()`) mechanism to properly align monthly FRED macro data across daily/hourly market indices.
+- **Result:** Achieved a 100% autonomous, fault-tolerant cloud pipeline with pristine data continuity, enabling the model to correctly identify a regime shift and transition to a defensive posture in real-time.
