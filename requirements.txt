@@ -2,11 +2,13 @@
 fredapi
 requests
 python-dotenv
+curl_cffi
 
 # Data Processing
 pandas
 numpy
 scikit-learn
+statsmodels
 
 # Sentiment & NLP
 vaderSentiment
