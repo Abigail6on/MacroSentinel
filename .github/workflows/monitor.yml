@@ -27,8 +27,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          # Added curl_cffi for the new yfinance bot-bypass
-          pip install pandas numpy yfinance fredapi matplotlib scipy vaderSentiment python-dotenv curl_cffi statsmodels
+          pip install pandas numpy yfinance fredapi matplotlib scipy vaderSentiment python-dotenv curl_cffi statsmodels scikit-learn
 
       - name: Initialize Directories
         run: mkdir -p data/raw data/processed output

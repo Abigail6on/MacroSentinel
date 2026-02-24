@@ -65,3 +65,9 @@
 - **Objective:** Mathematically isolate the strategy's True Alpha from Market Beta to prove the NLP sentiment engine provides a unique, non-replicable edge.
 - **Logic:** Engineered an Ordinary Least Squares (OLS) regression using the Fama-French 3-Factor Model (`statsmodels`). The script dynamically resamples strategy returns to Daily Close and regresses them against live ETF proxies for Market (SPY), Size (IWM), and Value/Growth (VTV/VUG).
 - **Result:** Deployed the automated attribution framework. The system now continuously tracks Annualized Alpha and P-Value significance on rolling out-of-sample data, providing institutional-grade validation of the model's predictive power.
+
+### **Session 12: Visual Explainability & Dashboard Upgrade**
+
+- **Objective:** Provide visual proof of the NLP regime engine's decision-making process for portfolio stakeholders and recruiters.
+- **Logic:** Upgraded the `sentinel_pro_dashboard.py` architecture. Transitioned to an institutional Light Theme and engineered a dynamic VADER Sentiment Heatmap that isolates and visualizes the top 5 most extreme news catalysts driving the current regime.
+- **Result:** Enhanced model explainability (XAI). Non-technical stakeholders can now instantly trace portfolio shifts (like a 100% Cash defensive rotation) back to the specific macroeconomic headlines triggering the algorithm.
