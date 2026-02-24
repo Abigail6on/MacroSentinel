@@ -33,6 +33,7 @@ output/*
 !data/processed/backtest_results.csv
 # Allow the Dashboard Image
 !output/sentinel_pro_dashboard.png
+!output/factor_attribution_summary.txt
 
 # Maintain folder visibility
 !data/raw/.gitkeep
