@@ -59,3 +59,9 @@
 - **Objective:** Bulletproof the automated data pipeline against silent API failures, IP blocking, and frequency mismatch.
 - **Logic:** Implemented strict error handling (`sys.exit`), bypassed Yahoo Finance TLS-fingerprinting using a native `curl_cffi` session, and engineered a chronological pre-fill (`.ffill()`) mechanism to properly align monthly FRED macro data across daily/hourly market indices.
 - **Result:** Achieved a 100% autonomous, fault-tolerant cloud pipeline with pristine data continuity, enabling the model to correctly identify a regime shift and transition to a defensive posture in real-time.
+
+### **Session 11: Factor Attribution & Statistical Significance**
+
+- **Objective:** Mathematically isolate the strategy's True Alpha from Market Beta to prove the NLP sentiment engine provides a unique, non-replicable edge.
+- **Logic:** Engineered an Ordinary Least Squares (OLS) regression using the Fama-French 3-Factor Model (`statsmodels`). The script dynamically resamples strategy returns to Daily Close and regresses them against live ETF proxies for Market (SPY), Size (IWM), and Value/Growth (VTV/VUG).
+- **Result:** Deployed the automated attribution framework. The system now continuously tracks Annualized Alpha and P-Value significance on rolling out-of-sample data, providing institutional-grade validation of the model's predictive power.
