@@ -119,14 +119,20 @@ def calculate_backtest():
         current_strategy_value *= (1 + hourly_ret)
         high_water_mark = max(high_water_mark, current_strategy_value)
 
-    # 5. Finalize Metrics
+    # 5. Finalize Metrics & Build Report Columns Explicitly
     df['Strategy_Value'] = (1 + pd.Series(strat_rets).fillna(0)).cumprod()
     df['Benchmark_Value'] = (1 + df['SPY_Ret'].fillna(0)).cumprod()
     df['Alpha_Basis'] = (df['Strategy_Value'] - df['Benchmark_Value']) * 100
     df['Circuit_Breaker_Active'] = circuit_breaker_flags
 
-    # Dynamically build the report columns to avoid KeyErrors
-    report_cols = ['Timestamp', 'Regime_V2'] + [f"{a}_Ret" for a in assets if f"{a}_Ret" in df.columns] + ['Strategy_Value', 'Benchmark_Value', 'Alpha_Basis', 'Circuit_Breaker_Active']
+    # Explicitly list the exact columns we need for the dashboard and analysis
+    base_cols = ['Timestamp', 'Regime_V2', 'Real_Liquidity', 'VIX_Index', 'Strategy_Value', 'Benchmark_Value', 'Alpha_Basis', 'Circuit_Breaker_Active']
+    
+    # Add whatever asset returns are available
+    ret_cols = [f"{a}_Ret" for a in assets if f"{a}_Ret" in df.columns]
+    
+    # Combine and filter to only what exists in the DataFrame to prevent crashes
+    report_cols = base_cols + ret_cols
     available_cols = [c for c in report_cols if c in df.columns]
     
     df[available_cols].to_csv(PERFORMANCE_REPORT, index=False)
