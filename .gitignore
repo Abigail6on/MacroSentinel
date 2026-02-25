@@ -40,3 +40,6 @@ output/*
 !data/processed/.gitkeep
 !data/logs/.gitkeep
 !output/.gitkeep
+
+# Machine Learning Models
+data/models/*.pkl

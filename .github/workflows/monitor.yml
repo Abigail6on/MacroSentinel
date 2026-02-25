@@ -41,6 +41,7 @@ jobs:
           python src/engine/sentiment_smoother.py
 
           # 2. Analyze & Backtest
+          python src/engine/ml_predictor.py
           python src/engine/regime_engine_v2.py
           python src/portfolio/allocator.py
           python src/backtest/performance_engine.py
