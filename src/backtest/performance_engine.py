@@ -16,95 +16,98 @@ MAX_DRAWDOWN_LIMIT = 0.05
 
 def get_rolling_optimal_weights(returns_window, assets):
     """Calculates Minimum Variance weights using a localized historical window."""
-    if len(returns_window) < 10:
-        return {"QQQ": 0.6, "SPY": 0.4} # Fallback if not enough data
+    available_assets = [a for a in assets if a in returns_window.columns]
+    
+    if len(returns_window) < 10 or not available_assets:
+        return {a: 1.0/max(1, len(available_assets)) for a in available_assets} if available_assets else {"SHY": 1.0}
         
-    cov_matrix = returns_window.cov().values
+    cov_matrix = returns_window[available_assets].cov().values
     
     def portfolio_variance(w):
         return np.dot(w.T, np.dot(cov_matrix, w))
 
     constraints = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
-    bounds = tuple((0, 1) for _ in range(len(assets)))
-    init_guess = [1.0/len(assets)] * len(assets)
+    
+    # UPGRADE: 40% Cap Rule applied to the backtest to match the live optimizer
+    bounds = tuple((0.0, 0.40) for _ in range(len(available_assets)))
+    init_guess = [1.0/len(available_assets)] * len(available_assets)
 
     opt = minimize(portfolio_variance, init_guess, method='SLSQP', bounds=bounds, constraints=constraints)
     
-    if opt.success:
-        return dict(zip(assets, np.round(opt.x, 2)))
-    return {"QQQ": 0.6, "SPY": 0.4}
-
-def run_performance_engine():
-    if not os.path.exists(REGIME_DATA): 
-        print("[ERROR] Regime data not found.")
-        return
+    if not opt.success:
+        return {a: 1.0/len(available_assets) for a in available_assets}
         
+    return {available_assets[i]: round(opt.x[i], 4) for i in range(len(available_assets))}
+
+def calculate_backtest():
+    print("--- Initializing Sentinel Pro Backtest Engine ---")
+    if not os.path.exists(REGIME_DATA):
+        print("[ERROR] Regime Data Missing.")
+        return
+
     df = pd.read_csv(REGIME_DATA)
-    df['Timestamp'] = pd.to_datetime(df['Timestamp']).dt.tz_localize(None)
-    df = df.sort_values('Timestamp').reset_index(drop=True)
     
-    tickers = ["QQQ", "SPY", "GLD", "SHY", "XLF", "XLU"]
+    # UPGRADE: Master Global Macro Universe
+    assets = ["SPY", "QQQ", "GLD", "SHY", "XLF", "XLU", "XLE", "TLT", "DBC", "EFA", "EEM"]
     
-    # Calculate base unshifted returns for the optimizer's historical window
-    historical_returns = df[tickers].pct_change()
-    
-    # Calculate shifted (-1) returns for the actual strategy execution
-    for t in tickers:
-        if t in df.columns:
-            df[f"{t}_Ret"] = df[t].pct_change().shift(-1)
+    # 1. Generate T+1 Returns safely for all global assets
+    for asset in assets:
+        if asset in df.columns:
+            df[f"{asset}_Ret"] = df[asset].pct_change().shift(-1).fillna(0)
 
     strat_rets = []
     circuit_breaker_flags = []
     last_regime = None
-    
     current_strategy_value = 1.0
     high_water_mark = 1.0
-    
+
     for i in range(len(df)):
-        if i == len(df) - 1:
-            strat_rets.append(0)
-            circuit_breaker_flags.append(False)
-            break
-            
-        row = df.iloc[i]
-        regime = row['Regime_V2']
-        vix = row['VIX_Index']
+        regime = df['Regime_V2'].iloc[i]
+        vix = df.get('VIX_Index', pd.Series([0]*len(df))).iloc[i]
         
-        # --- CIRCUIT BREAKER ---
-        current_drawdown = (high_water_mark - current_strategy_value) / high_water_mark
-        is_circuit_breaker_active = current_drawdown >= MAX_DRAWDOWN_LIMIT
-        
-        if is_circuit_breaker_active:
-            final_weights = {"SHY": 1.0}
+        is_circuit_breaker_active = False
+
+        # 2. Heuristics & Allocation
+        if current_strategy_value < high_water_mark * (1 - MAX_DRAWDOWN_LIMIT):
+            weights = {"SHY": 1.0}
+            is_circuit_breaker_active = True
         else:
-            # --- WALK-FORWARD OPTIMIZATION ---
             if regime == "Goldilocks (Growth)":
                 if i >= 30:
-                    # Look strictly BACKWARDS at the last 30 hours
-                    window_rets = historical_returns.iloc[i-30:i+1][["QQQ", "SPY", "XLF", "XLU"]].dropna()
-                    weights = get_rolling_optimal_weights(window_rets, ["QQQ", "SPY", "XLF", "XLU"])
+                    window = df.iloc[i-30:i]
+                    # Only feed the risk-on global equities to the optimizer
+                    risk_assets = ["SPY", "QQQ", "XLF", "XLU", "XLE", "EFA", "EEM"]
+                    ret_window = window[[a for a in risk_assets if a in window.columns]].pct_change().dropna()
+                    weights = get_rolling_optimal_weights(ret_window, risk_assets)
                 else:
-                    weights = {"QQQ": 0.60, "SPY": 0.40} # Burn-in period
+                    weights = {"QQQ": 0.5, "SPY": 0.5}
+                    
+            # UPGRADE: Syncing the backtest heuristic rules with allocator.py
             elif regime == "Goldilocks (Overbought - Trim)":
-                weights = {"QQQ": 0.2, "SPY": 0.2, "SHY": 0.6}
+                weights = {"SHY": 0.50, "QQQ": 0.25, "SPY": 0.25}
             elif regime == "Goldilocks (Oversold - Opportunity)":
-                weights = {"QQQ": 0.7, "SPY": 0.3}
+                weights = {"QQQ": 0.60, "SPY": 0.20, "EFA": 0.10, "EEM": 0.10}
+            elif regime == "Defensive (Contraction)":
+                weights = {"TLT": 0.60, "SHY": 0.40}
+            elif regime == "Stagflation / Liquidity Trap":
+                weights = {"DBC": 0.50, "GLD": 0.30, "SHY": 0.20}
             else:
                 weights = {"SHY": 1.0}
 
-            # Apply VIX Governor
-            final_weights = weights.copy()
-            if vix > VIX_THRESHOLD:
-                equity_list = ["QQQ", "SPY", "XLF", "XLU"]
-                reduction_pool = 0
-                for t, w in weights.items():
-                    if t in equity_list:
-                        final_weights[t] = w * 0.5
-                        reduction_pool += (w * 0.5)
-                final_weights["SHY"] = final_weights.get("SHY", 0) + reduction_pool
+        final_weights = weights.copy()
+        
+        # 3. Dynamic VIX Risk Management (De-risk all global equities)
+        if vix > VIX_THRESHOLD and regime != "Defensive (Contraction)":
+            equity_list = ["QQQ", "SPY", "XLF", "XLU", "XLE", "EFA", "EEM"]
+            reduction_pool = 0
+            for t, w in list(weights.items()):
+                if t in equity_list:
+                    final_weights[t] = w * 0.5
+                    reduction_pool += (w * 0.5)
+            final_weights["SHY"] = final_weights.get("SHY", 0) + reduction_pool
 
-        # 3. Execution (Apply calculated weights to the NEXT hour's return)
-        hourly_ret = sum(df[f"{k}_Ret"].iloc[i] * v for k, v in final_weights.items() if f"{k}_Ret" in df.columns)
+        # 4. Execution (Apply calculated weights to the NEXT hour's return)
+        hourly_ret = sum(df.get(f"{k}_Ret", pd.Series([0]*len(df))).iloc[i] * v for k, v in final_weights.items())
         
         if last_regime and regime != last_regime:
             hourly_ret -= FRICTION_COST
@@ -116,16 +119,21 @@ def run_performance_engine():
         current_strategy_value *= (1 + hourly_ret)
         high_water_mark = max(high_water_mark, current_strategy_value)
 
-    # 4. Finalize Metrics
+    # 5. Finalize Metrics
     df['Strategy_Value'] = (1 + pd.Series(strat_rets).fillna(0)).cumprod()
     df['Benchmark_Value'] = (1 + df['SPY_Ret'].fillna(0)).cumprod()
     df['Alpha_Basis'] = (df['Strategy_Value'] - df['Benchmark_Value']) * 100
     df['Circuit_Breaker_Active'] = circuit_breaker_flags
 
-    df.to_csv(PERFORMANCE_REPORT, index=False)
+    # Dynamically build the report columns to avoid KeyErrors
+    report_cols = ['Timestamp', 'Regime_V2'] + [f"{a}_Ret" for a in assets if f"{a}_Ret" in df.columns] + ['Strategy_Value', 'Benchmark_Value', 'Alpha_Basis', 'Circuit_Breaker_Active']
+    available_cols = [c for c in report_cols if c in df.columns]
     
+    df[available_cols].to_csv(PERFORMANCE_REPORT, index=False)
+    
+    final_alpha = df['Alpha_Basis'].iloc[-1]
     print(f"[SUCCESS] Walk-Forward Optimization Complete.")
-    print(f"          Final Alpha (Out-of-Sample): {df['Alpha_Basis'].iloc[-1]:.2f}%")
+    print(f"          Final Alpha (Out-of-Sample): {final_alpha:.2f}%")
 
 if __name__ == "__main__":
-    run_performance_engine()
+    calculate_backtest()

@@ -16,48 +16,56 @@ BASE_DIR = os.path.dirname(SRC_DIR)
 REGIME_DATA = os.path.join(BASE_DIR, "data", "processed", "regime_v2_status.csv")
 PORTFOLIO_OUTPUT = os.path.join(BASE_DIR, "data", "processed", "target_allocation.csv")
 
-# Static Allocation Map for Defensive and Transitional States
+# UPGRADED GLOBAL ALLOCATION MAP
 ALLOCATION_MAP = {
     "Goldilocks (Overbought - Trim)": {
         "Strategy": "Tactical De-risking",
         "Primary_ETF": "SHY",
-        "Allocation": {"SHY": 0.60, "QQQ": 0.20, "SPY": 0.20}
+        "Allocation": {"SHY": 0.50, "QQQ": 0.25, "SPY": 0.25}
     },
     "Goldilocks (Oversold - Opportunity)": {
         "Strategy": "Aggressive Re-entry",
         "Primary_ETF": "QQQ",
-        "Allocation": {"QQQ": 0.70, "SPY": 0.30}
+        "Allocation": {"QQQ": 0.60, "SPY": 0.20, "EFA": 0.10, "EEM": 0.10}
     },
     "Neutral / Transitioning": {
         "Strategy": "Capital Preservation",
         "Primary_ETF": "SHY",
         "Allocation": {"SHY": 1.0}
     },
-    "Liquidity Crunch (Defensive)": {
-        "Strategy": "Nuclear Safety",
-        "Primary_ETF": "SHY",
-        "Allocation": {"SHY": 1.0}
+    "Defensive (Contraction)": {
+        "Strategy": "Duration Hedging (Recession)",
+        "Primary_ETF": "TLT",
+        "Allocation": {"TLT": 0.60, "SHY": 0.40} # TLT rallies when rates drop
+    },
+    "Stagflation / Liquidity Trap": {
+        "Strategy": "Hard Asset Protection",
+        "Primary_ETF": "DBC",
+        "Allocation": {"DBC": 0.50, "GLD": 0.30, "SHY": 0.20} # Commodities hedge inflation
     }
 }
 
-def generate_allocation():
-    if not os.path.exists(REGIME_DATA):
-        print("[ERROR] No regime data found. Ensure the regime engine has been executed.")
-        return
-
-    # 1. Load latest market state
-    df = pd.read_csv(REGIME_DATA)
-    latest_row = df.iloc[-1]
-    latest_regime = latest_row['Regime_V2']
+def generate_target_allocations():
+    """Reads current regime and outputs a target portfolio weight map."""
     
-    # 2. Dynamic Allocation Logic via Optimization
+    if not os.path.exists(REGIME_DATA):
+        print(f"[ERROR] Missing regime data at {REGIME_DATA}")
+        return
+        
+    df = pd.read_csv(REGIME_DATA)
+    if df.empty:
+        print("[ERROR] Regime data is empty.")
+        return
+        
+    latest_regime = df['Regime_V2'].iloc[-1]
+    
+    # 1. Base Assignment
     if latest_regime == "Goldilocks (Growth)":
-        print("System State: Growth detected. Initializing Mean-Variance Optimizer...")
-        # Call the optimizer to find the Minimum Variance mix of QQQ, SPY, XLF, and XLU
+        # Call the optimizer to find the Minimum Variance mix of the GLOBAL universe
         opt_weights = get_optimal_growth_weights()
         
         config = {
-            "Strategy": "Optimized Minimum Variance Growth",
+            "Strategy": "Optimized Global Minimum Variance",
             "Primary_ETF": max(opt_weights, key=opt_weights.get),
             "Allocation": opt_weights
         }
@@ -89,7 +97,6 @@ def generate_allocation():
     # 4. Persistence to CSV
     pd.DataFrame(output_rows).to_csv(PORTFOLIO_OUTPUT, index=False)
     print("="*45)
-    print(f"[SUCCESS] Strategic targets saved to: {PORTFOLIO_OUTPUT}\n")
 
 if __name__ == "__main__":
-    generate_allocation()
+    generate_target_allocations()

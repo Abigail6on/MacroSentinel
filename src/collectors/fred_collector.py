@@ -10,8 +10,8 @@ ssl._create_default_https_context = ssl._create_unverified_context
 load_dotenv()
 FRED_KEY = os.getenv("FRED_API_KEY")
 
-# Tickers needed for the Strategy Map
-TICKERS = ["SPY", "QQQ", "GLD", "SHY", "XLF", "XLU"]
+# Master Global Macro Universe
+TICKERS = ["SPY", "QQQ", "GLD", "SHY", "XLF", "XLU", "XLE", "TLT", "DBC", "EFA", "EEM"]
 
 INDICATORS = {
     'CPIAUCSL': 'Inflation_CPI',
@@ -29,7 +29,6 @@ def fetch_macro_data():
         
     print("--- Phase C: Harvesting Macro & Liquidity Data ---")
     fred = Fred(api_key=FRED_KEY)
-    
     macro_frames = []
     for code, name in INDICATORS.items():
         try:

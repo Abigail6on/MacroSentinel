@@ -71,3 +71,9 @@
 - **Objective:** Provide visual proof of the NLP regime engine's decision-making process for portfolio stakeholders and recruiters.
 - **Logic:** Upgraded the `sentinel_pro_dashboard.py` architecture. Transitioned to an institutional Light Theme and engineered a dynamic VADER Sentiment Heatmap that isolates and visualizes the top 5 most extreme news catalysts driving the current regime.
 - **Result:** Enhanced model explainability (XAI). Non-technical stakeholders can now instantly trace portfolio shifts (like a 100% Cash defensive rotation) back to the specific macroeconomic headlines triggering the algorithm.
+
+### **Session 13: Global Macro Diversification (Track 6)**
+
+- **Objective:** Expand the model's universe beyond US Equities to increase the mathematically efficient frontier.
+- **Logic:** Integrated Developed Markets (EFA), Emerging Markets (EEM), Long-Term Bonds (TLT), and Commodities (DBC) into the ETL pipelines. Upgraded the SciPy Mean-Variance Optimizer to dynamically calculate an N x N covariance matrix with a strict 40% max-weight risk cap per asset.
+- **Result:** The portfolio can now dynamically hunt for global yield during US volatility, and successfully hedges inflation shocks via Commodities/Energy and deflation shocks via Long-Duration Treasuries.

@@ -8,8 +8,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
 PRICE_DATA_PATH = os.path.join(BASE_DIR, "data", "processed", "live_prices.csv")
 
 def track_prices():
-    # The core assets we mapped in our Allocator
-    tickers = ["QQQ", "SPY", "XLE", "GLD", "TLT", "DBC", "XLU", "SHY"]
+    # Master Global Macro Universe (Equities, Sectors, Bonds, Commodities, International)
+    tickers = ["SPY", "QQQ", "GLD", "SHY", "XLF", "XLU", "XLE", "TLT", "DBC", "EFA", "EEM"]
     
     print(f"[INFO] Fetching live market prices for {len(tickers)} assets...")
     
