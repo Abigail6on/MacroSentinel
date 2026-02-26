@@ -87,3 +87,9 @@
   - Built the "ML Defensive Veto": If the AI predicts an imminent crash, it overrides standard logic and forces a Defensive/Bond allocation.
   - Implemented MLOps best practices: Optimized Pandas memory allocation, suppressed harmless `PerformanceWarnings` for clean CI/CD logging, and updated `.gitignore` to prevent binary model bloating in the repo.
 - **Result:** The system now autonomously trains itself on the latest data every hour and actively predicts market crashes before they happen.
+
+### **Session 15: Institutional Risk Analytics (Track 8)**
+
+- **Objective:** Quantify downside tail-risk for institutional portfolio management.
+- **Logic:** Engineered `risk_manager.py` to calculate Historical Value at Risk (VaR 95%), Conditional VaR (Expected Shortfall), and Maximum Historical Drawdown from the out-of-sample equity curve.
+- **Result:** The system now automatically exports an institutional risk profile (`risk_metrics.json`) that proves the ML veto successfully mitigates catastrophic market exposure.

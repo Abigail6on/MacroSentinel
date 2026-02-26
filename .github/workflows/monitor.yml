@@ -45,6 +45,7 @@ jobs:
           python src/engine/regime_engine_v2.py
           python src/portfolio/allocator.py
           python src/backtest/performance_engine.py
+          python src/portfolio/risk_manager.py
           python src/portfolio/factor_attribution.py
 
           # 3. Visualize

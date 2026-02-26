@@ -17,13 +17,14 @@ _Dashboard Components: (1) Regime-Aware Equity Curve, (2) Strategic Drawdown Ana
 
 The model utilizes a **Multi-Factor Hierarchy** to determine tactical global asset exposure across an 11-asset universe (`SPY, QQQ, GLD, SHY, XLF, XLU, XLE, TLT, DBC, EFA, EEM`):
 
-| Component                       | Logic                                                                                                                      | Objective                              |
-| :------------------------------ | :------------------------------------------------------------------------------------------------------------------------- | :------------------------------------- |
-| **Track 7: ML Predictive Veto** | Scikit-Learn `RandomForestClassifier` trained on historical macro/NLP data to predict market drops 5 periods out.          | Proactive Crash Evasion                |
-| **Regime Engine V2 (Cyborg)**   | Fuses smoothed NLP sentiment, RSI momentum, and M2 Liquidity. Overridden by the ML Brain if a crash is predicted.          | Directional Bias & State Mapping       |
-| **Global Asset Allocation**     | Dynamically weights an $N \times N$ covariance matrix using SciPy `minimize` with a strict 40% maximum position cap.       | Maximize Sharpe / Global Yield Hunting |
-| **Liquidity & VIX Vetoes**      | Sells equities for Cash/Bonds if Real M2 Money Supply < 0 or if the Global VIX spikes > 20.                                | Systemic Risk Mitigation               |
-| **Walk-Forward Engine**         | Eliminates Look-Ahead Bias by rolling a 30-period in-sample optimization window to execute on $t+1$ out-of-sample returns. | Robust Strategy Validation             |
+| Component                     | Logic                                                                                                                      | Objective                              |
+| :---------------------------- | :------------------------------------------------------------------------------------------------------------------------- | :------------------------------------- |
+| **ML Predictive Veto**        | Scikit-Learn `RandomForestClassifier` trained on historical macro/NLP data to predict market drops 5 periods out.          | Proactive Crash Evasion                |
+| **Regime Engine V2 (Cyborg)** | Fuses smoothed NLP sentiment, RSI momentum, and M2 Liquidity. Overridden by the ML Brain if a crash is predicted.          | Directional Bias & State Mapping       |
+| **Global Asset Allocation**   | Dynamically weights an $N \times N$ covariance matrix using SciPy `minimize` with a strict 40% maximum position cap.       | Maximize Sharpe / Global Yield Hunting |
+| **Liquidity & VIX Vetoes**    | Sells equities for Cash/Bonds if Real M2 Money Supply < 0 or if the Global VIX spikes > 20.                                | Systemic Risk Mitigation               |
+| **Walk-Forward Engine**       | Eliminates Look-Ahead Bias by rolling a 30-period in-sample optimization window to execute on $t+1$ out-of-sample returns. | Robust Strategy Validation             |
+| **Risk Analytics**            | Computes 95% Historical VaR and Conditional VaR (Expected Shortfall) on out-of-sample returns.                             | Tail-Risk Quantification               |
 
 ---
 
@@ -59,7 +60,8 @@ python src/engine/regime_engine_v2.py
 python src/portfolio/allocator.py
 python src/backtest/performance_engine.py
 
-# 5. Generate Dashboard & Attribution
-python src/visualization/sentinel_pro_dashboard.py
+# 5. Generate Risk Analytics, Attribution & Dashboard
+python src/portfolio/risk_manager.py
 python src/portfolio/factor_attribution.py
+python src/visualization/sentinel_pro_dashboard.py
 ```

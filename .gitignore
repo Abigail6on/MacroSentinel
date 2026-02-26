@@ -43,3 +43,5 @@ output/*
 
 # Machine Learning Models
 data/models/*.pkl
+# Auto-generated JSON reports
+data/processed/*.json
