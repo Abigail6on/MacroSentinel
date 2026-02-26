@@ -4,6 +4,12 @@ MacroSentinel is an institutional-grade quantitative framework designed to prote
 
 The system utilizes Random Forest Predictive Modeling, N x N Mean-Variance Optimization, Walk-Forward Validation, and automated CI/CD cloud deployment to dynamically adapt to shifting global market regimes.
 
+### 🎯 Executive Summary (Business Impact)
+
+- **The Problem:** Traditional rule-based trading bots react to market crashes _after_ they happen, leading to severe capital drawdown.
+- **The Solution:** An autonomous, end-to-end MLOps pipeline that uses **Natural Language Processing** to read global financial news and a **Machine Learning** (`RandomForest`) brain to actively predict stock market drops 5 periods in advance.
+- **The Result:** If the AI detects an impending crash, it triggers a defensive circuit breaker, reallocating the portfolio into safe-haven assets (Bonds/Cash). The system calculates daily **Value at Risk (VaR)** to mathematically prove downside protection, all while running fully automated in the cloud via **GitHub Actions**.
+
 ---
 
 ## 📈 Executive Performance Dashboard
