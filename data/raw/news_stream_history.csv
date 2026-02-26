@@ -4332,3 +4332,59 @@ Timestamp,Published_At,Indicator,Sentiment,Headline
 2026-02-26 21:24:30.992120,2026-02-25T20:00:00Z,Inflation_Sentiment,0.8689,[US] Welcome Home: A Returning Player's Guide
 2026-02-26 21:24:30.992302,2026-02-25T20:00:00Z,Inflation_Sentiment,0.8689,[EU] Welcome Home: A Returning Player's Guide
 2026-02-26 21:24:30.992521,2026-02-25T20:00:00Z,Inflation_Sentiment,0.9118,Welcome Home: A Returning Player's Guide — World of Warcraft — Blizzard News
+2026-02-26 22:22:33.306556,2026-02-25T20:00:00Z,Monetary_Policy,0.1531,US Coal and Gas Plant Closures Delayed
+2026-02-26 22:22:33.306681,2026-02-25T17:47:00Z,Monetary_Policy,0.4754,Goldman Sachs revamps gold price target for the rest of 2026
+2026-02-26 22:22:33.306914,2026-02-25T10:12:56Z,Monetary_Policy,0.3612,Bitcoin enters a high-risk window as credit stress builds beneath a record 206% stock bubble
+2026-02-26 22:22:33.307064,2026-02-25T07:50:08Z,Monetary_Policy,0.4019,Trump’s State of the Union: Key highlights
+2026-02-26 22:22:33.307182,2026-02-24T22:00:07Z,Monetary_Policy,-0.4019,Bond Traders Are Betting on Fed Rate Cuts Spilling Into 2027
+2026-02-26 22:22:33.307305,2026-02-24T17:57:02Z,Monetary_Policy,0.4404,Guest Contribution: “Understanding Bond-Stock Price Comovements”
+2026-02-26 22:22:33.307528,2026-02-24T14:36:00Z,Monetary_Policy,0.6486,Healthcare Cloud Computing Market Size to Worth USD 312.97 Billion by 2035
+2026-02-26 22:22:33.307655,2026-02-24T09:30:00Z,Monetary_Policy,0.2023,"To power Utah’s data center boom, companies are turning to fossil fuels"
+2026-02-26 22:22:33.307763,2026-02-23T18:35:26Z,Monetary_Policy,0.7783,Gold on track for longest winning streak in history
+2026-02-26 22:22:33.307950,2026-02-23T10:00:00Z,Monetary_Policy,-0.2732,Weekly Climate and Energy News Roundup #680
+2026-02-26 22:22:33.308016,2026-02-22T15:00:06Z,Monetary_Policy,0.3612,"Bitcoin slips as Trump raises tariffs to 15%, but recovery is still possible"
+2026-02-26 22:22:33.308113,2026-02-22T10:05:01Z,Monetary_Policy,-0.5523,"You could burn through $50,000 covering an unemployment stint in today's market"
+2026-02-26 22:22:33.308226,2026-02-21T08:35:00Z,Monetary_Policy,0.1695,"Jerome Powell knows the Fed’s balance sheet got too big—Kevin Warsh has a plan, he just has to sell it without freaking out the markets"
+2026-02-26 22:22:33.308318,2026-02-20T21:33:54Z,Monetary_Policy,-0.4939,Stocks Settle Higher as SCOTUS Rejects President Trump’s Tariffs
+2026-02-26 22:22:33.308559,2026-02-20T18:17:01Z,Monetary_Policy,0.5719,(VIDEO) Supreme Court Strikes Down Trump's Sweeping Tariffs in 6-3 Ruling
+2026-02-26 22:22:33.583012,2026-02-25T22:00:00Z,Labor_Market,0.0,Major Drilling Announces Third Quarter 2026 Results
+2026-02-26 22:22:33.583254,2026-02-25T21:19:58Z,Labor_Market,-0.946,Soaring cost of food and other staples squeezes Iranians as threat of U.S. attack looms
+2026-02-26 22:22:33.583423,2026-02-25T21:01:15Z,Labor_Market,-0.6597,Trump's portrayal of 'golden age' is out of sync with how Americans see economy
+2026-02-26 22:22:33.583561,2026-02-25T20:44:07Z,Labor_Market,0.5719,The State of the Union: Trump Comeback is Bigger than the Biden Setback
+2026-02-26 22:22:33.583813,2026-02-25T20:27:41Z,Labor_Market,-0.7964,Tech stocks shake off panic over AI ‘doomsday scenario’ where unemployment hits 10%
+2026-02-26 22:22:33.583909,2026-02-25T19:25:00Z,Labor_Market,0.5719,When is Rachel Reeves' spring statement and what will be in it?
+2026-02-26 22:22:33.584083,2026-02-25T18:58:58Z,Labor_Market,-0.128,Top earners are more afraid for their employment than lower income as AI threat increases
+2026-02-26 22:22:33.584124,2026-02-25T18:31:42Z,Labor_Market,0.0,Trump's 'golden age' is out of sync with how Americans see economy
+2026-02-26 22:22:33.584227,2026-02-25T18:27:18Z,Labor_Market,-0.5859,Trump’s portrayal of ‘golden age’ is out of sync with how Americans see economy
+2026-02-26 22:22:33.584321,2026-02-25T18:27:18Z,Labor_Market,-0.5859,Trump’s portrayal of ‘golden age’ is out of sync with how Americans see economy
+2026-02-26 22:22:33.584430,2026-02-25T18:13:47Z,Labor_Market,-0.7964,Soaring cost of food and other staples squeezes Iranians as threat of US attack looms
+2026-02-26 22:22:33.584618,2026-02-25T18:04:47Z,Labor_Market,-0.2023,"If AI Causes an Office Job Wipeout, It’ll Cause Huge Problems for Blue Collar Work Too"
+2026-02-26 22:22:33.584818,2026-02-25T17:54:58Z,Labor_Market,-0.8779,Why Wall Street panicked over a sci-fi blog post
+2026-02-26 22:22:33.585083,2026-02-25T17:52:42Z,Labor_Market,0.4456,Quote of the day by Jack Welch: “Companies don't give job security. Only satisfied customers do” How did Jack Welch apply this philosophy at General Electric?
+2026-02-26 22:22:33.841436,2026-02-25T22:02:59Z,Manufacturing,0.1027,On Expands Robot Factories to Manufacture Its Cloud-Like Sneakers
+2026-02-26 22:22:33.841578,2026-02-25T21:20:15Z,Manufacturing,0.34,1967 Ford Thunderbird Landau Coupe
+2026-02-26 22:22:33.841674,2026-02-25T21:10:18Z,Manufacturing,-0.0258,Used Teslas Are Getting More Expensive While Other EVs Get Cheaper
+2026-02-26 22:22:33.841797,2026-02-25T21:10:12Z,Manufacturing,0.4278,"25-Years-Owned, GT350-Style 1967 Ford Mustang GTA Fastback A-Code 289"
+2026-02-26 22:22:33.841874,2026-02-25T21:05:02Z,Manufacturing,0.0,1995 Porsche 911 Carrera Coupe 6-Speed
+2026-02-26 22:22:33.842037,2026-02-25T20:30:00Z,Manufacturing,0.1531,"Op-Ed: We Keep Inventing AI, but China Is Actually Using It"
+2026-02-26 22:22:33.842086,2026-02-25T20:00:00Z,Manufacturing,0.0,Alphabet-owned robotics software company Intrinsic joins Google | TechCrunch
+2026-02-26 22:22:33.842150,2026-02-25T20:00:00Z,Manufacturing,-0.2263,Gordon Murray’s T.33 Supercar Is Finally Headed to Production
+2026-02-26 22:22:33.842233,2026-02-25T19:47:12Z,Manufacturing,0.0,1978 Ford F-150 Ranger Flareside 4×4 4-Speed
+2026-02-26 22:22:33.842317,2026-02-25T19:42:32Z,Manufacturing,0.0,"Incorrect installation of propane pipe at Violanda lacked anti-corrosion protection, according to NTUA report"
+2026-02-26 22:22:33.842393,2026-02-25T19:05:15Z,Manufacturing,0.0,1971 Jaguar E-Type Series III V12 Roadster Conversion
+2026-02-26 22:22:33.842518,2026-02-25T18:45:06Z,Manufacturing,-0.296,Tri-Power-Equipped 1965 Pontiac LeMans Convertible 4-Speed at No Reserve
+2026-02-26 22:22:33.842578,2026-02-25T18:26:17Z,Manufacturing,0.0,"WWE NXT Stand & Deliver 2026 Announced, Taking Place Weeks Ahead Of WrestleMania 42"
+2026-02-26 22:22:33.842646,2026-02-25T18:12:01Z,Manufacturing,0.0,Carbon Fiber Without Compromise Inside Mansory’s Revuelto-Based Carbonado X
+2026-02-26 22:22:34.079166,2026-02-25T22:01:19Z,Inflation_Sentiment,-0.7506,[US] World of Warcraft Hotfixes - February 25
+2026-02-26 22:22:34.079348,2026-02-25T22:00:00Z,Inflation_Sentiment,-0.6486,Commentary: When distress becomes content – rethinking how we respond to disruptive behaviour in public
+2026-02-26 22:22:34.079449,2026-02-25T21:59:41Z,Inflation_Sentiment,-0.4404,Rubio Meets With Caribbean Leaders to Discuss U.S. Policy
+2026-02-26 22:22:34.079576,2026-02-25T21:57:43Z,Inflation_Sentiment,0.5859,"[US] Hotfixes: February 25, 2026"
+2026-02-26 22:22:34.079695,2026-02-25T21:57:14Z,Inflation_Sentiment,-0.5859,"ICE arrested 261 DACA recipients over 10 months last year, document shows"
+2026-02-26 22:22:34.079818,2026-02-25T21:55:04Z,Inflation_Sentiment,-0.7506,House passes controversial Oregon gun bill modifying Measure 114
+2026-02-26 22:22:34.079873,2026-02-25T21:52:36Z,Inflation_Sentiment,0.0,"Nvidia rises after earnings beat Wall Street's expectations, lifting AI-related crypto stocks"
+2026-02-26 22:22:34.080049,2026-02-25T21:30:00Z,Inflation_Sentiment,-0.9039,"Samsung hikes price of Galaxy S26 lineup over S25, but it won't say the RAM crisis is to blame — even though it almost certainly is"
+2026-02-26 22:22:34.080134,2026-02-25T21:11:31Z,Inflation_Sentiment,-0.2732,The Little-Known Standoff Testing the Global Financial System
+2026-02-26 22:22:34.080327,2026-02-25T21:07:09Z,Inflation_Sentiment,-0.7845,"OpenAI, Google and Anthropic AI Models Deployed Nuclear Weapons in 95% of War Simulations"
+2026-02-26 22:22:34.080549,2026-02-25T21:00:00Z,Inflation_Sentiment,-0.2732,Soaring Electricity Demand Meets Gas Turbine Shortage
+2026-02-26 22:22:34.080585,2026-02-25T20:58:29Z,Inflation_Sentiment,0.0,HIStalk’s Guide to HIMSS26
+2026-02-26 22:22:34.080811,2026-02-25T20:55:39Z,Inflation_Sentiment,0.8777,Why AI Is a Catalyst for a New Kind of Human
