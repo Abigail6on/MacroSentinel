@@ -12,36 +12,42 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# --- Project Data ---
+# --- Machine Learning Models (Prevent Repository Bloat) ---
+data/models/*.pkl
+
+# --- Project Data (Ignore all by default to prevent bloat) ---
 data/raw/*
 data/processed/*
 data/logs/*
 output/*
 
-# --- ALLOW LIST (Action-generated files) ---
+# --- ALLOW LIST (Tracked files for the Web App and Backend) ---
 # Allow the Hard Data (FRED)
 !data/raw/macro_indicators_raw.csv
+
 # Allow the News Stream
 !data/raw/news_stream_history.csv
+
 # Allow the Smoothed Signals
 !data/processed/smoothed_indicators.csv
-# Allow the Final Regime Results
+
+# Allow the Final AI & Regime Results
 !data/processed/regime_v2_status.csv
 
+# Allow Portfolio & Price Data
 !data/processed/target_allocation.csv
 !data/processed/live_prices.csv
 !data/processed/backtest_results.csv
-# Allow the Dashboard Image
+
+# Allow Risk Analytics (Required for Streamlit Web App)
+!data/processed/risk_metrics.json
+
+# Allow Dashboards and Output Summaries
 !output/sentinel_pro_dashboard.png
 !output/factor_attribution_summary.txt
 
-# Maintain folder visibility
+# Maintain folder visibility for empty clones
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/logs/.gitkeep
 !output/.gitkeep
-
-# Machine Learning Models
-data/models/*.pkl
-# Auto-generated JSON reports
-data/processed/*.json

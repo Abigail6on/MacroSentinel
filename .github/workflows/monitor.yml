@@ -54,10 +54,14 @@ jobs:
       - name: Commit and Push Updates
         run: |
           git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.name "MacroSentinel Bot"
 
-          # Track the specific output and data files
-          git add data/raw/*.csv data/processed/*.csv output/*.png
+          # Track the specific output and data files (The Data Bridge)
+          git add data/raw/*.csv 
+          git add data/processed/*.csv 
+          git add data/processed/*.json
+          git add output/*.png
+          git add output/*.txt
 
           # Only push if data actually changed
           git diff --quiet && git diff --staged --quiet || (git commit -m "auto: hourly sentinel refresh [skip ci]" && git push origin main)
