@@ -20,3 +20,5 @@ seaborn
 yfinance
 tabulate
 scipy
+streamlit
+plotly

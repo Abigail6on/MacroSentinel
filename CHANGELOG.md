@@ -93,3 +93,9 @@
 - **Objective:** Quantify downside tail-risk for institutional portfolio management.
 - **Logic:** Engineered `risk_manager.py` to calculate Historical Value at Risk (VaR 95%), Conditional VaR (Expected Shortfall), and Maximum Historical Drawdown from the out-of-sample equity curve.
 - **Result:** The system now automatically exports an institutional risk profile (`risk_metrics.json`) that proves the ML veto successfully mitigates catastrophic market exposure.
+
+### **Session 16: Interactive Web Dashboard (Track 9)**
+
+- **Objective:** Build a professional UI to present AI predictions and risk metrics to non-technical stakeholders.
+- **Logic:** Engineered an interactive Streamlit frontend (`app.py`) featuring dynamic Plotly visualizations, light-mode institutional styling, and clean data filtering.
+- **Result:** Successfully separated the backend CI/CD processing pipeline from the frontend presentation layer.
