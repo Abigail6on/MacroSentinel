@@ -99,3 +99,9 @@
 - **Objective:** Build a professional UI to present AI predictions and risk metrics to non-technical stakeholders.
 - **Logic:** Engineered an interactive Streamlit frontend (`app.py`) featuring dynamic Plotly visualizations, light-mode institutional styling, and clean data filtering.
 - **Result:** Successfully separated the backend CI/CD processing pipeline from the frontend presentation layer.
+
+### **Session 17: Cloud Deployment & MLOps CI/CD**
+
+- **Objective:** Deploy the interactive Streamlit dashboard to the public web and establish a continuous data pipeline.
+- **Logic:** Resolved dependency conflicts and configured Streamlit Community Cloud with Python 3.12 to match the GitHub Actions backend environment.
+- **Result:** The web app is now live and automatically syncs with the continuous integration pipeline, providing real-time portfolio analytics to stakeholders without human intervention.
