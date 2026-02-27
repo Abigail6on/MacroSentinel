@@ -4388,3 +4388,60 @@ Timestamp,Published_At,Indicator,Sentiment,Headline
 2026-02-26 22:22:34.080549,2026-02-25T21:00:00Z,Inflation_Sentiment,-0.2732,Soaring Electricity Demand Meets Gas Turbine Shortage
 2026-02-26 22:22:34.080585,2026-02-25T20:58:29Z,Inflation_Sentiment,0.0,HIStalk’s Guide to HIMSS26
 2026-02-26 22:22:34.080811,2026-02-25T20:55:39Z,Inflation_Sentiment,0.8777,Why AI Is a Catalyst for a New Kind of Human
+2026-02-27 14:32:44.368934,2026-02-26T13:16:04Z,Monetary_Policy,0.7165,"With Its Tariff Ruling, the Supreme Court Shows It's Possible to Take Trump's Toys Away"
+2026-02-27 14:32:44.369220,2026-02-25T20:00:00Z,Monetary_Policy,0.1531,US Coal and Gas Plant Closures Delayed
+2026-02-27 14:32:44.369336,2026-02-25T17:47:00Z,Monetary_Policy,0.4754,Goldman Sachs revamps gold price target for the rest of 2026
+2026-02-27 14:32:44.369541,2026-02-25T10:12:56Z,Monetary_Policy,0.3612,Bitcoin enters a high-risk window as credit stress builds beneath a record 206% stock bubble
+2026-02-27 14:32:44.369671,2026-02-25T07:50:08Z,Monetary_Policy,0.4019,Trump’s State of the Union: Key highlights
+2026-02-27 14:32:44.369778,2026-02-24T22:00:07Z,Monetary_Policy,-0.4019,Bond Traders Are Betting on Fed Rate Cuts Spilling Into 2027
+2026-02-27 14:32:44.369893,2026-02-24T17:57:02Z,Monetary_Policy,0.4404,Guest Contribution: “Understanding Bond-Stock Price Comovements”
+2026-02-27 14:32:44.370091,2026-02-24T14:36:00Z,Monetary_Policy,0.6486,Healthcare Cloud Computing Market Size to Worth USD 312.97 Billion by 2035
+2026-02-27 14:32:44.370209,2026-02-24T09:30:00Z,Monetary_Policy,0.2023,"To power Utah’s data center boom, companies are turning to fossil fuels"
+2026-02-27 14:32:44.370327,2026-02-23T18:35:26Z,Monetary_Policy,0.7783,Gold on track for longest winning streak in history
+2026-02-27 14:32:44.370512,2026-02-23T10:00:00Z,Monetary_Policy,-0.2732,Weekly Climate and Energy News Roundup #680
+2026-02-27 14:32:44.370576,2026-02-22T15:00:06Z,Monetary_Policy,0.3612,"Bitcoin slips as Trump raises tariffs to 15%, but recovery is still possible"
+2026-02-27 14:32:44.370669,2026-02-22T10:05:01Z,Monetary_Policy,-0.5523,"You could burn through $50,000 covering an unemployment stint in today's market"
+2026-02-27 14:32:44.370778,2026-02-21T08:35:00Z,Monetary_Policy,0.1695,"Jerome Powell knows the Fed’s balance sheet got too big—Kevin Warsh has a plan, he just has to sell it without freaking out the markets"
+2026-02-27 14:32:44.370868,2026-02-20T21:33:54Z,Monetary_Policy,-0.4939,Stocks Settle Higher as SCOTUS Rejects President Trump’s Tariffs
+2026-02-27 14:32:44.525024,2026-02-26T14:00:29Z,Labor_Market,0.5574,REP RO KHANNA: We need a new tech social contract to reclaim AI from billionaires
+2026-02-27 14:32:44.525267,2026-02-26T13:30:30Z,Labor_Market,0.4779,The AI Replacement Doom Loop: Why UBI Won’t Save Us and What Comes Next
+2026-02-27 14:32:44.525517,2026-02-26T13:12:27Z,Labor_Market,-0.7523,Trump warned to watch what he wishes for as his key fantasy could lead to disaster
+2026-02-27 14:32:44.525697,2026-02-26T12:52:44Z,Labor_Market,0.4215,Argentine Stocks Are Left Behind as Earnings Growth Eludes Milei
+2026-02-27 14:32:44.525777,2026-02-26T12:45:24Z,Labor_Market,-0.2732,Could global tensions finally see Sweden warming towards the euro?
+2026-02-27 14:32:44.525912,2026-02-26T12:26:24Z,Labor_Market,0.6705,"India’s GDP reset to reflect seasonality, expanded coverage: Saurabh Garg"
+2026-02-27 14:32:44.526051,2026-02-26T12:20:38Z,Labor_Market,0.1531,"Indian startups laid off over 4,500 employees since July"
+2026-02-27 14:32:44.526177,2026-02-26T12:00:48Z,Labor_Market,0.1027,The Three Blind Spots in How Consumer Sentiment Is Measured
+2026-02-27 14:32:44.526339,2026-02-26T11:45:32Z,Labor_Market,0.6597,"Prachanda-Nepal urge voters with six key agendas, vow to change people’s lives"
+2026-02-27 14:32:44.526479,2026-02-26T11:12:00Z,Labor_Market,-0.7714,Is Citrini Research's dark AI future a given?
+2026-02-27 14:32:44.526591,2026-02-26T11:00:00Z,Labor_Market,0.875,First Advantage Reports Fourth Quarter and Full Year 2025 Results
+2026-02-27 14:32:44.526792,2026-02-26T10:41:37Z,Labor_Market,-0.1779,"AI capex and the ‘wealth effect’ from tech stocks (like Nvidia) now drive one-third of U.S. GDP, top analysts say"
+2026-02-27 14:32:44.526848,2026-02-26T10:30:44Z,Labor_Market,0.0,Inflation in Russia Down to 5.6% in 2025 - Prime Minister
+2026-02-27 14:32:44.527111,2026-02-26T10:30:02Z,Labor_Market,-0.7351,Trump's banners advertise harsh truths about his regime's failure
+2026-02-27 14:32:44.690920,2026-02-26T14:25:31Z,Manufacturing,0.0258,MP Materials selects Texas for rare earth magnet manufacturing site
+2026-02-27 14:32:44.691096,2026-02-26T14:09:27Z,Manufacturing,-0.3818,Elon Musk threatens to halt Tesla Giga Berlin expansion over union vote
+2026-02-27 14:32:44.691175,2026-02-26T14:05:08Z,Manufacturing,0.0,Coyote-Powered 1970 Ford F-100 Sport Custom
+2026-02-27 14:32:44.691260,2026-02-26T13:30:33Z,Manufacturing,-0.6597,Customers complained. So Burger King updated its Whopper | CNN Business
+2026-02-27 14:32:44.691502,2026-02-26T13:30:30Z,Manufacturing,0.4779,The AI Replacement Doom Loop: Why UBI Won’t Save Us and What Comes Next
+2026-02-27 14:32:44.691723,2026-02-26T12:40:07Z,Manufacturing,0.3109,Top 5 Japanese Kitchen Knives Under $200 That Professional Chefs Use at Home – Not the Ones They Recommend for Commission
+2026-02-27 14:32:44.692074,2026-02-26T12:37:02Z,Manufacturing,-0.2911,Quote of the day by Andrew Carnegie: “The concerns which fail are those which have scattered their activities…..” Learn from the master of the American Dream — from a penniless Scottish immigrant to the richest man in the world
+2026-02-27 14:32:44.692266,2026-02-26T12:30:47Z,Manufacturing,0.893,Project Car: A Jaguar E-Type – “The Most Beautiful Car Ever Made”
+2026-02-27 14:32:44.692364,2026-02-26T12:30:00Z,Manufacturing,-0.5574,International Trade After Trump: 4 Business Issues Explained By Economist
+2026-02-27 14:32:44.692438,2026-02-26T12:28:55Z,Manufacturing,-0.3071,Bad Bets: Massive EV Subsidies Not Paying Off
+2026-02-27 14:32:44.692584,2026-02-26T12:00:00Z,Manufacturing,-0.0772,How the Gaza genocide is transforming Israel’s military relations with Europe
+2026-02-27 14:32:44.692788,2026-02-26T11:30:55Z,Manufacturing,0.8316,When Authority Shapes Appetite. The Ketogenic Diet. The Myth of Protein as Power
+2026-02-27 14:32:44.692840,2026-02-26T10:55:13Z,Manufacturing,0.0,‘I sell millions of Halloween costumes to Americans. Mr. President—here’s my takeaway from the wild tariffs ride’
+2026-02-27 14:32:44.693037,2026-02-26T10:28:00Z,Manufacturing,0.7003,"Private Aircraft Industry Report 2026-2035: A $41.38 Billion Market by 2030 with Textron Aviation, Embraer, Dassault Aviation, Bombardier, and Gulfstream Aerospace Leading"
+2026-02-27 14:32:44.693183,2026-02-26T10:25:18Z,Manufacturing,-0.743,New drone factory opens in Suffolk to boost Ukraine's Armed Forces against Russia's war
+2026-02-27 14:32:45.165911,2026-02-26T14:00:59Z,Inflation_Sentiment,-0.9398,Ransomware payment rate drops to record low as attacks surge
+2026-02-27 14:32:45.166106,2026-02-26T14:00:00Z,Inflation_Sentiment,0.5053,Spatial heterogeneity and spatially varying determinants of childhood stunting in Northern Rwanda: A cross-sectional study to inform targeted interventions
+2026-02-27 14:32:45.166425,2026-02-26T14:00:00Z,Inflation_Sentiment,-0.891,Water insecurity is associated with higher prevalence of self-reported diet-related noncommunicable disease outcomes in adults from the Mexican National Health and Nutritional Survey 2021–22
+2026-02-27 14:32:45.166691,2026-02-26T14:00:00Z,Inflation_Sentiment,-0.743,Evaluation of usability and acceptability of a Peruvian telemental health service for early assessment among vulnerable occupational workers: Mixed-method study with a user-centered design approach
+2026-02-27 14:32:45.166810,2026-02-26T14:00:00Z,Inflation_Sentiment,0.6369,Strategies for achieving a healthy oral cholera vaccine market: Model-enabled scenario exploration of supply and demand dynamics
+2026-02-27 14:32:45.167010,2026-02-26T13:56:02Z,Inflation_Sentiment,-0.659,Report Finds Just 1% of Security Flaws Drive Most Cyberattacks in 2025
+2026-02-27 14:32:45.167103,2026-02-26T13:53:54Z,Inflation_Sentiment,0.0,"Pierrakakis’s fires over the “greedy bankers” and the bill (that can’t be hidden), the €2.5 million for Brad Pitt, Fessas’s move on Fourlis"
+2026-02-27 14:32:45.167335,2026-02-26T13:20:59Z,Inflation_Sentiment,0.765,"India's energy demand to surpass US in 2040s, China in 2060s: Shell scenarios"
+2026-02-27 14:32:45.167455,2026-02-26T13:20:44Z,Inflation_Sentiment,0.6369,Meet your new robot fry cooks: Inside the $28 billion race to disrupt White Castle and Jack in the Box
+2026-02-27 14:32:45.167616,2026-02-26T13:19:01Z,Inflation_Sentiment,0.8402,"NVIDIA Stock Climbs Modestly After Record Q4 Earnings Beat, $78 Billion Guidance"
+2026-02-27 14:32:45.167736,2026-02-26T13:00:00Z,Inflation_Sentiment,0.0258,Nearly 70% of US Adults Say One Tech Glitch Throws Off Their Lives. Why That's a Problem and How to Do Better
+2026-02-27 14:32:45.167839,2026-02-26T12:56:43Z,Inflation_Sentiment,0.2023,"(PR) DRAM Market Grows 29% in 4Q25, Samsung Regains Top Spot"
+2026-02-27 14:32:45.168010,2026-02-26T12:26:02Z,Inflation_Sentiment,0.875,The Only True Nuclear Protective Shield Is Global Disarmament
