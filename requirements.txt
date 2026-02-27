@@ -3,22 +3,23 @@ fredapi
 requests
 python-dotenv
 curl_cffi
+yfinance
 
-# Data Processing
+# Data Processing & Math
 pandas
 numpy
+scipy
 scikit-learn
 statsmodels
 
 # Sentiment & NLP
 vaderSentiment
 
-# Visualization
+# Visualization & Web App
 matplotlib
 seaborn
-
-yfinance
-tabulate
-scipy
-streamlit
 plotly
+streamlit>=1.31.0
+
+# Utilities
+tabulate
