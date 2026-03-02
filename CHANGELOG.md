@@ -105,3 +105,9 @@
 - **Objective:** Deploy the interactive Streamlit dashboard to the public web and establish a continuous data pipeline.
 - **Logic:** Resolved dependency conflicts and configured Streamlit Community Cloud with Python 3.12 to match the GitHub Actions backend environment.
 - **Result:** The web app is now live and automatically syncs with the continuous integration pipeline, providing real-time portfolio analytics to stakeholders without human intervention.
+
+### **Session 18: Streamlit Version 2.0 & Asynchronous Data Engineering**
+
+- **Objective:** Upgrade the public-facing dashboard into a multi-tab analytical terminal and visualize the Alpha generation logic.
+- **Logic:** Implemented Plotly to create a dual-axis NLP Sentiment trendline and an Asset Correlation Heatmap. Resolved asynchronous multi-frequency data gaps (stock prices vs. news frequency) using Pandas `merge_asof` and forward/backward filling techniques.
+- **Result:** Deployed Version 2.0 to Streamlit Community Cloud. The app now visually proves the model's leading indicators and mathematical diversification strategy without suffering from data sparsity or look-ahead bias.
