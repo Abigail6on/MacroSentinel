@@ -10,7 +10,6 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer
 
-# Path Management
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
 REGIME_DATA = os.path.join(BASE_DIR, "data", "processed", "regime_v2_status.csv")
