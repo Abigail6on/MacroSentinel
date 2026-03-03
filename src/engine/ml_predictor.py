@@ -3,8 +3,9 @@ import numpy as np
 import os
 import joblib
 from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, classification_report
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler
@@ -17,7 +18,7 @@ MODEL_DIR = os.path.join(BASE_DIR, "data", "models")
 MODEL_PATH = os.path.join(MODEL_DIR, "rf_crash_predictor.pkl")
 
 def train_predictor():
-    print("--- Initializing Track 7: ML Predictive Alpha (Pipeline Architecture) ---")
+    print("--- Initializing Track 7: Champion vs Challenger ML Showdown ---")
     
     if not os.path.exists(REGIME_DATA):
         print(f"[ERROR] Cannot find training data at {REGIME_DATA}")
@@ -25,7 +26,27 @@ def train_predictor():
         
     df = pd.read_csv(REGIME_DATA)
     
-    # 1. Feature Selection (Separating Macro vs NLP for the Pipeline)
+    SMOOTHED_PATH = os.path.join(BASE_DIR, "data", "processed", "smoothed_indicators.csv")
+    if os.path.exists(SMOOTHED_PATH):
+        smooth_df = pd.read_csv(SMOOTHED_PATH)
+        
+        # Convert to datetime and sort (Required for As-Of Merge)
+        df['Timestamp'] = pd.to_datetime(df['Timestamp'])
+        smooth_df['Timestamp'] = pd.to_datetime(smooth_df['Timestamp'])
+        df = df.sort_values('Timestamp')
+        smooth_df = smooth_df.sort_values('Timestamp')
+        
+        # Merge the news sentiment into the training data
+        df = pd.merge_asof(df, smooth_df, on='Timestamp', direction='backward')
+        
+        # Handle any missing early data points
+        df = df.ffill().bfill()
+    
+    # 1. Feature Selection
+    macro_features = ['VIX_Index', 'Yield_Curve_10Y2Y', 'Real_Liquidity']
+    nlp_features = ['Inflation_Sentiment', 'Monetary_Policy', 'Labor_Market']
+    
+    # 1. Feature Selection
     macro_features = ['VIX_Index', 'Yield_Curve_10Y2Y', 'Real_Liquidity']
     nlp_features = ['Inflation_Sentiment', 'Monetary_Policy', 'Labor_Market']
     
@@ -34,41 +55,33 @@ def train_predictor():
     available_features = avail_macro + avail_nlp
     
     # 2. Target Labeling (y)
-    # We look 5 periods into the future
     forecast_horizon = 5
     df['Future_SPY'] = df['SPY'].shift(-forecast_horizon)
     df['Future_Return'] = (df['Future_SPY'] - df['SPY']) / df['SPY']
     df['Target_Crash'] = np.where(df['Future_Return'] < -0.01, 1, 0)
     
-    # Drop rows where we don't have the Future Return yet
     ml_df = df.dropna(subset=available_features + ['Future_Return']).copy()
     
     if len(ml_df) < 50:
-        print("[WARNING] Not enough historical data to train a robust ML model yet.")
+        print("[WARNING] Not enough historical data to train robust ML models yet.")
         return
 
     X = ml_df[available_features]
     y = ml_df['Target_Crash']
     
-    # 3. Time-Series Train/Test Split
-    # shuffle=False prevents "look-ahead bias"
+    # 3. Time-Series Train/Test Split (No Look-Ahead Bias)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, shuffle=False)
     
-    # 4. Build the Production Scikit-Learn Pipeline
-    print(f"[INFO] Building ColumnTransformer & Training Pipeline on {len(X_train)} records...")
-    
-    # Step A: Macro data needs scaling because values range wildly (e.g., M2 Liquidity vs Yield Curve)
+    # 4. Build the Preprocessor (Traffic Cop)
     macro_transformer = Pipeline(steps=[
         ('imputer', SimpleImputer(strategy='median')),
         ('scaler', StandardScaler())
     ])
     
-    # Step B: NLP data is already bounded (-1 to 1), so we just impute missing values
     nlp_transformer = Pipeline(steps=[
         ('imputer', SimpleImputer(strategy='constant', fill_value=0.0))
     ])
     
-    # Step C: Combine them into a ColumnTransformer
     preprocessor = ColumnTransformer(
         transformers=[
             ('macro', macro_transformer, avail_macro),
@@ -77,33 +90,57 @@ def train_predictor():
         remainder='drop'
     )
     
-    # Step D: The Final Pipeline (Preprocessor -> ML Brain)
-    model_pipeline = Pipeline(steps=[
+    # 5. Build the Competitors
+    print(f"\n[INFO] Training models on {len(X_train)} records...")
+    
+    # Competitor 1: Random Forest (The Champion)
+    rf_pipeline = Pipeline(steps=[
         ('preprocessor', preprocessor),
         ('classifier', RandomForestClassifier(n_estimators=100, max_depth=5, random_state=42, class_weight='balanced'))
     ])
     
-    # 5. Train the Pipeline
-    # The pipeline automatically scales the data using ONLY X_train, preventing data leakage
-    model_pipeline.fit(X_train, y_train)
+    # Competitor 2: XGBoost (The Challenger)
+    # scale_pos_weight is XGBoost's version of class_weight='balanced'
+    xgb_pipeline = Pipeline(steps=[
+        ('preprocessor', preprocessor),
+        ('classifier', XGBClassifier(n_estimators=100, max_depth=5, random_state=42, eval_metric='logloss'))
+    ])
     
-    # 6. Evaluate the Model
-    # The pipeline automatically scales X_test using the parameters learned from X_train
-    predictions = model_pipeline.predict(X_test)
-    accuracy = accuracy_score(y_test, predictions)
-    print(f"\n[RESULTS] Pipeline Accuracy (Out-of-Sample): {accuracy * 100:.2f}%")
+    # 6. Train & Score Both Models
+    rf_pipeline.fit(X_train, y_train)
+    rf_preds = rf_pipeline.predict(X_test)
+    rf_acc = accuracy_score(y_test, rf_preds)
     
-    # 7. Extract Feature Importances from the Pipeline
-    print("\n[EXPLAINABLE AI] Feature Importances:")
-    rf_model = model_pipeline.named_steps['classifier']
-    ordered_features = avail_macro + avail_nlp
-    for name, importance in zip(ordered_features, rf_model.feature_importances_):
-        print(f" - {name}: {importance * 100:.2f}%")
+    xgb_pipeline.fit(X_train, y_train)
+    xgb_preds = xgb_pipeline.predict(X_test)
+    xgb_acc = accuracy_score(y_test, xgb_preds)
     
-    # 8. Save the Entire Pipeline
+    print("\n--- 🥊 SHOWDOWN RESULTS 🥊 ---")
+    print(f"Random Forest Accuracy: {rf_acc * 100:.2f}%")
+    print(f"XGBoost Accuracy:       {xgb_acc * 100:.2f}%")
+    
+    # 7. Crown the Winner and Save
     os.makedirs(MODEL_DIR, exist_ok=True)
-    joblib.dump(model_pipeline, MODEL_PATH)
-    print(f"\n[SUCCESS] Production ML Pipeline saved to {MODEL_PATH}")
+    
+    if xgb_acc >= rf_acc:
+        print("\n[WINNER] XGBoost is the new Champion! Upgrading predictive engine...")
+        joblib.dump(xgb_pipeline, MODEL_PATH)
+        winner_name = "XGBoost"
+        model_to_inspect = xgb_pipeline.named_steps['classifier']
+    else:
+        print("\n[WINNER] Random Forest defended its title! Retaining current engine...")
+        joblib.dump(rf_pipeline, MODEL_PATH)
+        winner_name = "Random Forest"
+        model_to_inspect = rf_pipeline.named_steps['classifier']
+        
+    print(f"\n[EXPLAINABLE AI] What is driving {winner_name}'s decisions?")
+    importances = model_to_inspect.feature_importances_
+    ordered_features = avail_macro + avail_nlp
+    
+    for name, imp in zip(ordered_features, importances):
+        print(f" -> {name.ljust(20)}: {imp * 100:>5.2f}%")
+        
+    print(f"\n[SUCCESS] {winner_name} Pipeline saved to {MODEL_PATH}")
 
 if __name__ == "__main__":
     train_predictor()
