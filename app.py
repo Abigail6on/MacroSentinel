@@ -146,7 +146,6 @@ with tab2:
         avail_cols = [c for c in price_cols if c in history_df.columns]
         
         if len(avail_cols) > 1:
-            # FIX: Drop any asset columns that are completely empty to prevent blank lines in the matrix
             clean_prices = history_df[avail_cols].dropna(axis=1, how='all')
             corr_matrix = clean_prices.pct_change().corr()
             
@@ -175,7 +174,7 @@ with tab3:
         # Hide price columns and the smoothed sentiment line
         price_cols = ['SPY', 'QQQ', 'GLD', 'SHY', 'XLF', 'XLU', 'XLE', 'TLT', 'DBC', 'EFA', 'EEM']
         
-        # 🛠️ THE FIX: Filter out the rogue timestamp columns (anything containing "2026-")
+        # Filter out the rogue timestamp columns (anything containing "2026-")
         # We also keep out the price cols
         display_cols = [col for col in history_df.columns 
                         if col not in price_cols 
