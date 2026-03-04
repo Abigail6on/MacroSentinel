@@ -2,7 +2,7 @@
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://macrosentinel-kgaeiagprtfjwfbjnav7dn.streamlit.app/)
 
-**MacroSentinel** is an institutional-grade quantitative framework designed to protect capital and generate predictive alpha. It fuses **"Hard"** economic indicators (FRED macro data) with **"Soft"** alternative data (VADER NLP Real-Time News Sentiment) and routes them through a Machine Learning "Cyborg" Regime Engine.
+**MacroSentinel** is an automated quantitative trading architecture built as a proof-of-concept for downside risk management and capital preservation. It fuses **"Hard"** economic indicators (FRED macro data) with **"Soft"** alternative data (VADER NLP Real-Time News Sentiment) and routes them through a Machine Learning Regime Engine.
 
 The system utilizes XGBoost Predictive Modeling, Mean-Variance Optimization, Walk-Forward Validation, and automated CI/CD cloud deployment to dynamically adapt to shifting global market regimes.
 
