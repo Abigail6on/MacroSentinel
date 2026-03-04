@@ -46,10 +46,6 @@ def train_predictor():
     macro_features = ['VIX_Index', 'Yield_Curve_10Y2Y', 'Real_Liquidity']
     nlp_features = ['Inflation_Sentiment', 'Monetary_Policy', 'Labor_Market']
     
-    # 1. Feature Selection
-    macro_features = ['VIX_Index', 'Yield_Curve_10Y2Y', 'Real_Liquidity']
-    nlp_features = ['Inflation_Sentiment', 'Monetary_Policy', 'Labor_Market']
-    
     avail_macro = [f for f in macro_features if f in df.columns]
     avail_nlp = [f for f in nlp_features if f in df.columns]
     available_features = avail_macro + avail_nlp
