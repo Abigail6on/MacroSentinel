@@ -81,7 +81,8 @@
 ### **Session 14: Machine Learning Predictive Alpha (Track 7)**
 
 - **Objective:** Transition the engine from purely reactive heuristics to proactive, predictive Artificial Intelligence.
-- **Logic:** - Engineered a Time-Series Machine Learning pipeline (`ml_predictor.py`) to train a `RandomForestClassifier` on historical macro and NLP data (avoiding look-ahead bias).
+- **Logic:**
+  - Engineered a Time-Series Machine Learning pipeline (`ml_predictor.py`) to train a `RandomForestClassifier` on historical macro and NLP data (avoiding look-ahead bias).
   - Deployed an "Explainable AI" feature importance readout, proving NLP sentiment (70%+) is the strongest short-term predictor of market drops.
   - Upgraded the core engine (`regime_engine_v2.py`) to a Hybrid "Cyborg" architecture. It now natively loads the `.pkl` AI Brain to evaluate live data.
   - Built the "ML Defensive Veto": If the AI predicts an imminent crash, it overrides standard logic and forces a Defensive/Bond allocation.
@@ -115,7 +116,8 @@
 ### **Session 19: Predictive Engine Upgrade & Interactive Risk Simulation (Version 3.0)**
 
 - **Objective:** Upgrade the core machine learning classifier to an industry-standard gradient boosting architecture, fuse real-time NLP sentiment into the AI feature space, and transform the static frontend into an interactive risk simulator.
-- **Logic:** - Engineered a Champion vs. Challenger MLOps pipeline (`ml_predictor.py`), upgrading the predictive engine from a Random Forest baseline to `xgboost.XGBClassifier`.
+- **Logic:**
+  - Engineered a Champion vs. Challenger MLOps pipeline (`ml_predictor.py`), upgrading the predictive engine from a Random Forest baseline to `xgboost.XGBClassifier`.
   - Resolved an asynchronous data engineering gap by injecting VADER sentiment (`smoothed_indicators.csv`) directly into the ML training set via `pd.merge_asof()`, enabling the XGBoost model to evaluate Monetary Policy and Inflation news.
   - Upgraded the Streamlit UI (`app.py`) with an interactive state-management sidebar. Added a slider to dynamically recalculate Value at Risk (VaR) and Expected Shortfall (CVaR) percentiles from raw backtest returns.
   - Implemented a "Force Market Regime" frontend override to simulate ML Crash Veto triggers and portfolio behaviors without mutating the historical data logs.
