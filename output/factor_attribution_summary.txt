@@ -4,9 +4,9 @@
 ==============================================================================
 Dep. Variable:               Strategy   R-squared:                       0.243
 Model:                            OLS   Adj. R-squared:                  0.068
-Method:                 Least Squares   F-statistic:                     1.389
-Date:                Wed, 04 Mar 2026   Prob (F-statistic):              0.290
-Time:                        21:26:55   Log-Likelihood:                 93.906
+Method:                 Least Squares   F-statistic:                     1.388
+Date:                Wed, 04 Mar 2026   Prob (F-statistic):              0.291
+Time:                        22:22:00   Log-Likelihood:                 93.904
 No. Observations:                  17   AIC:                            -179.8
 Df Residuals:                      13   BIC:                            -176.5
 Df Model:                           3                                         
@@ -14,10 +14,10 @@ Covariance Type:            nonrobust
 ==============================================================================
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-const        -9.8e-05      0.000     -0.365      0.721      -0.001       0.000
+const      -9.836e-05      0.000     -0.366      0.720      -0.001       0.000
 MKT           -0.0660      0.053     -1.243      0.236      -0.181       0.049
 SMB            0.0744      0.042      1.754      0.103      -0.017       0.166
-HML           -0.0641      0.044     -1.462      0.167      -0.159       0.031
+HML           -0.0641      0.044     -1.462      0.168      -0.159       0.031
 ==============================================================================
 Omnibus:                        1.919   Durbin-Watson:                   1.427
 Prob(Omnibus):                  0.383   Jarque-Bera (JB):                0.662
@@ -31,7 +31,7 @@ Notes:
 ==================================================
 🎯 KEY TAKEAWAYS FOR YOUR RESUME / INTERVIEW
 ==================================================
-Annualized True Alpha (Intercept): -2.4695%
+Annualized True Alpha (Intercept): -2.4787%
 Market Beta (Correlation to SPY):  -0.07
-Significance: LOW (p=0.7210).
+Significance: LOW (p=0.7200).
 -> Conclusion: Returns are largely explained by broader market movements (or needs more data points).
