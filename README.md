@@ -1,22 +1,22 @@
 # MacroSentinel: AI-Driven Global Macro Regime Engine
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](YOUR_STREAMLIT_URL_HERE)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://macrosentinel-kgaeiagprtfjwfbjnav7dn.streamlit.app/)
 
 **MacroSentinel** is an institutional-grade quantitative framework designed to protect capital and generate predictive alpha. It fuses **"Hard"** economic indicators (FRED macro data) with **"Soft"** alternative data (VADER NLP Real-Time News Sentiment) and routes them through a Machine Learning "Cyborg" Regime Engine.
 
-The system utilizes Random Forest Predictive Modeling, Mean-Variance Optimization, Walk-Forward Validation, and automated CI/CD cloud deployment to dynamically adapt to shifting global market regimes.
+The system utilizes XGBoost Predictive Modeling, Mean-Variance Optimization, Walk-Forward Validation, and automated CI/CD cloud deployment to dynamically adapt to shifting global market regimes.
 
 ### Executive Summary (Business Impact)
 
 - **The Problem:** Traditional rule-based trading bots react to market crashes _after_ they happen, leading to severe capital drawdown.
-- **The Solution:** An autonomous, end-to-end MLOps pipeline that uses **Natural Language Processing** to read global financial news and a **Machine Learning** (`RandomForest`) brain to actively predict stock market drops 5 periods in advance.
-- **The Result:** If the AI detects an impending crash, it triggers a defensive circuit breaker, reallocating the portfolio into safe-haven assets (Bonds/Cash). The system calculates daily **Value at Risk (VaR)** and **Conditional VaR (CVaR)** to mathematically prove tail-risk downside protection, all while running fully automated in the cloud via **GitHub Actions**.
+- **The Solution:** An autonomous, end-to-end MLOps pipeline that uses **Natural Language Processing** to read global financial news and an **XGBoost** machine learning brain to actively predict stock market drops 5 periods in advance.
+- **The Result:** If the AI detects an impending crash, it triggers a defensive circuit breaker, reallocating the portfolio into safe-haven assets (Bonds/Cash). The frontend acts as an Interactive Risk Simulator, allowing users to dynamically calculate **Value at Risk (VaR)** and **Conditional VaR (CVaR)** to mathematically prove tail-risk downside protection, all while running fully automated in the cloud via **GitHub Actions**.
 
 ---
 
 ## Live Interactive Dashboard
 
-The frontend is hosted on Streamlit Community Cloud, providing a real-time window into the AI's decision-making process, active market regime, and current risk metrics.
+The frontend is hosted on Streamlit Community Cloud, providing a real-time window into the AI's decision-making process, active market regime, and current risk metrics. It includes a "State Override" feature to simulate portfolio behavior under forced economic stress tests.
 
 **[👉 Click here to view the live Web App](https://macrosentinel-kgaeiagprtfjwfbjnav7dn.streamlit.app/)**
 
@@ -25,7 +25,7 @@ The frontend is hosted on Streamlit Community Cloud, providing a real-time windo
 ## 📈 Executive Performance
 
 ![Sentinel Pro Dashboard](output/sentinel_pro_dashboard.png)
-_Dashboard Components: (1) Regime-Aware Equity Curve, (2) Strategic Drawdown Analysis, (3) Risk/Fuel Driver Overlay (VIX & Real Liquidity)._
+_Dashboard Components: (1) Regime-Aware Equity Curve, (2) Strategic Target Allocation, (3) Risk/Fuel Driver Overlay (Real Liquidity), (4) NLP Sentiment Heatmap._
 
 ---
 
@@ -35,12 +35,12 @@ The model utilizes a **Multi-Factor Hierarchy** to determine tactical global ass
 
 | Component                   | Logic                                                                                                      | Objective                        |
 | :-------------------------- | :--------------------------------------------------------------------------------------------------------- | :------------------------------- |
-| **ML Predictive Veto**      | Scikit-Learn `RandomForestClassifier` trained on historical macro/NLP data to predict market drops.        | Proactive Crash Evasion          |
+| **ML Predictive Veto**      | `XGBoost Classifier` trained on historical macro/NLP data to predict market drops.                         | Proactive Crash Evasion          |
 | **Regime Engine V2**        | Fuses smoothed NLP sentiment, RSI momentum, and M2 Liquidity. Overridden by the ML Brain if needed.        | Directional Bias & State Mapping |
 | **Global Asset Allocation** | Dynamically weights a covariance matrix using SciPy `minimize` with a strict 40% maximum position cap.     | Maximize Sharpe / Global Yield   |
 | **Liquidity & VIX Vetoes**  | Sells equities for Cash/Bonds if Real M2 Money Supply < 0 or if the Global VIX spikes > 20.                | Systemic Risk Mitigation         |
 | **Walk-Forward Engine**     | Eliminates Look-Ahead Bias by rolling a 30-period in-sample optimization window for out-of-sample returns. | Robust Strategy Validation       |
-| **Risk Analytics**          | Computes 95% Historical VaR and Conditional VaR (Expected Shortfall) on out-of-sample returns.             | Tail-Risk Quantification         |
+| **Risk Analytics**          | Computes dynamically adjustable Historical VaR and Expected Shortfall on out-of-sample returns.            | Tail-Risk Quantification         |
 
 ---
 
@@ -63,6 +63,7 @@ To run the full pipeline locally:
 ```bash
 # 1. Ingest Data
 python src/collectors/fred_collector.py
+python src/collectors/news_collector.py
 python src/portfolio/price_tracker.py
 
 # 2. Process NLP Sentiment
