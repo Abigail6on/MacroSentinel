@@ -4,7 +4,6 @@ import matplotlib.dates as mdates
 import os
 import textwrap
 
-# Setup Paths
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
 DATA_DIR = os.path.join(BASE_DIR, "data", "processed")
@@ -82,6 +81,10 @@ def build_dashboard():
     ax4 = fig.add_subplot(gs[1, 1])
     
     recent_news = news_df.tail(100).copy()
+    
+    # Drop duplicate headlines so matplotlib plots 5 distinct bars
+    recent_news = recent_news.drop_duplicates(subset=['Headline'])
+    
     recent_news['Abs_Score'] = recent_news['Sentiment'].abs()
     top_news = recent_news.sort_values(by='Abs_Score', ascending=False).head(5).sort_values(by='Sentiment')
     
