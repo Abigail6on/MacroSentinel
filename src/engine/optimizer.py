@@ -29,7 +29,7 @@ def get_optimal_growth_weights():
     # Calculate returns using the trailing 30 hours
     returns = df[available_assets].pct_change().dropna().tail(30)
     
-    # UPGRADE: Dynamic Equal-Weight Fallback if data is too short
+    # Dynamic Equal-Weight Fallback if data is too short
     if len(returns) < 10:
         return {a: 1.0/len(available_assets) for a in available_assets}
 
