@@ -35,8 +35,18 @@ def build_dashboard():
     
     # --- SUBPLOT 1: Equity Curve (Top Left) ---
     ax1 = fig.add_subplot(gs[0, 0])
-    ax1.plot(bt_df['Timestamp'], bt_df['Strategy_Value'], color='#0055aa', linewidth=2.5, label='MacroSentinel Strategy')
-    ax1.plot(bt_df['Timestamp'], bt_df['Benchmark_Value'], color='#aa00aa', linewidth=1.5, linestyle='--', label='SPY Benchmark')
+    
+    # 1. Plot SPY Benchmark (Grey, dashed) to match Streamlit
+    ax1.plot(bt_df['Timestamp'], bt_df['Benchmark_Value'], color='#888888', linewidth=1.5, linestyle='--', label='SPY Benchmark')
+    
+    # 2. Add SHY (Cash) Baseline safely using .fillna(0)
+    if 'SHY_Ret' in bt_df.columns:
+        shy_cum = (1 + bt_df['SHY_Ret'].fillna(0)).cumprod()
+        ax1.plot(bt_df['Timestamp'], shy_cum, label='SHY (Cash Base)', color='#17a2b8', linewidth=1.5, linestyle=':')
+        
+    # 3. Plot MacroSentinel Strategy (Green, solid, thick) last so it sits on top!
+    ax1.plot(bt_df['Timestamp'], bt_df['Strategy_Value'], color='#00ff00', linewidth=2.5, label='MacroSentinel Strategy')
+
     ax1.set_title("Strategy vs Benchmark Equity Curve", fontsize=14, fontweight='bold', color='black')
     ax1.legend(loc='upper left')
     ax1.grid(color='#e0e0e0', linestyle=':', alpha=0.8)
