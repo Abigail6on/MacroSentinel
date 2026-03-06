@@ -10,12 +10,61 @@ from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer
+import shap
+import json
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
 REGIME_DATA = os.path.join(BASE_DIR, "data", "processed", "regime_v2_status.csv")
 MODEL_DIR = os.path.join(BASE_DIR, "data", "models")
 MODEL_PATH = os.path.join(MODEL_DIR, "rf_crash_predictor.pkl")
+
+def export_shap_explanations(pipeline, X_latest_raw, feature_names, output_dir):
+    """
+    Extracts the model from a Scikit-Learn Pipeline and generates SHAP values.
+    """
+    print("\n--- Generating SHAP Explainability Metrics ---")
+    
+    # 1. Extract components from the winning pipeline
+    preprocessor = pipeline.named_steps['preprocessor']
+    model = pipeline.named_steps['classifier']
+    
+    # 2. Preprocess the raw latest data so the model can read it
+    X_latest_processed = preprocessor.transform(X_latest_raw)
+    
+    # 3. Initialize the Explainer
+    explainer = shap.TreeExplainer(model)
+    shap_values = explainer.shap_values(X_latest_processed)
+    
+    # 4. Handle structural differences (Random Forest vs XGBoost)
+    if isinstance(shap_values, list):
+        shap_values_target = shap_values[1][0] 
+        base_value = explainer.expected_value[1]
+    else:
+        shap_values_target = shap_values[0]
+        base_value = explainer.expected_value
+        
+    if isinstance(base_value, (np.ndarray, list)):
+        base_value = float(base_value[0])
+    
+    # 5. Map the SHAP values to feature names
+    feature_contributions = {}
+    for i, feature in enumerate(feature_names):
+        feature_contributions[feature] = float(np.round(shap_values_target[i], 4))
+        
+    # 6. Save to JSON
+    shap_payload = {
+        "base_value": float(np.round(base_value, 4)),
+        "contributions": feature_contributions
+    }
+    
+    output_path = os.path.join(output_dir, "latest_shap.json")
+    os.makedirs(output_dir, exist_ok=True)
+    
+    with open(output_path, "w") as f:
+        json.dump(shap_payload, f, indent=4)
+        
+    print(f"[SUCCESS] SHAP explainability exported to {output_path}")
 
 def train_predictor():
     print("--- Initializing Track 7: Champion vs Challenger ML Showdown ---")
@@ -137,6 +186,17 @@ def train_predictor():
         print(f" -> {name.ljust(20)}: {imp * 100:>5.2f}%")
         
     print(f"\n[SUCCESS] {winner_name} Pipeline saved to {MODEL_PATH}")
+
+    # --- TRIGGER SHAP ON THE WINNER ---
+    winning_pipeline = xgb_pipeline if xgb_acc >= rf_acc else rf_pipeline
+    X_latest_raw = X.iloc[-1:] # Grab the very last row of raw data
+    
+    export_shap_explanations(
+        pipeline=winning_pipeline,
+        X_latest_raw=X_latest_raw,
+        feature_names=ordered_features,
+        output_dir=os.path.join(BASE_DIR, "data", "processed")
+    )
 
 if __name__ == "__main__":
     train_predictor()
