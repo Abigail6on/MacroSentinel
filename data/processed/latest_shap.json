@@ -1,0 +1,11 @@
+{
+    "base_value": -2.5162999629974365,
+    "contributions": {
+        "VIX_Index": -0.48170000314712524,
+        "Yield_Curve_10Y2Y": 0.17090000212192535,
+        "Real_Liquidity": 0.0,
+        "Inflation_Sentiment": -0.967199981212616,
+        "Monetary_Policy": 1.0384999513626099,
+        "Labor_Market": 0.27900001406669617
+    }
+}

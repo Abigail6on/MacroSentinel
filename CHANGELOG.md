@@ -123,3 +123,11 @@
   - Implemented a "Force Market Regime" frontend override to simulate ML Crash Veto triggers and portfolio behaviors without mutating the historical data logs.
   - Applied institutional data scrubbers: utilized `.drop_duplicates()` to eliminate matplotlib "Ghost Bars" in the NLP heatmap, filtered rogue horizontally-pivoted timestamp columns from the decision log, and streamlined GitHub Actions CI/CD to dynamically read `requirements.txt`.
 - **Result:** Deployed the Version 3.0 Master Build. The XGBoost model achieved 96.15% out-of-sample accuracy by prioritizing geopolitical news sentiment, while the Streamlit application now functions as a fully interactive, self-explanatory quantitative risk terminal.
+
+### **Session 20: Explainable AI (SHAP) & Interactive Visualization**
+
+- **Objective:** Demystify the "black box" XGBoost model by quantifying the exact mathematical contribution of each macroeconomic and sentiment feature to the AI's predictions.
+- **Logic:** - Integrated the `shap` (SHapley Additive exPlanations) library into the Champion vs. Challenger Scikit-Learn pipeline (`ml_predictor.py`).
+  - Engineered a custom extraction function to unpack the winning model, calculate dynamic feature contributions, and export a lightweight API payload (`latest_shap.json`).
+  - Upgraded the Streamlit dashboard (`app.py`) to parse this payload and render a real-time Plotly Waterfall chart.
+- **Result:** Achieved institutional-grade model interpretability. Portfolio Managers and stakeholders can now visually trace exactly _why_ the AI triggered a market veto (e.g., Yield Curve vs. VIX Index contributions) directly in the UI.

@@ -21,6 +21,7 @@ matplotlib
 seaborn
 plotly
 streamlit>=1.31.0
+shap
 
 # Utilities
 tabulate
