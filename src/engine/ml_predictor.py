@@ -22,6 +22,7 @@ MODEL_PATH = os.path.join(MODEL_DIR, "rf_crash_predictor.pkl")
 def export_shap_explanations(pipeline, X_latest_raw, feature_names, output_dir):
     """
     Extracts the model from a Scikit-Learn Pipeline and generates SHAP values.
+    Dynamically handles 2D (XGBoost) and 3D (Random Forest) array structures.
     """
     print("\n--- Generating SHAP Explainability Metrics ---")
     
@@ -36,16 +37,30 @@ def export_shap_explanations(pipeline, X_latest_raw, feature_names, output_dir):
     explainer = shap.TreeExplainer(model)
     shap_values = explainer.shap_values(X_latest_processed)
     
-    # 4. Handle structural differences (Random Forest vs XGBoost)
+    # --- 4. ROBUST ARRAY PARSING LOGIC ---
     if isinstance(shap_values, list):
-        shap_values_target = shap_values[1][0] 
+        # Scikit-Learn RF (Older SHAP versions return a list per class)
+        shap_values_target = np.array(shap_values[1]).flatten()
         base_value = explainer.expected_value[1]
     else:
-        shap_values_target = shap_values[0]
-        base_value = explainer.expected_value
+        # XGBoost or newer SHAP versions return a Numpy Array
+        shap_array = np.array(shap_values)
         
+        if shap_array.ndim == 3:
+            # Random Forest: Shape is (1_sample, N_features, 2_classes)
+            # We want all features for Class 1 (Index 1)
+            shap_values_target = shap_array[0, :, 1].flatten()
+            base_value = explainer.expected_value[1]
+        else:
+            # XGBoost: Shape is (1_sample, N_features)
+            shap_values_target = shap_array[0].flatten()
+            base_value = explainer.expected_value
+
+    # Ensure base_value is extracted cleanly as a single float
     if isinstance(base_value, (np.ndarray, list)):
-        base_value = float(base_value[0])
+        base_value = float(base_value[-1])
+    else:
+        base_value = float(base_value)
     
     # 5. Map the SHAP values to feature names
     feature_contributions = {}
