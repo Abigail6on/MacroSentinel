@@ -7087,3 +7087,62 @@ Timestamp,Published_At,Indicator,Sentiment,Headline
 2026-03-06 16:28:00.105003,2026-03-05T15:33:00Z,Inflation_Sentiment,0.9153,"United States Unified Communications Market Report 2025-2033, Company Analysis of 8x8, Avaya, Cisco Systems, GoTo, Huawei, Microsoft, Mitel Networks, NEC (AT&T), Ringcentral, Verizon"
 2026-03-06 16:28:00.105084,2026-03-05T15:28:58Z,Inflation_Sentiment,-0.5994,The escalating humanitarian impacts of the US-Israeli war on Iran
 2026-03-06 16:28:00.105283,2026-03-05T15:22:33Z,Inflation_Sentiment,0.5662,Dow down 400 points while Nasdaq rises: Why Dow Jones drops over 400 points today while Nasdaq stays in green — S&P 500 also slips as US stock market shows mixed signals
+2026-03-06 20:36:19.527834,2026-03-05T20:25:12Z,Monetary_Policy,-0.4215,USD/MXN jumps above 17.70 as Middle East war spurs risk-off
+2026-03-06 20:36:19.528080,2026-03-05T15:45:07Z,Monetary_Policy,0.0464,"Here's how much interest a $40,000 6-month CD can earn if opened this March"
+2026-03-06 20:36:19.528321,2026-03-05T15:22:33Z,Monetary_Policy,0.5662,Dow down 400 points while Nasdaq rises: Why Dow Jones drops over 400 points today while Nasdaq stays in green — S&P 500 also slips as US stock market shows mixed signals
+2026-03-06 20:36:19.528591,2026-03-05T15:09:25Z,Monetary_Policy,-0.0,"US Stocks: Fed's Tom Barkin says sticky inflation, better jobs data could shift the risk outlook"
+2026-03-06 20:36:19.528926,2026-03-05T11:32:50Z,Monetary_Policy,0.91,A shiny new Fed Chairman will be keen to start with an interest rate cut—but the bank is growing more hawkish due to Iran
+2026-03-06 20:36:19.529174,2026-03-05T09:34:31Z,Monetary_Policy,-0.9081,"Iran war may hurt India’s growth more than inflation, RBI expected to hold steady"
+2026-03-06 20:36:19.529319,2026-03-03T23:01:19Z,Monetary_Policy,-0.5994,‘This work is about hope:’ University of St. Mary prison education program centers on human dignity
+2026-03-06 20:36:19.529531,2026-03-03T15:04:25Z,Monetary_Policy,-0.891,"Stock market today: Dow falls by 700 points, S&P 500 and Nasdaq sink as oil surges amid war worries"
+2026-03-06 20:36:19.529619,2026-03-03T13:36:00Z,Monetary_Policy,0.0,EXL named a Leader in Everest Group Customer Experience Services in Insurance Operations PEAK Matrix® Assessment 2025
+2026-03-06 20:36:19.529807,2026-03-03T06:14:00Z,Monetary_Policy,-0.9169,Iran War Poses New Risk to US Economic Resilience
+2026-03-06 20:36:19.529881,2026-03-02T16:43:50Z,Monetary_Policy,-0.6124,"Economists doubt Trump plan for Fed pick, AI to deliver a '90s boom"
+2026-03-06 20:36:19.530089,2026-03-02T16:41:51Z,Monetary_Policy,-0.1027,Iran conflict poses new risk to US economic resilience
+2026-03-06 20:36:19.530181,2026-03-02T16:38:37Z,Monetary_Policy,-0.5423,Trump expects his Fed pick and AI to deliver a replay of the ’90s boom. Economists have doubts
+2026-03-06 20:36:19.530509,2026-03-02T16:00:47Z,Monetary_Policy,-0.9442,Why is silver price crashing 7% today while gold price surges $100 — how the US–Iran war and Middle East tensions are influencing gold price and silver price differently?
+2026-03-06 20:36:19.530578,2026-03-02T13:31:46Z,Monetary_Policy,0.0,’90s nostalgia seizes the Fed and White House as Warsh and Trump see AI as an internet-style productivity boom
+2026-03-06 20:36:19.791130,2026-03-05T20:25:12Z,Labor_Market,-0.4215,USD/MXN jumps above 17.70 as Middle East war spurs risk-off
+2026-03-06 20:36:19.791260,2026-03-05T19:55:12Z,Labor_Market,0.3182,"Dow drops 1,000 as oil spikes on Trump’s Middle Eastern regime change adventure"
+2026-03-06 20:36:19.791540,2026-03-05T19:52:58Z,Labor_Market,-0.8979,"Forex Today: US Dollar firms ahead of NFP, Oil surges amid Middle East war"
+2026-03-06 20:36:19.791709,2026-03-05T19:46:59Z,Labor_Market,-0.7003,America's Productivity Boom Is Getting Hard To Ignore
+2026-03-06 20:36:19.791879,2026-03-05T19:42:07Z,Labor_Market,-0.3818,Trump vowed to revive manufacturing. Factory jobs are still vanishing.
+2026-03-06 20:36:19.791982,2026-03-05T19:41:17Z,Labor_Market,-0.6705,"Dow plunges more than 1,000 points amid concerns about surging oil prices"
+2026-03-06 20:36:19.792042,2026-03-05T19:15:17Z,Labor_Market,0.2023,Will tariffs 2.0 Be different from tariffs 1.0
+2026-03-06 20:36:19.792139,2026-03-05T19:11:40Z,Labor_Market,-0.8074,AI is threatening many North Carolina jobs
+2026-03-06 20:36:19.792235,2026-03-05T18:48:13Z,Labor_Market,0.5859,The February jobs numbers are coming out Friday. Here's what to expect
+2026-03-06 20:36:19.792344,2026-03-05T18:45:01Z,Labor_Market,0.1531,USD/CHF edges higher as SNB intervention rhetoric caps Franc gains
+2026-03-06 20:36:19.792744,2026-03-05T18:43:45Z,Labor_Market,0.9768,"‘Women in leadership roles can bring more growth and value to firms — yet, constraints on their rise persist even in rich nations’"
+2026-03-06 20:36:19.792850,2026-03-05T18:42:02Z,Labor_Market,-0.8442,'Dangerous' Trump chapter puts Australians' superannuation at risk
+2026-03-06 20:36:19.793164,2026-03-05T18:09:49Z,Labor_Market,0.9169,"Gold tumbles below $5,100 on strong US Dollar, Treasury yields"
+2026-03-06 20:36:19.793211,2026-03-05T17:51:11Z,Labor_Market,0.0,Show HN: Next job comes from someone you barely know
+2026-03-06 20:36:19.793314,2026-03-05T17:50:39Z,Labor_Market,0.2732,"China Sets 4.5 to 5 Percent 2026 Growth Target, Outlines Retail Playbook"
+2026-03-06 20:36:20.080033,2026-03-05T19:42:07Z,Manufacturing,-0.3818,Trump vowed to revive manufacturing. Factory jobs are still vanishing.
+2026-03-06 20:36:20.080270,2026-03-05T19:32:14Z,Manufacturing,0.3818,1972 Pontiac Grand Prix Model J at No Reserve
+2026-03-06 20:36:20.080381,2026-03-05T19:20:09Z,Manufacturing,0.0,Tri-Power-Equipped 1965 Pontiac GTO Hardtop Coupe 4-Speed
+2026-03-06 20:36:20.080509,2026-03-05T18:00:00Z,Manufacturing,0.0516,Fontaine Modification Access365™ Portal Provides Unmatched Visibility throughout Truck Modification Process
+2026-03-06 20:36:20.080640,2026-03-05T17:35:47Z,Manufacturing,-0.5267,"Factory Worker Was Told To Stop Thinking And Just Do As He’s Told, So The Boss Soon Watched The Entire Production Line Grind To A Halt"
+2026-03-06 20:36:20.080767,2026-03-05T17:35:15Z,Manufacturing,-0.296,2009 Porsche Cayenne GTS 6-Speed at No Reserve
+2026-03-06 20:36:20.080997,2026-03-05T16:37:48Z,Manufacturing,0.8271,"Morphulus releases Spectrus, a modular multi-effect plugin with 7 free effects"
+2026-03-06 20:36:20.081030,2026-03-05T16:10:26Z,Manufacturing,0.0,OSS updates January and February 2026
+2026-03-06 20:36:20.081162,2026-03-05T16:05:04Z,Manufacturing,-0.296,390-Powered 1972 Ford F-100 Custom 4×4 4-Speed at No Reserve
+2026-03-06 20:36:20.081285,2026-03-05T15:30:00Z,Manufacturing,0.5267,Exclusive: ‘I don’t think it would be good for Sigma to just chase a trend we don’t know could end in 6-12 months’ says CEO on its plans for compact cameras
+2026-03-06 20:36:20.081336,2026-03-05T15:16:49Z,Manufacturing,0.5719,Obsbot Tiny 3 review
+2026-03-06 20:36:20.081583,2026-03-05T15:09:25Z,Manufacturing,-0.0,"US Stocks: Fed's Tom Barkin says sticky inflation, better jobs data could shift the risk outlook"
+2026-03-06 20:36:20.081661,2026-03-05T14:55:02Z,Manufacturing,0.0,22-Years-Owned 2001 Porsche Boxster 5-Speed
+2026-03-06 20:36:20.081808,2026-03-05T14:48:27Z,Manufacturing,0.1689,"Op-ed: What $5 billion humanoid robots taught me about risk, jobs and the future of the economy"
+2026-03-06 20:36:20.196652,2026-03-05T20:19:15Z,Inflation_Sentiment,-0.431,Silicon Teammates: How Human-AI Teams Make Hard Decisions
+2026-03-06 20:36:20.196951,2026-03-05T20:11:54Z,Inflation_Sentiment,-0.6705,How the Middle East conflict is reshaping gas and LNG markets
+2026-03-06 20:36:20.197378,2026-03-05T20:11:00Z,Inflation_Sentiment,-0.8271,How the Middle East conflict is reshaping gas and LNG markets
+2026-03-06 20:36:20.197682,2026-03-05T20:10:25Z,Inflation_Sentiment,-0.7964,"The AI Industry’s Moment of Gloom, Doom, and Profit"
+2026-03-06 20:36:20.197840,2026-03-05T20:07:13Z,Inflation_Sentiment,0.9468,Mental health reform
+2026-03-06 20:36:20.197957,2026-03-05T20:00:31Z,Inflation_Sentiment,0.6808,"Learning Curves: Meaning, Theory, And Types"
+2026-03-06 20:36:20.198002,2026-03-05T19:54:37Z,Inflation_Sentiment,0.0,Labor MP joins calls for Islamophobia to be added to royal commission
+2026-03-06 20:36:20.198150,2026-03-05T19:46:59Z,Inflation_Sentiment,-0.7003,America's Productivity Boom Is Getting Hard To Ignore
+2026-03-06 20:36:20.198222,2026-03-05T19:37:24Z,Inflation_Sentiment,-0.5719,WTI Crude Oil tests north of $80 for the first time since mid-2024
+2026-03-06 20:36:20.198407,2026-03-05T19:35:55Z,Inflation_Sentiment,0.4786,Feds announce plans to almost double number of Halifax military housing units
+2026-03-06 20:36:20.198539,2026-03-05T19:29:51Z,Inflation_Sentiment,-0.8979,The Deception of Depression
+2026-03-06 20:36:20.198631,2026-03-05T19:24:18Z,Inflation_Sentiment,-0.0207,Why civics education matters more than ever
+2026-03-06 20:36:20.198791,2026-03-05T19:20:52Z,Inflation_Sentiment,-0.3612,Saudi Arabia races to reroute oil as Gulf storage fills fast
+2026-03-06 20:36:20.198918,2026-03-05T19:19:45Z,Inflation_Sentiment,-0.6486,Ousting of Peru’s president points to a deeper crisis
+2026-03-06 20:36:20.199036,2026-03-05T19:19:45Z,Inflation_Sentiment,-0.6486,The ousting of Peru’s president points to a deeper crisis
