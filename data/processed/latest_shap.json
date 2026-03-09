@@ -1,12 +1,12 @@
 {
-    "base_value": 0.4986,
+    "base_value": 0.4919,
     "contributions": {
-        "VIX_Index": 0.0324,
-        "Yield_Curve_10Y2Y": -0.0176,
-        "Real_Liquidity": 0.124,
+        "VIX_Index": -0.0348,
+        "Yield_Curve_10Y2Y": -0.0281,
+        "Real_Liquidity": 0.0698,
         "Put_Call_Ratio": 0.0,
-        "Inflation_Sentiment": -0.0374,
-        "Monetary_Policy": -0.0421,
-        "Labor_Market": -0.0474
+        "Inflation_Sentiment": -0.031,
+        "Monetary_Policy": -0.0416,
+        "Labor_Market": -0.0312
     }
 }
