@@ -26,18 +26,14 @@ def export_shap_explanations(pipeline, X_latest_raw, feature_names, output_dir):
     """
     print("\n--- Generating SHAP Explainability Metrics ---")
     
-    # 1. Extract components from the winning pipeline
     preprocessor = pipeline.named_steps['preprocessor']
     model = pipeline.named_steps['classifier']
     
-    # 2. Preprocess the raw latest data so the model can read it
     X_latest_processed = preprocessor.transform(X_latest_raw)
     
-    # 3. Initialize the Explainer
     explainer = shap.TreeExplainer(model)
     shap_values = explainer.shap_values(X_latest_processed)
     
-    # --- 4. ROBUST ARRAY PARSING LOGIC ---
     if isinstance(shap_values, list):
         # Scikit-Learn RF (Older SHAP versions return a list per class)
         shap_values_target = np.array(shap_values[1]).flatten()
@@ -62,12 +58,11 @@ def export_shap_explanations(pipeline, X_latest_raw, feature_names, output_dir):
     else:
         base_value = float(base_value)
     
-    # 5. Map the SHAP values to feature names
+    # Map the SHAP values to feature names
     feature_contributions = {}
     for i, feature in enumerate(feature_names):
         feature_contributions[feature] = float(np.round(shap_values_target[i], 4))
         
-    # 6. Save to JSON
     shap_payload = {
         "base_value": float(np.round(base_value, 4)),
         "contributions": feature_contributions
@@ -89,32 +84,42 @@ def train_predictor():
         return
         
     df = pd.read_csv(REGIME_DATA)
+    df['Timestamp'] = pd.to_datetime(df['Timestamp'])
+    df = df.sort_values('Timestamp')
     
+    # --- 1. MERGE NLP SENTIMENT ---
     SMOOTHED_PATH = os.path.join(BASE_DIR, "data", "processed", "smoothed_indicators.csv")
     if os.path.exists(SMOOTHED_PATH):
         smooth_df = pd.read_csv(SMOOTHED_PATH)
-        
-        # Convert to datetime and sort (Required for As-Of Merge)
-        df['Timestamp'] = pd.to_datetime(df['Timestamp'])
         smooth_df['Timestamp'] = pd.to_datetime(smooth_df['Timestamp'])
-        df = df.sort_values('Timestamp')
         smooth_df = smooth_df.sort_values('Timestamp')
-        
-        # Merge the news sentiment into the training data
         df = pd.merge_asof(df, smooth_df, on='Timestamp', direction='backward')
         
-        # Handle any missing early data points
-        df = df.ffill().bfill()
+    # --- 2. MERGE OPTIONS SENTIMENT (PUT/CALL RATIO) ---
+    PCR_PATH = os.path.join(BASE_DIR, "data", "raw", "put_call_ratio.csv")
+    if os.path.exists(PCR_PATH):
+        pcr_df = pd.read_csv(PCR_PATH)
+        pcr_df['Timestamp'] = pd.to_datetime(pcr_df['Timestamp'])
+        pcr_df = pcr_df.sort_values('Timestamp')
+        
+        df = pd.merge_asof(df, pcr_df, on='Timestamp', direction='backward')
+        
+        # Fill missing historical options data with 1.0 (Neutral Market)
+        if 'Put_Call_Ratio' in df.columns:
+            df['Put_Call_Ratio'] = df['Put_Call_Ratio'].fillna(1.0)
+            
+    # Handle any remaining missing early data points
+    df = df.ffill().bfill()
     
-    # 1. Feature Selection
-    macro_features = ['VIX_Index', 'Yield_Curve_10Y2Y', 'Real_Liquidity']
+    # --- 3. FEATURE SELECTION ---
+    macro_features = ['VIX_Index', 'Yield_Curve_10Y2Y', 'Real_Liquidity', 'Put_Call_Ratio']
     nlp_features = ['Inflation_Sentiment', 'Monetary_Policy', 'Labor_Market']
     
     avail_macro = [f for f in macro_features if f in df.columns]
     avail_nlp = [f for f in nlp_features if f in df.columns]
     available_features = avail_macro + avail_nlp
     
-    # 2. Target Labeling (y)
+    # 4. Target Labeling (y)
     forecast_horizon = 5
     df['Future_SPY'] = df['SPY'].shift(-forecast_horizon)
     df['Future_Return'] = (df['Future_SPY'] - df['SPY']) / df['SPY']
@@ -129,10 +134,10 @@ def train_predictor():
     X = ml_df[available_features]
     y = ml_df['Target_Crash']
     
-    # 3. Time-Series Train/Test Split (No Look-Ahead Bias)
+    # 5. Time-Series Train/Test Split (No Look-Ahead Bias)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, shuffle=False)
     
-    # 4. Build the Preprocessor (Traffic Cop)
+    # 6. Build the Preprocessor (Traffic Cop)
     macro_transformer = Pipeline(steps=[
         ('imputer', SimpleImputer(strategy='median')),
         ('scaler', StandardScaler())
@@ -150,7 +155,7 @@ def train_predictor():
         remainder='drop'
     )
     
-    # 5. Build the Competitors
+    # 7. Build the Competitors
     print(f"\n[INFO] Training models on {len(X_train)} records...")
     
     # Competitor 1: Random Forest (The Champion)
@@ -160,13 +165,12 @@ def train_predictor():
     ])
     
     # Competitor 2: XGBoost (The Challenger)
-    # scale_pos_weight is XGBoost's version of class_weight='balanced'
     xgb_pipeline = Pipeline(steps=[
         ('preprocessor', preprocessor),
         ('classifier', XGBClassifier(n_estimators=100, max_depth=5, random_state=42, eval_metric='logloss'))
     ])
     
-    # 6. Train & Score Both Models
+    # 8. Train & Score Both Models
     rf_pipeline.fit(X_train, y_train)
     rf_preds = rf_pipeline.predict(X_test)
     rf_acc = accuracy_score(y_test, rf_preds)
@@ -179,7 +183,7 @@ def train_predictor():
     print(f"Random Forest Accuracy: {rf_acc * 100:.2f}%")
     print(f"XGBoost Accuracy:       {xgb_acc * 100:.2f}%")
     
-    # 7. Crown the Winner and Save
+    # 9. Crown the Winner and Save
     os.makedirs(MODEL_DIR, exist_ok=True)
     
     if xgb_acc >= rf_acc:
@@ -187,11 +191,13 @@ def train_predictor():
         joblib.dump(xgb_pipeline, MODEL_PATH)
         winner_name = "XGBoost"
         model_to_inspect = xgb_pipeline.named_steps['classifier']
+        winning_pipeline = xgb_pipeline
     else:
         print("\n[WINNER] Random Forest defended its title! Retaining current engine...")
         joblib.dump(rf_pipeline, MODEL_PATH)
         winner_name = "Random Forest"
         model_to_inspect = rf_pipeline.named_steps['classifier']
+        winning_pipeline = rf_pipeline
         
     print(f"\n[EXPLAINABLE AI] What is driving {winner_name}'s decisions?")
     importances = model_to_inspect.feature_importances_
@@ -203,7 +209,6 @@ def train_predictor():
     print(f"\n[SUCCESS] {winner_name} Pipeline saved to {MODEL_PATH}")
 
     # --- TRIGGER SHAP ON THE WINNER ---
-    winning_pipeline = xgb_pipeline if xgb_acc >= rf_acc else rf_pipeline
     X_latest_raw = X.iloc[-1:] # Grab the very last row of raw data
     
     export_shap_explanations(

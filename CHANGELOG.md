@@ -131,3 +131,11 @@
   - Engineered a custom extraction function to unpack the winning model, calculate dynamic feature contributions, and export a lightweight API payload (`latest_shap.json`).
   - Upgraded the Streamlit dashboard (`app.py`) to parse this payload and render a real-time Plotly Waterfall chart.
 - **Result:** Achieved institutional-grade model interpretability. Portfolio Managers and stakeholders can now visually trace exactly _why_ the AI triggered a market veto (e.g., Yield Curve vs. VIX Index contributions) directly in the UI.
+
+### **Session 21: Options Market Sentiment (Put/Call Ratio)**
+
+- **Objective:** Capture institutional "smart money" hedging activity to detect market panic before equity prices actually drop.
+- **Logic:** - Engineered `options_collector.py` using `yfinance` to scrape live S&P 500 options chains, aggregating near-term Put and Call Open Interest.
+  - Upgraded the ML Engine (`ml_predictor.py`) to inject the live `Put_Call_Ratio` into the XGBoost feature space using a zero-look-ahead time-series zipper (`pd.merge_asof()`).
+  - Updated the GitHub Actions `.yaml` workflow to automate hourly options data harvesting.
+- **Result:** Expanded the AI's predictive dimensions from three factors to four. The ML model now evaluates derivative market fear (e.g., Put/Call ratios > 1.5) alongside macroeconomic and NLP data to preempt market crashes.

@@ -36,6 +36,7 @@ jobs:
         run: |
           # 1. Harvest & Process
           python src/collectors/fred_collector.py
+          python src/collectors/options_collector.py
           python src/collectors/news_collector.py
           python src/portfolio/price_tracker.py
           python src/engine/sentiment_smoother.py

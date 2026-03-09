@@ -22,11 +22,10 @@ data/logs/*
 output/*
 
 # --- ALLOW LIST (Tracked files for the Web App and Backend) ---
-# Allow the Hard Data (FRED)
+# Allow the Hard Data
 !data/raw/macro_indicators_raw.csv
-
-# Allow the News Stream
 !data/raw/news_stream_history.csv
+!data/raw/put_call_ratio.csv
 
 # Allow the Smoothed Signals
 !data/processed/smoothed_indicators.csv

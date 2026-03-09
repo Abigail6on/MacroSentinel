@@ -2,15 +2,34 @@
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://macrosentinel-kgaeiagprtfjwfbjnav7dn.streamlit.app/)
 
-**MacroSentinel** is an automated quantitative trading architecture built as a proof-of-concept for downside risk management and capital preservation. It fuses **"Hard"** economic indicators (FRED macro data) with **"Soft"** alternative data (VADER NLP Real-Time News Sentiment) and routes them through a Machine Learning Regime Engine.
+**MacroSentinel** is an automated quantitative trading architecture built as a proof-of-concept for downside risk management and capital preservation. It fuses **"Hard"** economic indicators (FRED macro data), **"Soft"** alternative data (VADER NLP Real-Time News Sentiment), and **"Smart Money"** derivatives (Options Market Put/Call Ratios) and routes them through a Machine Learning Regime Engine.
 
-The system utilizes XGBoost Predictive Modeling, Mean-Variance Optimization, Walk-Forward Validation, and automated CI/CD cloud deployment to dynamically adapt to shifting global market regimes.
+The system utilizes XGBoost Predictive Modeling, SHAP Explainable AI, Mean-Variance Optimization, Walk-Forward Validation, and automated CI/CD cloud deployment to dynamically adapt to shifting global market regimes.
 
 ### Executive Summary (Business Impact)
 
 - **The Problem:** Traditional rule-based trading bots react to market crashes _after_ they happen, leading to severe capital drawdown.
 - **The Solution:** An autonomous, end-to-end MLOps pipeline that uses **Natural Language Processing** to read global financial news and an **XGBoost** machine learning brain to actively predict stock market drops 5 periods in advance.
 - **The Result:** If the AI detects an impending crash, it triggers a defensive circuit breaker, reallocating the portfolio into safe-haven assets (Bonds/Cash). The frontend acts as an Interactive Risk Simulator, allowing users to dynamically calculate **Value at Risk (VaR)** and **Conditional VaR (CVaR)** to mathematically prove tail-risk downside protection, all while running fully automated in the cloud via **GitHub Actions**.
+
+---
+
+## 🛠️ Technical Stack
+
+- **Data Engineering:** `pandas`, `numpy`, `yfinance`, `fredapi`, `vaderSentiment`
+- **Machine Learning Engine:** `scikit-learn` (Random Forest), `xgboost` (Champion Model)
+- **Model Interpretability:** `shap` (SHapley Additive exPlanations)
+- **Quantitative Finance:** `scipy` (Optimization), `statsmodels` (Fama-French Factor Regression)
+- **Visualization:** `matplotlib`, `seaborn`, `plotly`, `streamlit`
+
+---
+
+## 🚀 Key Features
+
+- **Explainable AI (SHAP):** Real-time JSON API payload generation that mathematically breaks down exactly _why_ the XGBoost model made its crash prediction, rendered as an interactive UI waterfall chart.
+- **Options Market Sentiment:** Real-time S&P 500 Put/Call Open Interest ratio tracking institutional hedging and market panic via `yfinance`.
+- **Dynamic Regime Detection:** Fuses 10Y-2Y Yield Curve Inversions, Real Liquidity (M2 Growth - CPI), and NLP Sentiment into a singular Market State.
+- **Automated Rebalancing:** Adjusts portfolio weights using a Max Sharpe Ratio optimizer constrained by the live ML Regime.
 
 ---
 
@@ -63,6 +82,7 @@ To run the full pipeline locally:
 ```bash
 # 1. Ingest Data
 python src/collectors/fred_collector.py
+python src/collectors/options_collector.py
 python src/collectors/news_collector.py
 python src/portfolio/price_tracker.py
 
