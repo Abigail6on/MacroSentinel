@@ -14,7 +14,7 @@ The system utilizes XGBoost Predictive Modeling, SHAP Explainable AI, Mean-Varia
 
 ---
 
-## 🛠️ Technical Stack
+### Technical Stack
 
 - **Data Engineering:** `pandas`, `numpy`, `yfinance`, `fredapi`, `vaderSentiment`
 - **Machine Learning Engine:** `scikit-learn` (Random Forest), `xgboost` (Champion Model)
@@ -24,7 +24,7 @@ The system utilizes XGBoost Predictive Modeling, SHAP Explainable AI, Mean-Varia
 
 ---
 
-## 🚀 Key Features
+### Key Features
 
 - **Explainable AI (SHAP):** Real-time JSON API payload generation that mathematically breaks down exactly _why_ the XGBoost model made its crash prediction, rendered as an interactive UI waterfall chart.
 - **Options Market Sentiment:** Real-time S&P 500 Put/Call Open Interest ratio tracking institutional hedging and market panic via `yfinance`.
