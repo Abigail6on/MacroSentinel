@@ -8,7 +8,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-# --- PATH MANAGEMENT ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REGIME_PATH = os.path.join(BASE_DIR, "data", "processed", "regime_v2_status.csv")
 SMOOTHED_PATH = os.path.join(BASE_DIR, "data", "processed", "smoothed_indicators.csv")
@@ -16,10 +15,8 @@ RISK_PATH = os.path.join(BASE_DIR, "data", "processed", "risk_metrics.json")
 PERFORMANCE_PATH = os.path.join(BASE_DIR, "data", "processed", "backtest_results.csv")
 DASHBOARD_IMG_PATH = os.path.join(BASE_DIR, "output", "sentinel_pro_dashboard.png")
 
-# --- PAGE CONFIGURATION ---
 st.set_page_config(page_title="MacroSentinel | Global Macro AI", layout="wide")
 
-# --- DATA LOADING ---
 @st.cache_data
 def load_data():
     risk_data = {"VaR_95": "N/A", "CVaR_95": "N/A", "Max_Drawdown": "N/A"}
@@ -53,6 +50,16 @@ def load_data():
     return risk_data, latest_regime, ml_status, df, perf_df
 
 risk_data, live_regime, live_veto, history_df, perf_df = load_data()
+
+# Pre-calculate main return metrics if available
+strat_ret = 0.0
+spy_ret = 0.0
+alpha_basis = 0.0
+
+if perf_df is not None and not perf_df.empty and 'Strategy_Value' in perf_df.columns:
+    strat_ret = (perf_df['Strategy_Value'].iloc[-1] - 1) * 100
+    spy_ret = (perf_df['Benchmark_Value'].iloc[-1] - 1) * 100
+    alpha_basis = perf_df['Alpha_Basis'].iloc[-1]
 
 # --- INTERACTIVE SIDEBAR ---
 with st.sidebar:
@@ -112,16 +119,20 @@ tab1, tab2, tab3 = st.tabs(["Executive Summary", "Model Analytics & Logic", "Ris
 # ==========================================
 with tab1:
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Active Market Regime", str(current_regime))
-    col2.metric("ML Crash Veto", "ACTIVE" if is_veto_active else "CLEAR")
-    col3.metric(f"{conf_level}% Value at Risk (VaR)", f"{dynamic_var * 100:.2f}%")
-    col4.metric(f"{conf_level}% Expected Shortfall (CVaR)", f"{dynamic_cvar * 100:.2f}%")
+    # UPDATED NET RETURNS
+    col1.metric("Net Strategy Return", f"{strat_ret:.2f}%", f"{alpha_basis:.2f}% Net Alpha vs SPY")
+    col2.metric("SPY Benchmark", f"{spy_ret:.2f}%")
+    col3.metric("Max Drawdown", risk_data.get('Max_Drawdown', 'N/A'))
+    col4.metric("Market Regime", current_regime)
+    
+    # DISCLAIMER ADDED HERE
+    st.caption("ℹ️ **Quantitative Note:** Strategy returns are *Net of Fees*, incorporating a dynamic 5 basis point (0.05%) institutional slippage penalty applied to portfolio turnover during every rebalance.")
 
     st.divider()
     st.markdown("### Regime-Aware Performance Curve")
     if perf_df is not None and not perf_df.empty:
         fig = go.Figure()
-        fig.add_trace(go.Scatter(x=perf_df['Timestamp'], y=perf_df['Strategy_Value'], name='Sentinel Strategy', line=dict(color='#00ff00', width=2)))
+        fig.add_trace(go.Scatter(x=perf_df['Timestamp'], y=perf_df['Strategy_Value'], name='Sentinel Strategy (Net)', line=dict(color='#00ff00', width=2)))
         fig.add_trace(go.Scatter(x=perf_df['Timestamp'], y=perf_df['Benchmark_Value'], name='SPY Benchmark', line=dict(color='#888888', width=2)))
         fig.update_layout(yaxis_title="Cumulative Return", xaxis_title="Date", hovermode="x unified", margin=dict(l=0, r=0, t=30, b=0))
         st.plotly_chart(fig, width='stretch')

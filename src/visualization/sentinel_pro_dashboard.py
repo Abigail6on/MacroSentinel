@@ -41,8 +41,8 @@ def build_dashboard():
     if 'SHY_Ret' in bt_df.columns:
         shy_cum = (1 + bt_df['SHY_Ret'].fillna(0)).cumprod()
         ax1.plot(bt_df['Timestamp'], shy_cum, label='SHY (Cash Base)', color='#17a2b8', linewidth=1.5, linestyle=':')
-        
-    ax1.plot(bt_df['Timestamp'], bt_df['Strategy_Value'], color='#00ff00', linewidth=2.5, label='MacroSentinel Strategy')
+
+    ax1.plot(bt_df['Timestamp'], bt_df['Strategy_Value'], color='#00ff00', linewidth=2.5, alpha=0.8, label='MacroSentinel (Net of Fees)')
 
     ax1.set_title("Strategy vs Benchmark Equity Curve", fontsize=14, fontweight='bold', color='black')
     ax1.legend(loc='upper left')
