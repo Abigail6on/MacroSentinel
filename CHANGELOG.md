@@ -139,3 +139,11 @@
   - Upgraded the ML Engine (`ml_predictor.py`) to inject the live `Put_Call_Ratio` into the XGBoost feature space using a zero-look-ahead time-series zipper (`pd.merge_asof()`).
   - Updated the GitHub Actions `.yaml` workflow to automate hourly options data harvesting.
 - **Result:** Expanded the AI's predictive dimensions from three factors to four. The ML model now evaluates derivative market fear (e.g., Put/Call ratios > 1.5) alongside macroeconomic and NLP data to preempt market crashes.
+
+### **Session 22: Real-Time DevOps Alert System (Webhook Integration)**
+
+- **Objective:** Enable real-time monitoring and push notifications for AI-driven portfolio regime shifts without requiring manual dashboard checks.
+- **Logic:** - Developed `alert_engine.py` to evaluate the latest XGBoost predictions and format a rich-text JSON payload.
+  - Integrated a secure Discord Webhook using `python-dotenv` for local testing and GitHub Actions Secrets for cloud deployment.
+  - Added a conditional `if: success()` step in the CI/CD pipeline to automatically dispatch the webhook only after successful data processing.
+- **Result:** Created a fully automated, cloud-native alerting system that pushes live "Heartbeat" status reports and Red/Green market crash alerts directly to a mobile device.

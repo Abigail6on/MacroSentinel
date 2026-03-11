@@ -30,6 +30,7 @@ The system utilizes XGBoost Predictive Modeling, SHAP Explainable AI, Mean-Varia
 - **Options Market Sentiment:** Real-time S&P 500 Put/Call Open Interest ratio tracking institutional hedging and market panic via `yfinance`.
 - **Dynamic Regime Detection:** Fuses 10Y-2Y Yield Curve Inversions, Real Liquidity (M2 Growth - CPI), and NLP Sentiment into a singular Market State.
 - **Automated Rebalancing:** Adjusts portfolio weights using a Max Sharpe Ratio optimizer constrained by the live ML Regime.
+- **Real-Time MLOps Alerting:** Integrated a custom DevOps pipeline via GitHub Actions that dispatches secure, rich-text Discord webhooks. The system automatically pushes live portfolio rebalancing alerts and risk metrics (VaR, Drawdowns) directly to a mobile device based on hourly predictive model runs.
 
 ---
 
