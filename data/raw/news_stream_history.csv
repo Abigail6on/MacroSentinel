@@ -8383,3 +8383,60 @@ Timestamp,Published_At,Indicator,Sentiment,Headline
 2026-03-10 22:18:17.603762,2026-03-09T20:44:13Z,Inflation_Sentiment,0.6249,Access Anthropic Claude models in India on Amazon Bedrock with Global cross-Region inference
 2026-03-10 22:18:17.603867,2026-03-09T20:44:00Z,Inflation_Sentiment,-0.7783,The Irish Times view on oil prices: moving into danger territory
 2026-03-10 22:18:17.604204,2026-03-09T20:43:21Z,Inflation_Sentiment,-0.9528,"Why are US stock market indexes down today, and Dow Jones, Nasdaq and S&P 500 in red now? Wall Street crash, biggest gainers and losers, analysts insights, market outlook"
+2026-03-11 14:40:41.136357,2026-03-10T12:28:52Z,Monetary_Policy,-0.0,"Markets Are Misreading Fed’s Response to Oil Surge, BofA Says"
+2026-03-11 14:40:41.136618,2026-03-09T16:29:37Z,Monetary_Policy,-0.8897,New Bitcoin indicator reveals we just avoided a major drop — but one level could decide the next breakout
+2026-03-11 14:40:41.136803,2026-03-09T16:07:03Z,Monetary_Policy,0.4215,Bitcoin could be the big winner if the U.S.-Iran conflict drags on for months
+2026-03-11 14:40:41.136845,2026-03-09T14:30:00Z,Monetary_Policy,-0.2732,Growing Pains
+2026-03-11 14:40:41.137018,2026-03-09T09:50:39Z,Monetary_Policy,-0.5574,Iran conflict forces Asian central banks into sharp policy rethink
+2026-03-11 14:40:41.137122,2026-03-09T09:32:25Z,Monetary_Policy,-0.6705,Oil price tops $100 a barrel as Iran war rattles commodity markets
+2026-03-11 14:40:41.137173,2026-03-09T09:00:42Z,Monetary_Policy,0.0,What Do You Do and What Do You Make?
+2026-03-11 14:40:41.137384,2026-03-09T06:08:11Z,Monetary_Policy,-0.765,Iran conflict forces Asian central banks into sharp policy rethink
+2026-03-11 14:40:41.137583,2026-03-09T06:08:11Z,Monetary_Policy,-0.765,Iran conflict forces central banks into sharp policy rethink
+2026-03-11 14:40:41.137762,2026-03-08T13:27:04Z,Monetary_Policy,0.0258,欧州はブルーピルを飲むべきか？
+2026-03-11 14:40:41.137919,2026-03-08T11:35:43Z,Monetary_Policy,-0.34,Fear of ICE Is Driving Patients Away From HIV Care
+2026-03-11 14:40:41.138170,2026-03-07T14:34:42Z,Monetary_Policy,-0.926,"Global Stock Markets End Volatile Week Lower as Geopolitical Tensions, Surging Oil and Weak Jobs Data"
+2026-03-11 14:40:41.138353,2026-03-07T09:05:57Z,Monetary_Policy,-0.8779,Oppenheimer: The Risk Calculus Has Changed
+2026-03-11 14:40:41.138487,2026-03-07T04:04:11Z,Monetary_Policy,-0.1531,US Stock Market | 5 world market themes for the week ahead
+2026-03-11 14:40:41.138689,2026-03-06T17:05:14Z,Monetary_Policy,-0.875,Oil shock could send Bitcoin down 45% if price surge forces Fed to delay cuts
+2026-03-11 14:40:41.312791,2026-03-10T14:14:27Z,Labor_Market,-0.9153,"Investors are focused on Iran, but there are 3 other mounting risks to markets, Mohamed El-Erian says"
+2026-03-11 14:40:41.312959,2026-03-10T13:02:45Z,Labor_Market,0.5859,AI Agents + Crypto: $10 Trillion Agent Economy
+2026-03-11 14:40:41.313093,2026-03-10T13:00:09Z,Labor_Market,-0.0258,Forward-Deployed Engineers Emerge as One of AI’s Fastest-Growing Jobs
+2026-03-11 14:40:41.313172,2026-03-10T12:52:35Z,Labor_Market,-0.5994,How will soaring oil prices caused by Iran war impact food prices?
+2026-03-11 14:40:41.313259,2026-03-10T12:30:52Z,Labor_Market,0.0,"Transcript: Ed Perks, Franklin Income Investors CIO / Franklin Advisers President"
+2026-03-11 14:40:41.313354,2026-03-10T11:48:31Z,Labor_Market,0.4215,"China pins hopes on society-wide AI push to add jobs, rejuvenate economy"
+2026-03-11 14:40:41.313506,2026-03-10T11:29:32Z,Labor_Market,-0.8126,Will Johnny Ever Learn To Read?
+2026-03-11 14:40:41.313703,2026-03-10T10:30:00Z,Labor_Market,0.5719,"'Pro-worker AI,' streaming fatalities, and other fascinating new economic studies"
+2026-03-11 14:40:41.313815,2026-03-10T10:15:53Z,Labor_Market,0.765,"Analysis-China pins hopes on society-wide AI push to add jobs, rejuvenate economy"
+2026-03-11 14:40:41.314022,2026-03-10T09:45:01Z,Labor_Market,-0.0915,A top economist says he sees a 'very significant' recession coming in 2027 as fiscal stimulus and AI capex dry up
+2026-03-11 14:40:41.314172,2026-03-10T09:45:00Z,Labor_Market,-0.0644,Credit stress builds for some SMBs as debt rises and bank delinquencies climb
+2026-03-11 14:40:41.314235,2026-03-10T09:41:30Z,Labor_Market,-0.6597,AI isn’t killing jobs yet—CEOs are using layoffs to fund a $2.5 trillion arms race
+2026-03-11 14:40:41.314406,2026-03-10T09:07:33Z,Labor_Market,0.9319,"Health care can’t be the only job in town, but it is"
+2026-03-11 14:40:41.520789,2026-03-10T14:25:00Z,Manufacturing,-0.4767,The Hidden Causes of AI Workslop—and How to Fix Them
+2026-03-11 14:40:41.521038,2026-03-10T14:11:00Z,Manufacturing,0.5994,"Crosseal (Omrix Biopharmaceuticals) Market Research Report 2026: Epidemiology, Pipeline Analysis, Trends, Strategies, and Forecasts, 2020-2025, 2025-2030F, 2035F"
+2026-03-11 14:40:41.521171,2026-03-10T13:29:13Z,Manufacturing,-0.3182,Tesla (TSLA) VP of Finance leaves after 17 years as executive exodus grows
+2026-03-11 14:40:41.521293,2026-03-10T12:30:28Z,Manufacturing,0.3446,For Sale: An Incredible 1993 Geo Tracker With A Camso Track System
+2026-03-11 14:40:41.521354,2026-03-10T11:00:00Z,Manufacturing,0.0,Ultralife Corporation Reports Fourth Quarter Results
+2026-03-11 14:40:41.521437,2026-03-10T11:00:00Z,Manufacturing,0.296,Frame Grabber Market Size to Hit USD 3.09 Billion by 2035 | SNS Insider
+2026-03-11 14:40:41.521616,2026-03-10T10:50:00Z,Manufacturing,0.5719,"Lamzede (Chiesi Farmaceutici) Market Research Report 2026: Epidemiology, Pipeline Analysis, Trends, Strategies, & Forecasts, 2020-2025, 2025-2030F, 2035F"
+2026-03-11 14:40:41.521817,2026-03-10T10:48:00Z,Manufacturing,0.8271,"Lantidra (CellTrans) Market Research Report 2026: Epidemiology, Pipeline Analysis, Trends, Strategies, & Forecasts, 2020-2025, 2025-2030F, 2035F"
+2026-03-11 14:40:41.522032,2026-03-10T10:47:00Z,Manufacturing,0.7003,"Laviv (Fibrocell Science) Market Research Report 2026: Epidemiology, Pipeline Analysis, Trends, Strategies, & Forecasts, 2020-2025, 2025-2030F, 2035F"
+2026-03-11 14:40:41.522217,2026-03-10T10:39:18Z,Manufacturing,0.4648,"Genevieve Chenneour, Ola Rapace, Lewis Jamison, Kathryn Lincoln and Anna Wilson-Jones to Lead Psychosexual Thriller ‘Asphyxia’ (EXCLUSIVE)"
+2026-03-11 14:40:41.522355,2026-03-10T10:19:41Z,Manufacturing,0.0772,Apple Now Makes One in Four iPhones in India
+2026-03-11 14:40:41.522526,2026-03-10T10:16:45Z,Manufacturing,0.7579,BMW Group brings humanoid robots to Germany
+2026-03-11 14:40:41.522737,2026-03-10T09:50:00Z,Manufacturing,0.8658,LEGO revenue and profits continue to rise
+2026-03-11 14:40:41.522968,2026-03-10T09:46:00Z,Manufacturing,0.7964,"Abecma (Bristol-Myers Squibb) Market Research Report 2026: Epidemiology, Pipeline Analysis, Market Insights & Forecasts, 2020-2025, 2025-2030F, 2035F"
+2026-03-11 14:40:41.714729,2026-03-10T14:40:00Z,Inflation_Sentiment,0.3986,"Good Morning, News: Weird City Hall Power Dynamics EXPOSED, Elephants Delicatessen Caught Fire, and the Trump Administration Doesn’t Know What It’s Doing in Iran (or Anywhere, for That Matter)"
+2026-03-11 14:40:41.714904,2026-03-10T14:39:10Z,Inflation_Sentiment,0.2732,US banks eye capital victory as regulators tee up new Basel draft
+2026-03-11 14:40:41.715064,2026-03-10T14:36:08Z,Inflation_Sentiment,-0.8402,World’s fourth-largest refinery shut down in UAE after drone attack
+2026-03-11 14:40:41.715186,2026-03-10T14:36:05Z,Inflation_Sentiment,0.2415,"Gen Z is defiantly ‘giving up’ on ever owning a home and is spending more than saving, working less, and making risky investments, study shows"
+2026-03-11 14:40:41.715258,2026-03-10T14:35:49Z,Inflation_Sentiment,0.2732,What’s paraxanthine? The ingredient in Kim Kardashian’s caffeine-free energy drink
+2026-03-11 14:40:41.715370,2026-03-10T14:30:01Z,Inflation_Sentiment,0.6652,"M5 MacBook Air Review: Not just more of the same—the same, but more"
+2026-03-11 14:40:41.715621,2026-03-10T14:13:00Z,Inflation_Sentiment,0.2023,"Corifact (CSL Behring) Market Research Report 2026: Epidemiology, Pipeline Analysis, Trends, Strategies, and Forecasts, 2020-2025, 2025-2030F, 2035F"
+2026-03-11 14:40:41.715824,2026-03-10T14:00:00Z,Inflation_Sentiment,0.5984,Prevalence and consumption patterns of energy drinks among Iraqi adolescents: A cross-sectional study
+2026-03-11 14:40:41.715899,2026-03-10T14:00:00Z,Inflation_Sentiment,0.0772,"Candida in the lung: Fact, fiction, friend or foe?"
+2026-03-11 14:40:41.716160,2026-03-10T14:00:00Z,Inflation_Sentiment,0.8885,"“They don’t feel what I feel”: lived experiences of women accessing comprehensive abortion care in pastoralist communities of Oromia region, Ethiopia: A Phenomenological study"
+2026-03-11 14:40:41.716386,2026-03-10T13:55:25Z,Inflation_Sentiment,-0.8934,‘It’s making everything worse’: Americans fume as gas prices spike across US amid Iran war
+2026-03-11 14:40:41.716552,2026-03-10T13:48:00Z,Inflation_Sentiment,-0.2023,"In the home sector, ‘the weak will get weaker’ this year"
+2026-03-11 14:40:41.716971,2026-03-10T13:42:16Z,Inflation_Sentiment,0.7096,"Fitch: Greece Faces Energy Shock Risks from Middle East War, but Eurozone Is a Shield"
+2026-03-11 14:40:41.717118,2026-03-10T13:33:30Z,Inflation_Sentiment,-0.5267,More expensive ferry tickets: Rising fuel costs due to the Middle East put pressure on prices
+2026-03-11 14:40:41.717256,2026-03-10T13:24:31Z,Inflation_Sentiment,0.8126,3 Conversations We Are Not Having at Work and Why We Need Them
