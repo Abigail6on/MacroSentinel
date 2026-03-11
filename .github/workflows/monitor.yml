@@ -66,3 +66,12 @@ jobs:
 
           # Only push if data actually changed
           git diff --quiet && git diff --staged --quiet || (git commit -m "auto: hourly sentinel refresh [skip ci]" && git push origin main)
+
+      - name: Dispatch Real-Time Risk Alert Webhook
+        # Evaluates the latest ML predictions and dispatches a secure payload to external comms
+        if: success()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          echo "Initiating Sentinel Alert Engine..."
+          python src/engine/alert_engine.py
