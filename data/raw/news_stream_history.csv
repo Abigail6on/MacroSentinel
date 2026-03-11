@@ -8674,3 +8674,62 @@ Timestamp,Published_At,Indicator,Sentiment,Headline
 2026-03-11 18:42:23.706682,2026-03-10T17:58:35Z,Inflation_Sentiment,0.6249,Kevin Warsh faces an economic 'perfect storm' as he waits to take over as Fed chair
 2026-03-11 18:42:23.706822,2026-03-10T17:54:37Z,Inflation_Sentiment,-0.8555,Iran oil shock: the EU has very few options to limit the war’s economic impact – and prevent a recession
 2026-03-11 18:42:23.707018,2026-03-10T17:51:08Z,Inflation_Sentiment,-0.4767,FG ready to adjust policies as Middle East crisis deepens
+2026-03-11 19:36:18.463139,2026-03-10T17:58:35Z,Monetary_Policy,0.6249,Kevin Warsh faces an economic 'perfect storm' as he waits to take over as Fed chair
+2026-03-11 19:36:18.463358,2026-03-10T12:28:52Z,Monetary_Policy,-0.0,"Markets Are Misreading Fed’s Response to Oil Surge, BofA Says"
+2026-03-11 19:36:18.463576,2026-03-09T16:29:37Z,Monetary_Policy,-0.8897,New Bitcoin indicator reveals we just avoided a major drop — but one level could decide the next breakout
+2026-03-11 19:36:18.463763,2026-03-09T16:07:03Z,Monetary_Policy,0.4215,Bitcoin could be the big winner if the U.S.-Iran conflict drags on for months
+2026-03-11 19:36:18.463806,2026-03-09T14:30:00Z,Monetary_Policy,-0.2732,Growing Pains
+2026-03-11 19:36:18.463954,2026-03-09T09:50:39Z,Monetary_Policy,-0.5574,Iran conflict forces Asian central banks into sharp policy rethink
+2026-03-11 19:36:18.464045,2026-03-09T09:32:25Z,Monetary_Policy,-0.6705,Oil price tops $100 a barrel as Iran war rattles commodity markets
+2026-03-11 19:36:18.464089,2026-03-09T09:00:42Z,Monetary_Policy,0.0,What Do You Do and What Do You Make?
+2026-03-11 19:36:18.464272,2026-03-09T06:08:11Z,Monetary_Policy,-0.765,Iran conflict forces Asian central banks into sharp policy rethink
+2026-03-11 19:36:18.464444,2026-03-09T06:08:11Z,Monetary_Policy,-0.765,Iran conflict forces central banks into sharp policy rethink
+2026-03-11 19:36:18.464603,2026-03-08T13:27:04Z,Monetary_Policy,0.0258,欧州はブルーピルを飲むべきか？
+2026-03-11 19:36:18.464735,2026-03-08T11:35:43Z,Monetary_Policy,-0.34,Fear of ICE Is Driving Patients Away From HIV Care
+2026-03-11 19:36:18.464952,2026-03-07T14:34:42Z,Monetary_Policy,-0.926,"Global Stock Markets End Volatile Week Lower as Geopolitical Tensions, Surging Oil and Weak Jobs Data"
+2026-03-11 19:36:18.465113,2026-03-07T09:05:57Z,Monetary_Policy,-0.8779,Oppenheimer: The Risk Calculus Has Changed
+2026-03-11 19:36:18.465232,2026-03-07T04:04:11Z,Monetary_Policy,-0.1531,US Stock Market | 5 world market themes for the week ahead
+2026-03-11 19:36:18.647416,2026-03-10T19:22:19Z,Labor_Market,0.4404,4 money market account pros and cons to know this March
+2026-03-11 19:36:18.647516,2026-03-10T19:00:00Z,Labor_Market,0.6808,Fox Entertainment Taps Billy Parks as Head of Fox Creator Studios
+2026-03-11 19:36:18.647749,2026-03-10T18:49:08Z,Labor_Market,0.9062,Atmanirbhar Villages: Empowering India’s Journey Towards Self-Reliance
+2026-03-11 19:36:18.647955,2026-03-10T18:31:15Z,Labor_Market,-0.7096,Feds make it harder for immigrants to send money to family
+2026-03-11 19:36:18.648073,2026-03-10T18:26:32Z,Labor_Market,0.0,"Trump’s immigration crackdown is backfiring by hurting the U.S.-born workers it was meant to help, data shows"
+2026-03-11 19:36:18.648187,2026-03-10T17:58:35Z,Labor_Market,0.6249,Kevin Warsh faces an economic 'perfect storm' as he waits to take over as Fed chair
+2026-03-11 19:36:18.648324,2026-03-10T17:54:37Z,Labor_Market,-0.8555,Iran oil shock: the EU has very few options to limit the war’s economic impact – and prevent a recession
+2026-03-11 19:36:18.648428,2026-03-10T17:41:59Z,Labor_Market,-0.6652,Will soaring oil prices derail California’s wobbly economy?
+2026-03-11 19:36:18.648540,2026-03-10T17:17:07Z,Labor_Market,0.6369,I run a 30-year-old bookstore. Here's how I've kept sales rising for 4 straight years.
+2026-03-11 19:36:18.648743,2026-03-10T17:00:00Z,Labor_Market,0.7269,Clean Tech’s “Huge Blow”: Catalyst Fund (Gates’s Breakthrough Energy) Terminated
+2026-03-11 19:36:18.648864,2026-03-10T17:00:00Z,Labor_Market,-0.5362,"How worried should we be about the Iran conflict? Plus, did the RBNZ miss a chance to smash inflation? – Inside Economics"
+2026-03-11 19:36:18.648962,2026-03-10T15:47:17Z,Labor_Market,0.5729,How Labor Market Power Shapes the Impact of Monetary Policy
+2026-03-11 19:36:18.649172,2026-03-10T15:36:09Z,Labor_Market,0.9043,Are We Facing an AI Nightmare?
+2026-03-11 19:36:18.649240,2026-03-10T15:16:30Z,Labor_Market,0.1027,Netflix Just Got $2.8 Billion. Here's What It Should Spend On
+2026-03-11 19:36:18.649501,2026-03-10T14:55:04Z,Labor_Market,-0.6486,Friday’s Downbeat Jobs Report May be Misleading
+2026-03-11 19:36:18.844214,2026-03-10T19:21:43Z,Manufacturing,0.1531,European freight truck makers brace for wave of low-cost Chinese rivals
+2026-03-11 19:36:18.844300,2026-03-10T19:15:16Z,Manufacturing,0.0,2000 Porsche 911 Carrera Cabriolet 6-Speed
+2026-03-11 19:36:18.844370,2026-03-10T18:50:17Z,Manufacturing,0.0,27k-Mile 1989 Ferrari 328 GTS
+2026-03-11 19:36:18.844479,2026-03-10T18:30:39Z,Manufacturing,0.3818,39-Years-Owned 1969 Chevrolet Camaro SS Coupe L48 350/300
+2026-03-11 19:36:18.844581,2026-03-10T18:27:49Z,Manufacturing,-0.296,1964 Chevrolet Corvette Convertible 327 4-Speed at No Reserve
+2026-03-11 19:36:18.844714,2026-03-10T18:27:39Z,Manufacturing,0.1779,Show HN: Railyard – open and secure runtime for Claude Code
+2026-03-11 19:36:18.844907,2026-03-10T17:10:26Z,Manufacturing,0.9042,Milestones and Achievements of SINOFN GROUP: A Journey of Innovation in Medical Nutrition
+2026-03-11 19:36:18.844978,2026-03-10T16:44:33Z,Manufacturing,0.0,7k-Mile 2001 Ford Mustang SVT Cobra Coupe Shinoda Level II
+2026-03-11 19:36:18.845154,2026-03-10T16:14:26Z,Manufacturing,0.5574,Three insights you might have missed from theCUBE’s coverage of Vast Forward
+2026-03-11 19:36:18.845283,2026-03-10T16:00:00Z,Manufacturing,0.9169,"Shelby American Continues Strong Expansion, Signs Strategic Agreement with Powerhouse Truck Company Shelby Performance"
+2026-03-11 19:36:18.845347,2026-03-10T15:40:21Z,Manufacturing,0.0,1960 Ford Thunderbird Coupe
+2026-03-11 19:36:18.845397,2026-03-10T15:34:26Z,Manufacturing,0.296,EU admits nuclear blunder
+2026-03-11 19:36:18.845472,2026-03-10T15:31:13Z,Manufacturing,0.128,Raksha Sanikam’s House of Santal Brings Contemporary South Asian Design to New York
+2026-03-11 19:36:18.845601,2026-03-10T15:29:40Z,Manufacturing,0.3612,Persona AI Announces Michael Perry as Head of Commercial Strategy
+2026-03-11 19:36:18.845648,2026-03-10T15:24:00Z,Manufacturing,0.0,Persona AI Announces Michael Perry as Head of Commercial Strategy
+2026-03-11 19:36:19.050373,2026-03-10T19:30:00Z,Inflation_Sentiment,0.9719,Can We Cast All of Our Cares Upon the Lord? (1 Peter 5:7)
+2026-03-11 19:36:19.050492,2026-03-10T19:25:00Z,Inflation_Sentiment,0.4404,"Kedaara Capital gears up to sell Universal NutriScience for Rs 3,000 crore"
+2026-03-11 19:36:19.050608,2026-03-10T18:59:32Z,Inflation_Sentiment,-0.2023,Data reveals demands on NSW hospitals have surpassed COVID pandemic
+2026-03-11 19:36:19.050749,2026-03-10T18:58:16Z,Inflation_Sentiment,-0.3818,"Americans may pay no taxes on first $75,000 under new bill — key details explained"
+2026-03-11 19:36:19.050906,2026-03-10T18:56:47Z,Inflation_Sentiment,-0.3919,Middle East conflict is pushing oil prices higher — and most Canadians will feel the costs
+2026-03-11 19:36:19.051014,2026-03-10T18:55:42Z,Inflation_Sentiment,0.0382,Project Vend: Proof You Should Never Leave Your Autonomous Business AI Agent Unattended
+2026-03-11 19:36:19.051110,2026-03-10T18:51:04Z,Inflation_Sentiment,-0.7783,"As gas prices soar, Trump is ignoring the lessons of the last oil crisis"
+2026-03-11 19:36:19.051234,2026-03-10T18:47:34Z,Inflation_Sentiment,-0.5719,WATCH: Waymo vehicle stops inside railway crossing gate
+2026-03-11 19:36:19.051465,2026-03-10T18:44:40Z,Inflation_Sentiment,-0.0052,Asian hubs boom as Aussies avoid Middle East airspace
+2026-03-11 19:36:19.051610,2026-03-10T18:44:00Z,Inflation_Sentiment,0.6369,"Sperm Health, Elon Musk, and Reddit Rabbit Holes—Welcome to the Bizarre World of Shilajit Supplements"
+2026-03-11 19:36:19.051680,2026-03-10T18:41:10Z,Inflation_Sentiment,0.4404,China's exports surge despite waning trade with the U.S.
+2026-03-11 19:36:19.051784,2026-03-10T18:39:19Z,Inflation_Sentiment,-0.7845,Pressure mounts on EU to propose ‘concrete’ response to energy crisis
+2026-03-11 19:36:19.051990,2026-03-10T18:35:49Z,Inflation_Sentiment,-0.6757,Sherrill’s $60.7B NJ budget boosts school funding but risks tax fight
+2026-03-11 19:36:19.052144,2026-03-10T18:26:03Z,Inflation_Sentiment,-0.1531,Raw nerve: Drugs may get costlier as prices of ingredients surge 30%
