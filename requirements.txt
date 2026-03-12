@@ -25,3 +25,5 @@ shap
 
 # Utilities
 tabulate
+
+psycopg2-binary

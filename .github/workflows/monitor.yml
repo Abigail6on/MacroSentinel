@@ -67,6 +67,15 @@ jobs:
           # Only push if data actually changed
           git diff --quiet && git diff --staged --quiet || (git commit -m "auto: hourly sentinel refresh [skip ci]" && git push origin main)
 
+      - name: Push Predictions to Cloud SQL Database
+        # Executes Data Engineering pipeline to store ML regime outputs in PostgreSQL
+        if: success()
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+        run: |
+          echo "Initiating Database Engine..."
+          python src/engine/db_engine.py
+
       - name: Dispatch Real-Time Risk Alert Webhook
         # Evaluates the latest ML predictions and dispatches a secure payload to external comms
         if: success()
