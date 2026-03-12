@@ -8912,3 +8912,62 @@ Timestamp,Published_At,Indicator,Sentiment,Headline
 2026-03-11 22:19:14.841589,2026-03-10T20:05:40Z,Inflation_Sentiment,0.8506,"Abolish Discriminatory Laws, Structural Barriers, Speakers Urge at Round-Table Discussion on Strengthening Access to Justice for Women, Girls"
 2026-03-11 22:19:14.841804,2026-03-10T20:02:00Z,Inflation_Sentiment,-0.9607,"Docked boats, idle tractors — the Iran war fuel crisis is hurting Australia"
 2026-03-11 22:19:14.842012,2026-03-10T20:00:00Z,Inflation_Sentiment,-0.9686,Aramco CEO Warns of Oil Market Catastrophe in Prolonged War
+2026-03-12 14:42:08.051625,2026-03-11T12:42:08Z,Monetary_Policy,0.6261,Why gold and silver prices are down today: Gold slips $44 while silver falls $2.80 — What is crushing precious metals despite global turmoil?
+2026-03-12 14:42:08.051743,2026-03-11T07:14:05Z,Monetary_Policy,0.3182,Next week could spice things up for bitcoin as seven central banks face an inflation test
+2026-03-12 14:42:08.051923,2026-03-11T01:03:34Z,Monetary_Policy,0.2732,Markets tread water as investors brace for inflation data
+2026-03-12 14:42:08.052121,2026-03-10T19:55:00Z,Monetary_Policy,0.4019,Robert Kadlec: The Man Behind Trump’s Biowarfare Policy
+2026-03-12 14:42:08.052259,2026-03-10T17:58:35Z,Monetary_Policy,0.6249,Kevin Warsh faces an economic 'perfect storm' as he waits to take over as Fed chair
+2026-03-12 14:42:08.052485,2026-03-10T12:28:52Z,Monetary_Policy,-0.0,"Markets Are Misreading Fed’s Response to Oil Surge, BofA Says"
+2026-03-12 14:42:08.052715,2026-03-09T16:29:37Z,Monetary_Policy,-0.8897,New Bitcoin indicator reveals we just avoided a major drop — but one level could decide the next breakout
+2026-03-12 14:42:08.052887,2026-03-09T16:07:03Z,Monetary_Policy,0.4215,Bitcoin could be the big winner if the U.S.-Iran conflict drags on for months
+2026-03-12 14:42:08.052925,2026-03-09T14:30:00Z,Monetary_Policy,-0.2732,Growing Pains
+2026-03-12 14:42:08.053089,2026-03-09T09:50:39Z,Monetary_Policy,-0.5574,Iran conflict forces Asian central banks into sharp policy rethink
+2026-03-12 14:42:08.053191,2026-03-09T09:32:25Z,Monetary_Policy,-0.6705,Oil price tops $100 a barrel as Iran war rattles commodity markets
+2026-03-12 14:42:08.053239,2026-03-09T09:00:42Z,Monetary_Policy,0.0,What Do You Do and What Do You Make?
+2026-03-12 14:42:08.053445,2026-03-09T06:08:11Z,Monetary_Policy,-0.765,Iran conflict forces Asian central banks into sharp policy rethink
+2026-03-12 14:42:08.053650,2026-03-09T06:08:11Z,Monetary_Policy,-0.765,Iran conflict forces central banks into sharp policy rethink
+2026-03-12 14:42:08.053825,2026-03-08T13:27:04Z,Monetary_Policy,0.0258,欧州はブルーピルを飲むべきか？
+2026-03-12 14:42:08.318949,2026-03-11T14:26:50Z,Labor_Market,0.296,US consumer inflation unchanged at 2.4% in February
+2026-03-12 14:42:08.319122,2026-03-11T14:08:16Z,Labor_Market,-0.5423,Sweden Cuts 2026 GDP Growth Forecast on Geopolitical Concern
+2026-03-12 14:42:08.319294,2026-03-11T14:00:00Z,Labor_Market,-0.25,Gender and poverty in the United States: Evidence from the Survey of Consumer Finances
+2026-03-12 14:42:08.319455,2026-03-11T13:56:55Z,Labor_Market,-0.8478,"ONE SHEET: Trump Vs. the Press, Joe Rogan Feels ‘Betrayed’, CNN’s Foreign Influence, and More!"
+2026-03-12 14:42:08.319573,2026-03-11T13:30:01Z,Labor_Market,-0.5994,"Black women were disproportionately impacted by DOGE cuts. A year later, they're rebuilding careers for themselves and each other"
+2026-03-12 14:42:08.319737,2026-03-11T13:15:00Z,Labor_Market,0.7783,Creators Go Pro: Digital Stars Bank Brand Bucks While Talent Agencies and Support Firms Proliferate
+2026-03-12 14:42:08.319839,2026-03-11T13:05:00Z,Labor_Market,0.34,The $15 Billion Signal From the Pentagon
+2026-03-12 14:42:08.320010,2026-03-11T13:03:17Z,Labor_Market,-0.1779,Swedish government lowers growth forecast for this year
+2026-03-12 14:42:08.320099,2026-03-11T12:51:45Z,Labor_Market,0.0,Young people expect little change as Republic of Congo heads to presidential election
+2026-03-12 14:42:08.320293,2026-03-11T12:39:04Z,Labor_Market,0.3182,Why the Democrats Are Not Radical Enough
+2026-03-12 14:42:08.320329,2026-03-11T12:25:33Z,Labor_Market,0.0,"Inflation, consumer costs likely to spike in coming months"
+2026-03-12 14:42:08.320484,2026-03-11T12:09:24Z,Labor_Market,-0.3182,Why are Gen‑Z workers romanticizing 9‑to‑5 jobs? #lifestyle
+2026-03-12 14:42:08.320563,2026-03-11T12:00:00Z,Labor_Market,0.5106,"Play It Again, Claude"
+2026-03-12 14:42:08.320661,2026-03-11T11:51:38Z,Labor_Market,-0.7783,Which countries have seen the highest petrol prices since the Iran war?
+2026-03-12 14:42:08.320749,2026-03-11T11:26:57Z,Labor_Market,0.0,Do AI-enabled companies need fewer people?
+2026-03-12 14:42:08.482248,2026-03-11T14:35:18Z,Manufacturing,0.0,1968 Volkswagen Beetle
+2026-03-12 14:42:08.482571,2026-03-11T14:35:04Z,Manufacturing,-0.9588,"Stryker Cyber Attack: Did Iranian-linked hackers use wiper malware to shut down Cork systems and disrupt global medical device production? 4,000 workers offline in suspected wiper attack"
+2026-03-12 14:42:08.482726,2026-03-11T14:31:52Z,Manufacturing,0.6369,Fund Trying to Turn New Mexico Desert into an Advanced Tech Hub
+2026-03-12 14:42:08.482911,2026-03-11T14:28:57Z,Manufacturing,0.6597,"Eclipse Automation Marks 25 Years with Strategic Expansion, New Partnerships, and Bold Vision for the Future of Factory Automation"
+2026-03-12 14:42:08.483140,2026-03-11T14:27:00Z,Manufacturing,0.6597,"Eclipse Automation Marks 25 Years with Strategic Expansion, New Partnerships, and Bold Vision for the Future of Factory Automation"
+2026-03-12 14:42:08.483255,2026-03-11T14:15:01Z,Manufacturing,0.0,Fuel-Injected 1973 Ford Bronco Sport 302
+2026-03-12 14:42:08.483397,2026-03-11T14:08:55Z,Manufacturing,0.6705,"BMW Has Already Built 100,000 X3 G45s In South Africa"
+2026-03-12 14:42:08.483577,2026-03-11T14:04:02Z,Manufacturing,0.9506,Suno: Is the AI Startup Music's Biggest Nightmare or Greatest Hope?
+2026-03-12 14:42:08.483723,2026-03-11T13:55:08Z,Manufacturing,-0.296,2014 Porsche Cayenne GTS at No Reserve
+2026-03-12 14:42:08.483833,2026-03-11T13:45:17Z,Manufacturing,-0.296,Modified 1984 Honda Odyssey FL250 at No Reserve
+2026-03-12 14:42:08.484042,2026-03-11T13:31:28Z,Manufacturing,-0.0258,Sony FX2 firmware update coming with new features to increase sales?
+2026-03-12 14:42:08.484105,2026-03-11T13:26:44Z,Manufacturing,0.0,Delivering Cricket at Scale: DP World Drives ICC Men’s T20 World Cup 2026 Logistics Across India and Sri Lanka
+2026-03-12 14:42:08.484176,2026-03-11T12:45:08Z,Manufacturing,0.0,Baby Audio Introduces Grainferno Granular Synthesizer Instrument
+2026-03-12 14:42:08.484271,2026-03-11T12:30:00Z,Manufacturing,0.34,For Sale: An “A-Team” Spec GMC Vandura
+2026-03-12 14:42:08.484332,2026-03-11T11:00:06Z,Manufacturing,0.0,"The Ample Hills Couple Is Back, Again"
+2026-03-12 14:42:08.660324,2026-03-11T14:38:26Z,Inflation_Sentiment,-0.9106,The Israel-Hezbollah ceasefire was built to fail
+2026-03-12 14:42:08.660454,2026-03-11T14:26:44Z,Inflation_Sentiment,-0.8338,"Flights to the Middle East have resumed, but travel chaos is nowhere near over"
+2026-03-12 14:42:08.660581,2026-03-11T14:15:39Z,Inflation_Sentiment,0.2732,Remittance inflow surges 39.8% as Nepal’s forex reserves cross Rs 3.3 trillion
+2026-03-12 14:42:08.660731,2026-03-11T14:14:15Z,Inflation_Sentiment,0.3182,"Induction cooktops, electric kettles sales surge amid LPG supply concerns"
+2026-03-12 14:42:08.660832,2026-03-11T14:09:26Z,Inflation_Sentiment,0.6486,WATCH: Whale of a story in Hawaii
+2026-03-12 14:42:08.661026,2026-03-11T14:03:53Z,Inflation_Sentiment,0.0772,"Surge in LPG prices, supply crunch threaten livelihoods of auto and taxi drivers"
+2026-03-12 14:42:08.661256,2026-03-11T14:00:00Z,Inflation_Sentiment,0.807,Which quantum computing startups are worth betting on right now
+2026-03-12 14:42:08.661444,2026-03-11T14:00:00Z,Inflation_Sentiment,-0.6808,Development and validation of the BASE-66 inventory for comprehensive academic stress measurement
+2026-03-12 14:42:08.661684,2026-03-11T14:00:00Z,Inflation_Sentiment,0.8074,Using reinforcement algorithms to improve the collaboration efficiency of entrepreneurial teams
+2026-03-12 14:42:08.661825,2026-03-11T13:58:15Z,Inflation_Sentiment,0.4588,"Stocks mixed, dollar edges up after US inflation; focus squarely on oil"
+2026-03-12 14:42:08.661997,2026-03-11T13:58:15Z,Inflation_Sentiment,0.4939,"Stocks dip, Treasury yields jump as oil pushes higher"
+2026-03-12 14:42:08.662166,2026-03-11T13:58:15Z,Inflation_Sentiment,0.4215,"Stocks fall, dollar edges up after US inflation; focus squarely on oil"
+2026-03-12 14:42:08.662365,2026-03-11T13:34:49Z,Inflation_Sentiment,-0.91,Government to review planned fuel duty rise as Iran war causes price surge at pumps
+2026-03-12 14:42:08.662447,2026-03-11T13:33:09Z,Inflation_Sentiment,-0.5994,Here's the inflation breakdown for February 2026 — in one chart
