@@ -4,69 +4,52 @@
 
 **MacroSentinel** is an automated quantitative trading architecture built as a proof-of-concept for downside risk management and capital preservation. It fuses **"Hard"** economic indicators (FRED macro data), **"Soft"** alternative data (VADER NLP Real-Time News Sentiment), and **"Smart Money"** derivatives (Options Market Put/Call Ratios) and routes them through a Machine Learning Regime Engine.
 
-The system utilizes XGBoost Predictive Modeling, SHAP Explainable AI, Mean-Variance Optimization, Walk-Forward Validation, and automated CI/CD cloud deployment to dynamically adapt to shifting global market regimes.
+The system utilizes a 13-factor XGBoost Predictive Model, SHAP Explainable AI, Mean-Variance Optimization, Walk-Forward Validation, and automated CI/CD cloud deployment to dynamically adapt to shifting global market regimes.
 
 ### Executive Summary (Business Impact)
 
 - **The Problem:** Traditional rule-based trading bots react to market crashes _after_ they happen, leading to severe capital drawdown.
 - **The Solution:** An autonomous, end-to-end MLOps pipeline that uses **Natural Language Processing** to read global financial news and an **XGBoost** machine learning brain to actively predict stock market drops 5 periods in advance.
-- **The Result:** If the AI detects an impending crash, it triggers a defensive circuit breaker, reallocating the portfolio into safe-haven assets (Bonds/Cash). The frontend acts as an Interactive Risk Simulator, allowing users to dynamically calculate **Value at Risk (VaR)** and **Conditional VaR (CVaR)** to mathematically prove tail-risk downside protection, all while running fully automated in the cloud via **GitHub Actions**.
+- **The Result:** If the AI detects an impending crash, it triggers a defensive circuit breaker, reallocating the portfolio into safe-haven assets (Bonds/Cash). The frontend acts as an Interactive Risk Simulator, allowing users to dynamically calculate **Value at Risk (VaR)** and view real-time Alpha generation.
 
 ---
 
-### Technical Stack
+## The Master Dashboard
 
-- **Data Engineering:** `pandas`, `numpy`, `yfinance`, `fredapi`, `vaderSentiment`
-- **Machine Learning Engine:** `scikit-learn` (Random Forest), `xgboost` (Champion Model)
-- **Model Interpretability:** `shap` (SHapley Additive exPlanations)
-- **Quantitative Finance:** `scipy` (Optimization), `statsmodels` (Fama-French Factor Regression)
-- **Visualization:** `matplotlib`, `seaborn`, `plotly`, `streamlit`
+_(A real-time, 6-panel visualization of the AI's decision-making process, risk metrics, and alpha generation.)_
 
----
+![MacroSentinel Dashboard](output/sentinel_pro_dashboard.png)
 
-### Key Features
-
-- **Explainable AI (SHAP):** Real-time JSON API payload generation that mathematically breaks down exactly _why_ the XGBoost model made its crash prediction, rendered as an interactive UI waterfall chart.
-- **Options Market Sentiment:** Real-time S&P 500 Put/Call Open Interest ratio tracking institutional hedging and market panic via `yfinance`.
-- **Dynamic Regime Detection:** Fuses 10Y-2Y Yield Curve Inversions, Real Liquidity (M2 Growth - CPI), and NLP Sentiment into a singular Market State.
-- **Automated Rebalancing:** Adjusts portfolio weights using a Max Sharpe Ratio optimizer constrained by the live ML Regime.
-- **Real-Time MLOps Alerting:** Integrated a custom DevOps pipeline via GitHub Actions that dispatches secure, rich-text Discord webhooks. The system automatically pushes live portfolio rebalancing alerts and risk metrics (VaR, Drawdowns) directly to a mobile device based on hourly predictive model runs.
+_(Note: If you have any other existing performance tables or charts in your current README, keep them right here!)_
 
 ---
 
-## Live Interactive Dashboard
+## 🚀 Key Technical Features
 
-The frontend is hosted on Streamlit Community Cloud, providing a real-time window into the AI's decision-making process, active market regime, and current risk metrics. It includes a "State Override" feature to simulate portfolio behavior under forced economic stress tests.
+### 1. Multivariate XGBoost Regime Engine
 
-**[👉 Click here to view the live Web App](https://macrosentinel-kgaeiagprtfjwfbjnav7dn.streamlit.app/)**
+Unlike static rule-based bots, MacroSentinel relies on a dynamically trained **XGBoost Classifier** that ingests 13 time-series features (including Lag, Momentum, and Rolling Volatility). The AI actively predicts market drawdowns and triggers a defensive "ML Crash Veto."
 
----
+### 2. Explainable AI (SHAP)
 
-## 📈 Executive Performance
+Black-box models are a liability in quantitative finance. This project implements a real-time **SHAP (SHapley Additive exPlanations)** explainer. The UI dynamically scales and visualizes the top driving factors behind every XGBoost prediction, proving exactly _why_ the model shifted its regime classification.
 
-![Sentinel Pro Dashboard](output/sentinel_pro_dashboard.png)
-_Dashboard Components: (1) Regime-Aware Equity Curve, (2) Strategic Target Allocation, (3) Risk/Fuel Driver Overlay (Real Liquidity), (4) NLP Sentiment Heatmap._
+### 3. NLP Sentiment Alpha Generation
 
----
+A real-time data pipeline scrapes global financial news, processes it through a VADER NLP sentiment analyzer, and smooths the signals. The engine correlates this textual data with quantitative asset pricing, proving that the model generates positive Alpha by acting on macroeconomic sentiment _before_ it is fully priced into the SPY benchmark.
 
-## ⚙️ The Quantitative Framework
+### 4. Institutional-Grade Backtester
 
-The model utilizes a **Multi-Factor Hierarchy** to determine tactical global asset exposure across an 11-asset universe (`SPY, QQQ, GLD, SHY, XLF, XLU, XLE, TLT, DBC, EFA, EEM`):
+The performance engine goes beyond simple returns by incorporating:
 
-| Component                   | Logic                                                                                                      | Objective                        |
-| :-------------------------- | :--------------------------------------------------------------------------------------------------------- | :------------------------------- |
-| **ML Predictive Veto**      | `XGBoost Classifier` trained on historical macro/NLP data to predict market drops.                         | Proactive Crash Evasion          |
-| **Regime Engine V2**        | Fuses smoothed NLP sentiment, RSI momentum, and M2 Liquidity. Overridden by the ML Brain if needed.        | Directional Bias & State Mapping |
-| **Global Asset Allocation** | Dynamically weights a covariance matrix using SciPy `minimize` with a strict 40% maximum position cap.     | Maximize Sharpe / Global Yield   |
-| **Liquidity & VIX Vetoes**  | Sells equities for Cash/Bonds if Real M2 Money Supply < 0 or if the Global VIX spikes > 20.                | Systemic Risk Mitigation         |
-| **Walk-Forward Engine**     | Eliminates Look-Ahead Bias by rolling a 30-period in-sample optimization window for out-of-sample returns. | Robust Strategy Validation       |
-| **Risk Analytics**          | Computes dynamically adjustable Historical VaR and Expected Shortfall on out-of-sample returns.            | Tail-Risk Quantification         |
+- **Transaction Friction:** A dynamic 5 basis point (0.05%) penalty is applied to portfolio turnover during every rebalance to simulate real-world bid-ask spread slippage.
+- **Risk Analytics:** Continuous calculation of Maximum Drawdown, Value at Risk (VaR), and Conditional Value at Risk (CVaR).
 
 ---
 
-## 🛠️ System Architecture (End-to-End MLOps)
+## System Architecture & MLOps Pipeline
 
-The system is fully automated via GitHub Actions, running a continuous data pipeline that seamlessly syncs the backend engine with the frontend web app.
+This repository is fully automated using a Continuous Integration/Continuous Deployment (CI/CD) pipeline via GitHub Actions to sync the backend data with the frontend web app.
 
 1. **Data Ingestion:** Real-time collectors for FRED macro indicators, live global asset prices, and VADER NLP news sentiment.
 2. **Model Training:** Trains the AI brain chronologically to avoid look-ahead bias and calculates the active market regime.
