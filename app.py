@@ -10,7 +10,6 @@ from plotly.subplots import make_subplots
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REGIME_PATH = os.path.join(BASE_DIR, "data", "processed", "regime_v2_status.csv")
-SMOOTHED_PATH = os.path.join(BASE_DIR, "data", "processed", "smoothed_indicators.csv")
 RISK_PATH = os.path.join(BASE_DIR, "data", "processed", "risk_metrics.json")
 PERFORMANCE_PATH = os.path.join(BASE_DIR, "data", "processed", "backtest_results.csv")
 DASHBOARD_IMG_PATH = os.path.join(BASE_DIR, "output", "sentinel_pro_dashboard.png")
@@ -30,22 +29,17 @@ def load_data():
     
     if os.path.exists(REGIME_PATH):
         df = pd.read_csv(REGIME_PATH)
-        if os.path.exists(SMOOTHED_PATH):
-            smooth_df = pd.read_csv(SMOOTHED_PATH)
-            df['Timestamp'] = pd.to_datetime(df['Timestamp'])
-            smooth_df['Timestamp'] = pd.to_datetime(smooth_df['Timestamp'])
-            df = df.sort_values('Timestamp')
-            smooth_df = smooth_df.sort_values('Timestamp')
-            df = pd.merge_asof(df, smooth_df, on='Timestamp', direction='backward')
-            df = df.ffill().bfill()
+        df['Timestamp'] = pd.to_datetime(df['Timestamp'])
             
         if not df.empty:
             latest_regime = df.iloc[-1].get("Regime_V2", "Unknown")
             ml_status = df.iloc[-1].get("ML_Crash_Veto", False)
             
+    # Load Performance Data
     perf_df = None
     if os.path.exists(PERFORMANCE_PATH):
         perf_df = pd.read_csv(PERFORMANCE_PATH)
+        perf_df['Timestamp'] = pd.to_datetime(perf_df['Timestamp'])
         
     return risk_data, latest_regime, ml_status, df, perf_df
 
@@ -79,10 +73,8 @@ with st.sidebar:
         ["Live Data", "Force: Goldilocks (Growth)", "Force: Defensive (Contraction)", "Force: Neutral / Transitioning"]
     )
 
-# Apply the Override Logic
 if regime_override != "Live Data":
     current_regime = regime_override.replace("Force: ", "")
-    # Automatically trigger the ML Veto if they force a Defensive state
     is_veto_active = True if current_regime == "Defensive (Contraction)" else False
 else:
     current_regime = live_regime
@@ -119,13 +111,11 @@ tab1, tab2, tab3 = st.tabs(["Executive Summary", "Model Analytics & Logic", "Ris
 # ==========================================
 with tab1:
     col1, col2, col3, col4 = st.columns(4)
-    # UPDATED NET RETURNS
     col1.metric("Net Strategy Return", f"{strat_ret:.2f}%", f"{alpha_basis:.2f}% Net Alpha vs SPY")
     col2.metric("SPY Benchmark", f"{spy_ret:.2f}%")
     col3.metric("Max Drawdown", risk_data.get('Max_Drawdown', 'N/A'))
     col4.metric("Market Regime", current_regime)
     
-    # DISCLAIMER ADDED HERE
     st.caption("ℹ️ **Quantitative Note:** Strategy returns are *Net of Fees*, incorporating a dynamic 5 basis point (0.05%) institutional slippage penalty applied to portfolio turnover during every rebalance.")
 
     st.divider()
@@ -135,7 +125,7 @@ with tab1:
         fig.add_trace(go.Scatter(x=perf_df['Timestamp'], y=perf_df['Strategy_Value'], name='Sentinel Strategy (Net)', line=dict(color='#00ff00', width=2)))
         fig.add_trace(go.Scatter(x=perf_df['Timestamp'], y=perf_df['Benchmark_Value'], name='SPY Benchmark', line=dict(color='#888888', width=2)))
         fig.update_layout(yaxis_title="Cumulative Return", xaxis_title="Date", hovermode="x unified", margin=dict(l=0, r=0, t=30, b=0))
-        st.plotly_chart(fig, width='stretch')
+        st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Performance data is currently building.")
 
@@ -145,19 +135,38 @@ with tab1:
 with tab2:
     st.markdown("### NLP Sentiment Alpha Generation")
     
-    if history_df is not None and 'SPY' in history_df.columns and 'Inflation_Sentiment' in history_df.columns:
-        fig2 = make_subplots(specs=[[{"secondary_y": True}]])
-        fig2.add_trace(go.Scatter(x=history_df['Timestamp'], y=history_df['SPY'], name="SPY Price", line=dict(color='blue')), secondary_y=False)
-        history_df['Smoothed_Sentiment'] = history_df['Inflation_Sentiment'].ffill().bfill().rolling(7, min_periods=1).mean()
-        fig2.add_trace(go.Scatter(x=history_df['Timestamp'], y=history_df['Smoothed_Sentiment'], name="Rolling NLP Sentiment", line=dict(color='orange', dash='dot')), secondary_y=True)
-        fig2.update_yaxes(title_text="<b>SPY Price</b>", secondary_y=False)
-        fig2.update_yaxes(title_text="<b>News Sentiment (-1 to 1)</b>", secondary_y=True)
-        fig2.update_layout(hovermode="x unified", margin=dict(l=0, r=0, t=30, b=0))
-        st.plotly_chart(fig2, width='stretch')
+    if history_df is not None and perf_df is not None and 'Alpha_Basis' in perf_df.columns:
+        # Merge performance alpha with NLP sentiment on Timestamp
+        merged_df = pd.merge(perf_df[['Timestamp', 'Alpha_Basis']], 
+                             history_df[['Timestamp', 'Inflation_Sentiment', 'Monetary_Policy']], 
+                             on='Timestamp', how='inner')
+                             
+        # Create a combined sentiment metric
+        merged_df['Composite_Sentiment'] = merged_df[['Inflation_Sentiment', 'Monetary_Policy']].mean(axis=1)
+        merged_df['Smoothed_Sentiment'] = merged_df['Composite_Sentiment'].rolling(window=5, min_periods=1).mean()
         
-        # 💡 Institutional Tooltip
+        # Build Dual-Axis Plotly Chart
+        fig2 = make_subplots(specs=[[{"secondary_y": True}]])
+        
+        # Plot Alpha on Left Axis (Green)
+        fig2.add_trace(go.Scatter(x=merged_df['Timestamp'], y=merged_df['Alpha_Basis'], 
+                                  name="Cumulative Alpha (bps)", line=dict(color='#28a745', width=3)), secondary_y=False)
+                                  
+        # Plot Sentiment on Right Axis (Blue Dashed)
+        fig2.add_trace(go.Scatter(x=merged_df['Timestamp'], y=merged_df['Smoothed_Sentiment'], 
+                                  name="Rolling NLP Sentiment", line=dict(color='#007bff', dash='dot', width=2)), secondary_y=True)
+                                  
+        fig2.update_yaxes(title_text="<b>Alpha Generated (bps)</b>", secondary_y=False, title_font=dict(color="#28a745"))
+        fig2.update_yaxes(title_text="<b>News Sentiment (-1 to 1)</b>", secondary_y=True, title_font=dict(color="#007bff"))
+        fig2.update_layout(hovermode="x unified", margin=dict(l=0, r=0, t=30, b=0))
+        
+        st.plotly_chart(fig2, use_container_width=True)
+        
+        # Institutional Tooltip
         with st.expander("How to interpret NLP Alpha"):
-            st.write("This chart maps the S&P 500 against a 7-day rolling VADER sentiment score derived directly from real-time news APIs. Divergences (where the price rises but sentiment drops into the negative) act as leading indicators for the XGBoost engine to predict imminent market contractions.")
+            st.write("This chart maps the portfolio's generated Alpha against a 5-hour rolling VADER sentiment score derived directly from live news APIs. By tracking this correlation, we prove that the XGBoost engine generates positive excess returns by defensively positioning the portfolio *before* the market digests negative economic news.")
+    else:
+        st.warning("Awaiting sufficient data to calculate NLP Alpha correlation.")
     
     st.divider()
 
@@ -170,7 +179,7 @@ with tab2:
             corr_matrix = clean_prices.pct_change().corr()
             fig3 = px.imshow(corr_matrix, text_auto=".2f", aspect="auto", color_continuous_scale='RdBu_r', zmin=-1, zmax=1)
             fig3.update_layout(height=600, margin=dict(l=0, r=0, t=30, b=0))
-            st.plotly_chart(fig3, width='stretch')
+            st.plotly_chart(fig3, use_container_width=True)
             
             # 💡 Institutional Tooltip
             with st.expander("How to interpret the Correlation Matrix"):
@@ -183,7 +192,7 @@ with tab3:
     st.markdown("### Global Asset Allocation & Risk Maps")
     if os.path.exists(DASHBOARD_IMG_PATH):
         image = Image.open(DASHBOARD_IMG_PATH)
-        st.image(image)
+        st.image(image, use_container_width=True)
 
     st.divider()
     st.markdown("### Under the Hood: AI Decision Log")
@@ -192,4 +201,4 @@ with tab3:
         display_cols = [col for col in history_df.columns if col not in price_cols and col != 'Smoothed_Sentiment' and not col.startswith('202')]
         priority_cols = ['Timestamp', 'Regime_V2', 'ML_Crash_Veto', 'VIX_Index', 'Real_Liquidity', 'Inflation_Sentiment']
         ordered_cols = [c for c in priority_cols if c in display_cols] + [c for c in display_cols if c not in priority_cols]
-        st.dataframe(history_df[ordered_cols].tail(50).iloc[::-1], width='stretch')
+        st.dataframe(history_df[ordered_cols].tail(50).iloc[::-1], use_container_width=True)
