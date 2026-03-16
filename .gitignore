@@ -38,6 +38,7 @@ output/*
 !data/processed/live_prices.csv
 !data/processed/backtest_results.csv
 !data/processed/shap_explanation.json
+!data/processed/latest_shap.json
 
 # Allow Risk Analytics (Required for Streamlit Web App)
 !data/processed/risk_metrics.json
