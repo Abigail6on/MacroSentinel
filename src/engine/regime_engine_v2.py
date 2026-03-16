@@ -1,143 +1,127 @@
 import pandas as pd
 import numpy as np
 import os
-import sys
 import joblib
 import warnings
 from pandas.errors import PerformanceWarning
 
-# Suppress harmless Pandas memory fragmentation warnings to keep production logs clean
 warnings.filterwarnings('ignore', category=PerformanceWarning)
 
-# Path Management
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-
-# Path Management
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
 MACRO_RAW = os.path.join(BASE_DIR, "data", "raw", "macro_indicators_raw.csv")
 SMOOTHED_NEWS = os.path.join(BASE_DIR, "data", "processed", "smoothed_indicators.csv")
 OUTPUT_PATH = os.path.join(BASE_DIR, "data", "processed", "regime_v2_status.csv")
-
-# TRACK 7: AI Model Path
 MODEL_PATH = os.path.join(BASE_DIR, "data", "models", "rf_crash_predictor.pkl")
 
-def calculate_rsi(series, period=14):
-    """Calculates the 14-period RSI Speedometer"""
-    series = pd.to_numeric(series, errors='coerce')
-    delta = series.diff()
-    gain = (delta.where(delta > 0, 0)).rolling(window=period).mean()
-    loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
-    loss = loss.replace(0, np.nan)
-    rs = gain / loss
-    rsi = 100 - (100 / (1 + rs))
-    return rsi.fillna(50)
+def load_safely(path):
+    if not os.path.exists(path):
+        return None
+    df = pd.read_csv(path)
+    
+    # Identify time column
+    time_options = ['Datetime', 'Timestamp', 'timestamp', 'Date']
+    found_col = next((c for c in time_options if c in df.columns), None)
+    
+    if found_col:
+        df = df.set_index(found_col)
+    else:
+        df = df.set_index(df.columns[0])
+    
+    df.index = pd.to_datetime(df.index)
+    df.index = df.index.floor('h')
+    return df
 
-def determine_regime_v2():
-    if not os.path.exists(MACRO_RAW) or not os.path.exists(SMOOTHED_NEWS):
-        print("[ERROR] Missing input data. Run collectors first.")
+def run_regime_engine():
+    print("--- Initializing Sentinel Regime Engine V2 ---")
+    
+    macro = load_safely(MACRO_RAW)
+    smoothed = load_safely(SMOOTHED_NEWS)
+
+    if macro is None:
+        print("[ERROR] Macro data (macro_indicators_raw.csv) not found.")
         return
 
-    # 1. Load Data
-    macro_df = pd.read_csv(MACRO_RAW, index_col=0, parse_dates=True)
-    news_df = pd.read_csv(SMOOTHED_NEWS, index_col=0)
-
-    # Convert news to time-series dictionary (Index = Indicators, First Column = Scores)
-    latest_news = news_df.iloc[:, 0].to_dict()
-
-    # 2. Add News to Macro Grid
-    # Using .assign() unpacks the dictionary and adds all columns simultaneously
-    combined = macro_df.assign(**latest_news)
-
-    # 3. RSI Calculation
-    if 'QQQ' in combined.columns:
-        combined['RSI'] = calculate_rsi(combined['QQQ'])
-        
-    # 4. Real Liquidity Math (YoY M2 Growth - YoY CPI Inflation)
-    if 'Liquidity_M2' in combined.columns and 'Inflation_CPI' in combined.columns:
-        # --- Memory Optimization: De-fragment before adding calculation columns ---
-        combined = combined.copy()
-        combined['M2_YoY'] = (combined['Liquidity_M2'] - combined['Liquidity_M2_LastYear']) / combined['Liquidity_M2_LastYear'] * 100
-        combined['CPI_YoY'] = (combined['Inflation_CPI'] - combined['Inflation_CPI_LastYear']) / combined['Inflation_CPI_LastYear'] * 100
-        combined['Real_Liquidity'] = combined['M2_YoY'] - combined['CPI_YoY']
+    # Clean duplicates after floor rounding
+    macro = macro[~macro.index.duplicated(keep='last')]
+    
+    # MERGE: We join on the macro index to ensure we don't lose rows
+    if smoothed is not None:
+        smoothed = smoothed[~smoothed.index.duplicated(keep='last')]
+        combined = macro.join(smoothed, how='left')
     else:
-        combined['Real_Liquidity'] = 0.0
+        combined = macro
 
-    # ==========================================
-    # TRACK 7: LOAD MACHINE LEARNING BRAIN
-    # ==========================================
-    ml_model = None
+    # Remove ghost timestamp columns and handle gaps
+    valid_cols = [c for c in combined.columns if not (('-' in str(c)) and (':' in str(c)))]
+    combined = combined[valid_cols].ffill().fillna(0)
+
+    # Base Feature Engineering
+    combined['Real_Liquidity'] = combined['Liquidity_M2'].pct_change() - combined['Inflation_CPI'].pct_change()
+    combined['Growth_Pulse'] = combined['SPY'].pct_change(periods=5)
+    
+    # ML Prediction Logic
+    ml_veto_flags = [False] * len(combined)
     if os.path.exists(MODEL_PATH):
-        ml_model = joblib.load(MODEL_PATH)
-        ml_features = ['VIX_Index', 'Yield_Curve_10Y2Y', 'Real_Liquidity', 
-                       'Inflation_Sentiment', 'Monetary_Policy', 'Labor_Market']
-    
+        try:
+            model_pipeline = joblib.load(MODEL_PATH)
+            
+            # 1. Prepare Features
+            features = combined.copy()
+            features['VIX_Momentum'] = features['VIX_Index'].pct_change(periods=3)
+            features['Liquidity_Velocity'] = features['Real_Liquidity'].diff(periods=5)
+            features['VIX_Rolling_Std'] = features['VIX_Index'].rolling(window=10).std()
+            features['VIX_Lag1'] = features['VIX_Index'].shift(1)
+            
+            if 'Inflation_Sentiment' in features.columns:
+                features['Sentiment_Lag1'] = features['Inflation_Sentiment'].shift(1)
+
+            # 2. DYNAMICALLY EXTRACT ALL REQUIRED FEATURES
+            # Look through all steps in the ColumnTransformer to get every required column
+            expected_features = []
+            for name, transformer, cols in model_pipeline.named_steps['preprocessor'].transformers_:
+                if name != 'remainder':
+                    # Unpack if it's a list of lists
+                    if len(cols) > 0 and isinstance(cols[0], list):
+                        cols = [item for sublist in cols for item in sublist]
+                    expected_features.extend(cols)
+            
+            # 3. Apply Feature Mocking for anything truly missing
+            for feat in expected_features:
+                if feat not in features.columns:
+                    features[feat] = 0.0
+            
+            # Final data cleaning for the model
+            X_input = features[expected_features].fillna(0)
+            
+            # 4. Generate Predictions
+            ml_predictions = model_pipeline.predict(X_input)
+            ml_veto_flags = [bool(p) for p in ml_predictions]
+            
+        except Exception as e:
+            print(f"[WARNING] ML Prediction Engine skipped: {e}")
+
+    # Final Regime Attribution
     regimes = []
-    ml_veto_flags = []
-    
-    # 5. DECISION TREE
     for i in range(len(combined)):
-        row = combined.iloc[i]
-        rsi = row.get('RSI', 50)
-        real_liq = row.get('Real_Liquidity', 0)
-        
-        # Growth Pulse
-        growth_pulse = (row.get('Labor_Market', 0) * 0.6) + (row.get('Manufacturing', 0) * 0.4)
-        
-        is_ml_veto = False
-        
-        # --- TRACK 7: ML PREDICTIVE VETO CHECK ---
-        if ml_model is not None:
-            try:
-                # Extract the 6 exact features the AI was trained on
-                X_current = pd.DataFrame([row[ml_features]]).fillna(0)
-                # Ask the AI: 1 = Crash predicted, 0 = Safe
-                crash_prediction = ml_model.predict(X_current)[0]
-                
-                if crash_prediction == 1:
-                    is_ml_veto = True
-            except KeyError:
-                pass # If features are missing early in the historical data, skip ML
-        
-        ml_veto_flags.append(is_ml_veto)
-
-        # --- HYBRID REGIME ASSIGNMENT ---
-        if is_ml_veto:
-            # The AI senses a massive crash imminent in the next 5 hours.
-            current_state = "Defensive (Contraction)"
-            
-        elif real_liq < -1.0: 
-            # Traditional Heuristic: Fed is draining money
-            current_state = "Stagflation / Liquidity Trap"
-        
-        elif growth_pulse > 0.15:
-            if rsi > 70: 
-                current_state = "Goldilocks (Overbought - Trim)"
-            elif rsi < 30: 
-                current_state = "Goldilocks (Oversold - Opportunity)"
-            else: 
-                current_state = "Goldilocks (Growth)"
+        if ml_veto_flags[i]:
+            state = "Defensive (Contraction)"
+        elif combined['Real_Liquidity'].iloc[i] < -1.0:
+            state = "Stagflation"
+        elif combined['Growth_Pulse'].iloc[i] > 0.15:
+            state = "Goldilocks"
         else:
-            current_state = "Neutral / Transitioning"
-            
-        regimes.append(current_state)
+            state = "Neutral"
+        regimes.append(state)
 
-    # --- Memory Optimization: De-fragment one last time before appending large lists ---
-    combined = combined.copy()
+    # Persistence
     combined['Regime_V2'] = regimes
     combined['ML_Crash_Veto'] = ml_veto_flags
     combined.to_csv(OUTPUT_PATH, index=True, index_label="Timestamp")
     
-    # Status Report
-    liq_val = combined['Real_Liquidity'].iloc[-1]
-    liq_status = "CRUNCH" if liq_val < -1.0 else "NORMAL"
-    latest_regime = combined['Regime_V2'].iloc[-1]
-    ml_status = "ACTIVE (CRASH IMMINENT)" if ml_veto_flags[-1] else "STANDBY (MARKET SAFE)"
-    
-    print(f"[SUCCESS] Regime Engine V2 Updated. Liquidity: {liq_val:.2f}% [{liq_status}]")
-    if ml_model:
-        print(f"[TRACK 7] ML Predictive Brain: {ml_status}")
-    print(f"[LATEST REGIME] {latest_regime}")
+    print(f"\n[SUCCESS] Engine Update Complete.")
+    print(f" -> Current State: {regimes[-1]}")
+    print(f" -> ML Veto Status: {'ACTIVE (Crash Detected)' if ml_veto_flags[-1] else 'Standby (Market Safe)'}")
 
 if __name__ == "__main__":
-    determine_regime_v2()
+    run_regime_engine()
