@@ -11207,3 +11207,61 @@ Timestamp,Published_At,Indicator,Sentiment,Headline
 2026-03-19 14:42:03.271283,2026-03-18T14:00:00Z,Inflation_Sentiment,0.0,Effect of rhythmic auditory stimulation (RAS)® with and without melody on Parkinson’s disease (PD) patients with deep brain stimulation (DBS): A study protocol
 2026-03-19 14:42:03.271437,2026-03-18T13:59:00Z,Inflation_Sentiment,-0.8225,US central bank predicts inflation rise from Iran war as oil prices surge again
 2026-03-19 14:42:03.271587,2026-03-18T13:58:00Z,Inflation_Sentiment,-0.8316,"Ship fuel prices soaring in war, industry warns"
+2026-03-19 15:43:16.318075,2026-03-18T15:02:26Z,Monetary_Policy,-0.8271,"Bond Traders Lose Faith in 2026 Fed Rate Cut on Oil, PPI"
+2026-03-19 15:43:16.318221,2026-03-18T14:13:15Z,Monetary_Policy,-0.296,Expectations for the next Fed rate cut get pushed back after hot inflation report
+2026-03-19 15:43:16.318340,2026-03-18T14:02:38Z,Monetary_Policy,-0.296,Bitcoin dips to $72K on hot US PPI inflation hours before Fed FOMC meeting
+2026-03-19 15:43:16.318414,2026-03-18T12:46:07Z,Monetary_Policy,-0.1027,Bitcoin ETFs' $1.2B Streak Hangs in Balance as FOMC Takes Center Stage
+2026-03-19 15:43:16.318533,2026-03-18T12:17:11Z,Monetary_Policy,-0.0516,"Fed to still cut rates this year, even as high oil prices spark an uptick in inflation: CNBC Fed Survey"
+2026-03-19 15:43:16.318567,2026-03-18T11:25:38Z,Monetary_Policy,0.0,"Powell's comments on oil, inflation are likely to guide bitcoin traders"
+2026-03-19 15:43:16.318774,2026-03-18T11:01:29Z,Monetary_Policy,-0.6486,A Divided Fed to Continue Favouring Easing Even as the Iran War Raises the Stakes
+2026-03-19 15:43:16.319122,2026-03-18T10:29:36Z,Monetary_Policy,0.9674,"Share Market Highlights: Sensex jumps 633 pts, Nifty tops 23,700; rupee sinks to record close"
+2026-03-19 15:43:16.319190,2026-03-18T10:19:06Z,Monetary_Policy,0.0,Bitcoin stalls at $76K: Key BTC price levels to watch ahead of FOMC
+2026-03-19 15:43:16.319360,2026-03-18T07:21:38Z,Monetary_Policy,0.7564,Bitcoin trades near $74K supported by short liquidations and derivatives positioning
+2026-03-19 15:43:16.319474,2026-03-18T07:15:02Z,Monetary_Policy,-0.3818,Bailing Out Russia for “Peace” Is a Losing Proposition
+2026-03-19 15:43:16.319720,2026-03-18T05:31:26Z,Monetary_Policy,-0.9202,Fed likely to hold rates steady as Iran war shocks policy debate
+2026-03-19 15:43:16.319828,2026-03-18T01:48:47Z,Monetary_Policy,-0.3182,US Stock Market | Wall Street ends up as traders turn to Fed
+2026-03-19 15:43:16.319874,2026-03-17T21:41:57Z,Monetary_Policy,0.0,Wall Street ends up as traders turn to US Fed
+2026-03-19 15:43:16.319989,2026-03-17T20:30:27Z,Monetary_Policy,-0.6115,Bitcoin's rally faces key hurdle with Wednesday's Fed meeting
+2026-03-19 15:43:16.491632,2026-03-18T15:37:42Z,Labor_Market,0.6705,188-year-old NYC pharmacy has been 'packed like sardines'—all because of $40 headbands and FX's 'Love Story'
+2026-03-19 15:43:16.491783,2026-03-18T15:32:02Z,Labor_Market,-0.673,Federal Reserve could signal no rate cuts coming because of Iran war
+2026-03-19 15:43:16.491969,2026-03-18T15:31:36Z,Labor_Market,0.5106,China Moves Forward with Solid Economy Backing – Against All External Odds
+2026-03-19 15:43:16.492244,2026-03-18T15:31:03Z,Labor_Market,-0.8506,"As Americans struggle with rising costs, many states’ unemployment benefits fall short, analysis finds"
+2026-03-19 15:43:16.492375,2026-03-18T15:11:00Z,Labor_Market,-0.2023,66% of CEOs are freezing hiring while betting billions on AI. It’s a costly miscalculation
+2026-03-19 15:43:16.492505,2026-03-18T15:09:00Z,Labor_Market,-0.765,Jack Schlossberg has a warning for America’s CEOs: you’re living in my ‘world’ now
+2026-03-19 15:43:16.492870,2026-03-18T15:00:02Z,Labor_Market,-0.9442,US recession alert: Why Moody’s warns of 49% risk as oil prices and weak jobs data hit economy - here's what you need to know
+2026-03-19 15:43:16.493011,2026-03-18T14:54:48Z,Labor_Market,0.4939,"Wholesale prices rose 0.7% in February, much more than expected and up 3.4% annually"
+2026-03-19 15:43:16.493262,2026-03-18T14:39:07Z,Labor_Market,-0.6808,"Decision Day Guide: US Fed expected to hold rates, weigh oil shock"
+2026-03-19 15:43:16.493379,2026-03-18T14:37:22Z,Labor_Market,-0.4767,Canada's central banks holds rate steady
+2026-03-19 15:43:16.493521,2026-03-18T14:23:50Z,Labor_Market,0.6915,WATCH LIVE: Fed Chair Powell holds news briefing after latest interest rate decision
+2026-03-19 15:43:16.493700,2026-03-18T13:57:10Z,Labor_Market,-0.7506,Watch Fox Hosts Freak Out On Air Over Trump’s Disastrous Inflation
+2026-03-19 15:43:16.493807,2026-03-18T13:00:00Z,Labor_Market,0.4215,"‘The AI Doc’ Director Daniel Roher Gets Real About Generative AI, Its Impact on Hollywood, and What’s in Our Power to Control"
+2026-03-19 15:43:16.493915,2026-03-18T12:49:28Z,Labor_Market,0.4019,TCS and Pearson partner to accelerate AI-powered learning for global industries
+2026-03-19 15:43:16.708385,2026-03-18T15:42:11Z,Manufacturing,0.5574,Iranians Celebrate On Streets - IRGC Lose Control - Huge Missile Attack On Israel
+2026-03-19 15:43:16.708455,2026-03-18T15:25:30Z,Manufacturing,0.0,"Nvidia plots AI grids with operators, partners"
+2026-03-19 15:43:16.708531,2026-03-18T15:23:33Z,Manufacturing,-0.5423,Trump's tariffs are causing harm to American manufacturers instead of benefiting them
+2026-03-19 15:43:16.708711,2026-03-18T15:18:28Z,Manufacturing,0.6705,HPE Expands NVIDIA AI Computing Portfolio with Scalable Private Cloud AI and Blackwell GPU Integration
+2026-03-19 15:43:16.708937,2026-03-18T15:00:11Z,Manufacturing,0.8779,NVIDIA RTX PRO 4500 Blackwell launches on Cisco Secure AI Factory with NVIDIA
+2026-03-19 15:43:16.709080,2026-03-18T15:00:05Z,Manufacturing,0.7236,The agentic AI boom is here; operations will decide who wins
+2026-03-19 15:43:16.709195,2026-03-18T14:30:46Z,Manufacturing,-0.6808,How a privateer Ford Mustang made DTM history
+2026-03-19 15:43:16.709339,2026-03-18T14:25:16Z,Manufacturing,0.0258,2017 Land Rover Range Rover Supercharged at No Reserve
+2026-03-19 15:43:16.709489,2026-03-18T13:55:00Z,Manufacturing,0.4019,"Munitions factory in Ingersoll, Ont., given multimillion-dollar defence contract"
+2026-03-19 15:43:16.709637,2026-03-18T13:55:00Z,Manufacturing,0.4019,"Munitions factory in Ingersoll, Ont., given multi-million dollar defence contract"
+2026-03-19 15:43:16.709765,2026-03-18T13:09:51Z,Manufacturing,0.6124,Belgium's imec secures rare ASML High NA EUV tool to drive next-generation chips
+2026-03-19 15:43:16.710013,2026-03-18T13:00:41Z,Manufacturing,0.8807,"The great EV pullback: all the obstacles, cancellations, and delays"
+2026-03-19 15:43:16.710126,2026-03-18T12:30:40Z,Manufacturing,0.3182,For Sale: A 1969 Ford Mustang Boss 429
+2026-03-19 15:43:16.710201,2026-03-18T12:25:05Z,Manufacturing,0.0,1978 Datsun 280Z Black Pearl Edition 5-Speed
+2026-03-19 15:43:16.710278,2026-03-18T11:59:15Z,Manufacturing,0.0,Cobalt Digital to show IPMX certified audio monitor at NAB 2026
+2026-03-19 15:43:16.873983,2026-03-18T15:41:00Z,Inflation_Sentiment,-0.5106,India slips up on the LPG front
+2026-03-19 15:43:16.874329,2026-03-18T15:37:02Z,Inflation_Sentiment,-0.7506,Much Awaited BRICS Statement on Iran War Should be a Step for Justice-Based Peace
+2026-03-19 15:43:16.874414,2026-03-18T15:30:00Z,Inflation_Sentiment,0.0,The $45 Billion Cell Therapy Boom Just Hit a Manufacturing Milestone Most Investors Haven’t Noticed
+2026-03-19 15:43:16.874660,2026-03-18T15:21:41Z,Inflation_Sentiment,0.9136,"India’s tax coffers swell as direct tax collections cross ₹22.8 lakh crore, up 7.2%"
+2026-03-19 15:43:16.874794,2026-03-18T15:13:17Z,Inflation_Sentiment,-0.2023,DOGE Cuts Have Left Grieving Families Struggling to Access Survivor Benefits
+2026-03-19 15:43:16.874970,2026-03-18T15:12:24Z,Inflation_Sentiment,-0.9382,"Trump's Iran War to Spike US Grocery Costs, Threaten Global Food Crisis"
+2026-03-19 15:43:16.875418,2026-03-18T15:11:24Z,Inflation_Sentiment,-0.8899,World’s largest gas field on fire: what caused the South Pars gas field fire - Are global gas prices and energy markets on the verge of a massive surge?
+2026-03-19 15:43:16.875776,2026-03-18T15:00:02Z,Inflation_Sentiment,-0.9442,US recession alert: Why Moody’s warns of 49% risk as oil prices and weak jobs data hit economy - here's what you need to know
+2026-03-19 15:43:16.875958,2026-03-18T14:55:49Z,Inflation_Sentiment,-0.7017,Why this jump in gas prices feels different
+2026-03-19 15:43:16.876032,2026-03-18T14:53:11Z,Inflation_Sentiment,0.3182,"Should More Art Fairs Become For-Profit, Invitation-Only Cultural Policy Platforms?"
+2026-03-19 15:43:16.876159,2026-03-18T14:52:39Z,Inflation_Sentiment,-0.2263,What is the Normal Range of TSH
+2026-03-19 15:43:16.876269,2026-03-18T14:38:51Z,Inflation_Sentiment,0.6597,"About 121,000 Whoosh train tickets sold for Eid holiday season: KCIC"
+2026-03-19 15:43:16.876436,2026-03-18T14:36:24Z,Inflation_Sentiment,-0.8225,"ONE SHEET: Betting Markets Threaten Journalists, Big DC Media Bet, CBS Ratings Dip"
+2026-03-19 15:43:16.876533,2026-03-18T14:14:55Z,Inflation_Sentiment,-0.7783,British children are getting taller – and obesity may be the cause
