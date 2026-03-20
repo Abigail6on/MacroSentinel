@@ -19,6 +19,7 @@ def build_dashboard():
     try:
         bt_df = pd.read_csv(os.path.join(DATA_DIR, "backtest_results.csv"))
         bt_df['Timestamp'] = pd.to_datetime(bt_df['Timestamp'])
+        bt_df = bt_df.ffill().bfill()
         
         alloc_df = pd.read_csv(os.path.join(DATA_DIR, "target_allocation.csv"))
         
@@ -27,6 +28,7 @@ def build_dashboard():
         
         regime_df = pd.read_csv(os.path.join(DATA_DIR, "regime_v2_status.csv"))
         regime_df['Timestamp'] = pd.to_datetime(regime_df['Timestamp'])
+        regime_df = regime_df.ffill().bfill()
         
         with open(SHAP_PATH, "r") as f:
             shap_data = json.load(f)
@@ -38,6 +40,20 @@ def build_dashboard():
     # 2. Set up the figure grid
     plt.style.use('default')
     fig = plt.figure(figsize=(24, 16), facecolor='white')
+    
+    # NEW UI FEATURE: Master Title Alert System
+    current_regime = regime_df['Regime_V2'].iloc[-1]
+    
+    # Safely extract boolean veto status (handles strings or bools)
+    raw_veto = regime_df['ML_Crash_Veto'].iloc[-1]
+    ml_veto = str(raw_veto).lower() == 'true' or raw_veto == True
+    
+    status_color = '#dc3545' if ml_veto else '#28a745'
+    veto_text = "ACTIVE (Crash Detected)" if ml_veto else "Standby (Safe)"
+    
+    fig.suptitle(f"Sentinel Pro Master Dashboard | Regime: {current_regime} | ML Veto: {veto_text}", 
+                 fontsize=24, fontweight='bold', color=status_color, y=0.96)
+                 
     gs = fig.add_gridspec(3, 2, width_ratios=[1.2, 1.2], height_ratios=[1.2, 1, 1.2])
     
     # --- ROW 1: Equity Curve (Top Left) ---
@@ -54,8 +70,8 @@ def build_dashboard():
     
     colors = {'Goldilocks': '#d4edda', 'Neutral': '#fff3cd', 'Stagflation': '#f8d7da', 'Defensive': '#dc3545'}
     for i in range(1, len(bt_df)):
-        regime = bt_df['Regime_V2'].iloc[i]
-        c = colors.get(regime.split(' ')[0], '#f4f4f4')
+        regime = str(bt_df['Regime_V2'].iloc[i]).split(' ')[0]
+        c = colors.get(regime, '#f4f4f4')
         ax1.axvspan(bt_df['Timestamp'].iloc[i-1], bt_df['Timestamp'].iloc[i], color=c, alpha=0.4, lw=0)
         
     # --- ROW 1: Target Allocation (Top Right) ---
@@ -82,7 +98,7 @@ def build_dashboard():
     ax3.legend(loc='upper right')
     ax3.grid(color='#e0e0e0', linestyle=':', alpha=0.8)
 
-    # --- ROW 2: SHAP Explainable AI (Middle Right) - FIXED LAYOUT ---
+    # --- ROW 2: SHAP Explainable AI (Middle Right) ---
     ax5 = fig.add_subplot(gs[1, 1])
     shap_series = pd.Series(shap_data)
     top_shap = shap_series.reindex(shap_series.abs().sort_values(ascending=False).index).head(7).sort_values(ascending=True)
@@ -93,12 +109,10 @@ def build_dashboard():
     ax5.axvline(0, color='black', linewidth=1)
     ax5.set_xlabel("Impact on ML Prediction")
     
-    # Calculate Dynamic Padding and Axes Limits based on the actual data scale
     max_shap = top_shap.abs().max()
     pad = max_shap * 0.02 if max_shap > 0 else 0.01
     ax5.set_xlim(top_shap.min() - (max_shap * 0.3), top_shap.max() + (max_shap * 0.3))
     
-    # Use smart anchors (ha='left' / ha='right') instead of manual offsets
     for bar, score in zip(bars, top_shap.values):
         if score >= 0:
             ax5.text(score + pad, bar.get_y() + bar.get_height()/2, f"{score:.4f}", color='black', va='center', ha='left', fontweight='bold')
