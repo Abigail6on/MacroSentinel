@@ -147,3 +147,12 @@
   - Integrated a secure Discord Webhook using `python-dotenv` for local testing and GitHub Actions Secrets for cloud deployment.
   - Added a conditional `if: success()` step in the CI/CD pipeline to automatically dispatch the webhook only after successful data processing.
 - **Result:** Created a fully automated, cloud-native alerting system that pushes live "Heartbeat" status reports and Red/Green market crash alerts directly to a mobile device.
+
+### **Session 23: Production Hardening & Environment Parity**
+
+- **Objective:** Stabilize the ML pipeline, resolve local-to-cloud environment drift, and handle missing data safely.
+- **Logic:** - **Memory Protection:** Capped `regime_v2_status.csv` at 1,000 rows to prevent infinite data bloat and memory crashes.
+  - **Safe Imputation:** Swapped hardcoded `0.0` for `np.nan` so the ML model doesn't misinterpret missing API data as a market crash.
+  - **Version Parity:** Pinned `scikit-learn==1.8.0` and `yfinance>=0.2.40` to perfectly align local and cloud environments, eliminating model drift.
+  - **Defensive Execution:** Added empty-dataframe checks to gracefully halt the engine and prevent cascade crashes if external APIs fail.
+- **Result:** Upgraded the architecture to a resilient, production-grade pipeline that safely handles API outages, maintains memory efficiency, and ensures mathematically sound ML inference.
