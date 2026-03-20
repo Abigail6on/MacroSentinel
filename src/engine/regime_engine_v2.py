@@ -6,6 +6,7 @@ import warnings
 from pandas.errors import PerformanceWarning
 
 warnings.filterwarnings('ignore', category=PerformanceWarning)
+warnings.filterwarnings('ignore', category=UserWarning, module='xgboost')
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
@@ -19,7 +20,6 @@ def load_safely(path):
         return None
     df = pd.read_csv(path)
     
-    # Identify time column
     time_options = ['Datetime', 'Timestamp', 'timestamp', 'Date']
     found_col = next((c for c in time_options if c in df.columns), None)
     
@@ -86,13 +86,13 @@ def run_regime_engine():
                         cols = [item for sublist in cols for item in sublist]
                     expected_features.extend(cols)
             
-            # 3. Apply Feature Mocking for anything truly missing
+            # 3. Apply Feature Mocking for anything truly missing (Using np.nan instead of 0.0)
             for feat in expected_features:
                 if feat not in features.columns:
-                    features[feat] = 0.0
+                    features[feat] = np.nan
             
-            # Final data cleaning for the model
-            X_input = features[expected_features].fillna(0)
+            # Final data cleaning for the model (Removed .fillna(0) to allow SimpleImputer to work correctly)
+            X_input = features[expected_features]
             
             # 4. Generate Predictions
             ml_predictions = model_pipeline.predict(X_input)
@@ -100,6 +100,11 @@ def run_regime_engine():
             
         except Exception as e:
             print(f"[WARNING] ML Prediction Engine skipped: {e}")
+
+    # DEFENSIVE CHECK: Did the API fail completely resulting in an empty dataframe?
+    if combined.empty or len(combined) == 0:
+        print("[WARNING] No valid data available to calculate regimes. Preserving previous state.")
+        return  # Gracefully exit without crashing
 
     # Final Regime Attribution
     regimes = []
@@ -117,6 +122,16 @@ def run_regime_engine():
     # Persistence
     combined['Regime_V2'] = regimes
     combined['ML_Crash_Veto'] = ml_veto_flags
+    
+    # ---------------------------------------------------------
+    # GITHUB CI/CD SAFETY CAP
+    # Limit to the most recent 1,000 records (~40 trading days)
+    # This prevents the regime_v2_status.csv from bloating infinitely
+    # ---------------------------------------------------------
+    MAX_ROWS = 1000
+    if len(combined) > MAX_ROWS:
+        combined = combined.tail(MAX_ROWS)
+
     combined.to_csv(OUTPUT_PATH, index=True, index_label="Timestamp")
     
     print(f"\n[SUCCESS] Engine Update Complete.")

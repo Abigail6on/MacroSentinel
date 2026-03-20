@@ -3,15 +3,15 @@ fredapi
 requests
 python-dotenv
 curl_cffi
-yfinance
+yfinance>=0.2.40
 
 # Data Processing & Math
 pandas
 numpy
 scipy
-scikit-learn
+scikit-learn==1.8.0
 statsmodels
-xgboost
+xgboost>=2.0.3
 
 # Sentiment & NLP
 vaderSentiment
@@ -25,5 +25,4 @@ shap
 
 # Utilities
 tabulate
-
 psycopg2-binary
