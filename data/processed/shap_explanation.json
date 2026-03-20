@@ -5,11 +5,11 @@
     "Fed_Funds_Rate": 0.0,
     "VIX_Momentum": 0.0,
     "Liquidity_Velocity": 0.0,
-    "VIX_Rolling_Std": -1.6186,
+    "VIX_Rolling_Std": -1.6271,
     "VIX_Lag1": 0.0,
-    "Inflation_Sentiment": -1.0363,
+    "Inflation_Sentiment": -1.0424,
     "Labor_Market": 0.0,
     "Manufacturing": 0.0,
-    "Monetary_Policy": -1.6838,
-    "Sentiment_Lag1": 0.2641
+    "Monetary_Policy": -1.6901,
+    "Sentiment_Lag1": 0.2771
 }
