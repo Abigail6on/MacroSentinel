@@ -1,15 +1,15 @@
 {
     "VIX_Index": 0.0,
     "Real_Liquidity": 0.0,
-    "Yield_Curve_10Y2Y": -0.1657,
+    "Yield_Curve_10Y2Y": 0.0,
     "Fed_Funds_Rate": 0.0,
     "VIX_Momentum": 0.0,
     "Liquidity_Velocity": 0.0,
-    "VIX_Rolling_Std": -1.5781,
+    "VIX_Rolling_Std": -1.4887,
     "VIX_Lag1": 0.0,
-    "Inflation_Sentiment": -0.1361,
+    "Inflation_Sentiment": 0.3932,
     "Labor_Market": 0.0,
     "Manufacturing": 0.0,
-    "Monetary_Policy": -1.6425,
-    "Sentiment_Lag1": -0.2059
+    "Monetary_Policy": -1.5723,
+    "Sentiment_Lag1": 0.2332
 }
