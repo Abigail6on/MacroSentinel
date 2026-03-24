@@ -6,7 +6,7 @@ Dep. Variable:               Strategy   R-squared:                       0.135
 Model:                            OLS   Adj. R-squared:                 -0.050
 Method:                 Least Squares   F-statistic:                    0.7294
 Date:                Tue, 24 Mar 2026   Prob (F-statistic):              0.551
-Time:                        20:31:48   Log-Likelihood:                 94.321
+Time:                        21:29:07   Log-Likelihood:                 94.322
 No. Observations:                  18   AIC:                            -180.6
 Df Residuals:                      14   BIC:                            -177.1
 Df Model:                           3                                         
@@ -31,7 +31,7 @@ Notes:
 ==================================================
 🎯 KEY TAKEAWAYS FOR YOUR RESUME / INTERVIEW
 ==================================================
-Annualized True Alpha (Intercept): -20.4959%
+Annualized True Alpha (Intercept): -20.4956%
 Market Beta (Correlation to SPY):  -0.00
 Significance: HIGH (p=0.0468).
 -> Conclusion: Your strategy generates genuine alpha independent of market drift!
