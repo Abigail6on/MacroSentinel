@@ -13661,3 +13661,60 @@ Timestamp,Published_At,Indicator,Sentiment,Headline
 2026-03-25 20:29:20.172022,2026-03-24T19:08:53Z,Inflation_Sentiment,0.8885,Our interest in electric vehicles has grown due to oil price spikes. And it’s likely to remain
 2026-03-25 20:29:20.172212,2026-03-24T19:00:00Z,Inflation_Sentiment,-0.8885,Europe Sleeps as Global Gas Markets Reach a Boiling Point
 2026-03-25 20:29:20.172350,2026-03-24T18:50:42Z,Inflation_Sentiment,-0.5023,"India can mobilise ₹8 lakh crore annually for roads, but spending lags: Transport minister Nitin Gadkari"
+2026-03-25 21:28:31.576555,2026-03-24T20:02:44Z,Monetary_Policy,-0.7876,"US stocks today: Dow Jones falls 84 points, S&P, Nasdaq over 0.3% on worries about Middle East war, interest rates"
+2026-03-25 21:28:31.576672,2026-03-24T17:44:31Z,Monetary_Policy,-0.5106,Bitcoin holders shift from panic to cash-buffer discipline as volatility deepens
+2026-03-25 21:28:31.576808,2026-03-24T14:32:29Z,Monetary_Policy,0.4588,Investors Are Betting on an Interest Rate Hike That’s Really Not That Likely
+2026-03-25 21:28:31.577029,2026-03-24T10:00:00Z,Monetary_Policy,-0.2382,Blue Governors Are Tacking Rightward on Fossil Fuels
+2026-03-25 21:28:31.577284,2026-03-24T01:54:29Z,Monetary_Policy,-0.25,US Stock Market | Wall Street indexes rally after Trump postpones strikes on Iran's power plants
+2026-03-25 21:28:31.577421,2026-03-24T01:33:27Z,Monetary_Policy,0.5859,"U.S Stock Market: Five factors to watch out on Tuesday as Dow Jones, S&P 500, Nasdaq make biggest single-day percentage gains in nearly two months"
+2026-03-25 21:28:31.577639,2026-03-24T00:55:20Z,Monetary_Policy,-0.743,"From India to Italy, Trump’s Iran war is rippling through the world economy"
+2026-03-25 21:28:31.577779,2026-03-23T20:27:33Z,Monetary_Policy,0.8225,Bitcoin climbs as Trump grants five days for Iran negotiations
+2026-03-25 21:28:31.578055,2026-03-23T20:06:08Z,Monetary_Policy,-0.296,"US stocks today: Dow Jones jumps 600 points, S&P, Nasdaq over 1% as Trump hints at Iran war de-escalation"
+2026-03-25 21:28:31.578190,2026-03-23T17:37:32Z,Monetary_Policy,0.2023,The stock market's dreams of rate cuts have been officially dashed
+2026-03-25 21:28:31.578300,2026-03-23T15:54:46Z,Monetary_Policy,0.7845,"How much interest will a $10,000 9-month CD earn if opened now?"
+2026-03-25 21:28:31.578598,2026-03-23T15:44:11Z,Monetary_Policy,0.9325,Bitcoin sees $219M in inflows as digital asset products gain $230M in a cautious week
+2026-03-25 21:28:31.578729,2026-03-23T14:30:00Z,Monetary_Policy,-0.743,High Oil Prices Could Force Fed To Raise Rates
+2026-03-25 21:28:31.578808,2026-03-23T13:23:00Z,Monetary_Policy,0.4939,"A Reddit investor grew a $2.26M portfolio with just 2 dividend ETFs. Here’s what they used, and how you can follow along"
+2026-03-25 21:28:31.578884,2026-03-23T10:21:31Z,Monetary_Policy,0.34,Gold bear market and sub-$50K BTC: Five things to know in Bitcoin this week
+2026-03-25 21:28:31.895432,2026-03-24T20:27:54Z,Labor_Market,-0.5267,Chances of a Federal Reserve rate cut fade as inflation worsens
+2026-03-25 21:28:31.895551,2026-03-24T20:06:06Z,Labor_Market,-0.7184,"It's a bad time to hunt for new jobs, most US workers say in new Gallup poll"
+2026-03-25 21:28:31.895769,2026-03-24T19:55:47Z,Labor_Market,0.4588,Breitbart Business Digest: The Great American Economic Mistake and Why Trump Is the Necessary Correction
+2026-03-25 21:28:31.895953,2026-03-24T18:40:40Z,Labor_Market,-0.6486,Chances of a Federal Reserve rate cut fade as inflation worsens
+2026-03-25 21:28:31.896124,2026-03-24T18:36:54Z,Labor_Market,0.4939,Chances of Fed cutting interest rates fade as inflation worsens
+2026-03-25 21:28:31.896285,2026-03-24T18:23:45Z,Labor_Market,-0.6808,"Dimon warns on AI job losses, calls for government-business incentives"
+2026-03-25 21:28:31.896487,2026-03-24T17:30:55Z,Labor_Market,0.3382,The AI Industry Is Lying to You
+2026-03-25 21:28:31.896630,2026-03-24T17:01:02Z,Labor_Market,0.9042,OpenAI Foundation pledges $1B in grants to ensure AI 'benefits all'
+2026-03-25 21:28:31.896765,2026-03-24T16:56:52Z,Labor_Market,0.743,Kalu urges Europe to process raw materials in Nigeria
+2026-03-25 21:28:31.896871,2026-03-24T16:42:24Z,Labor_Market,0.4767,CFOs admit privately that AI layoffs will be 9x higher this year—and still a fraction of ‘doomsday’ predictions
+2026-03-25 21:28:31.897048,2026-03-24T16:02:39Z,Labor_Market,-0.8074,How Israel’s strangulation of the West Bank is collapsing the Palestinian educational system
+2026-03-25 21:28:31.897131,2026-03-24T15:51:15Z,Labor_Market,-0.7184,"As an AI Scholar, I Am Now Putting a High Probability on an AI Doomsday"
+2026-03-25 21:28:31.897212,2026-03-24T15:25:25Z,Labor_Market,-0.7906,"It's a bad time to hunt for new jobs, most US workers say in new poll"
+2026-03-25 21:28:32.152940,2026-03-24T21:20:07Z,Manufacturing,0.0,"The Porsche Paint-to-Sample Collection, from Wob Cars"
+2026-03-25 21:28:32.153013,2026-03-24T21:05:47Z,Manufacturing,0.1779,Amazon acquires 'approachable' humanoid maker Fauna Robotics
+2026-03-25 21:28:32.153148,2026-03-24T20:40:14Z,Manufacturing,-0.3612,1954 Cadillac Series 75 Limousine from Godfather Movie
+2026-03-25 21:28:32.153359,2026-03-24T20:13:18Z,Manufacturing,-0.3612,"Glenisk returned to profit last year, as work continues on new €20m plant"
+2026-03-25 21:28:32.153483,2026-03-24T20:13:04Z,Manufacturing,0.2732,Scaling Token Factory Revenue and AI Efficiency by Maximizing Performance per Watt
+2026-03-25 21:28:32.153654,2026-03-24T18:39:00Z,Manufacturing,0.4215,"FT: Volkswagen transforms its factory, instead of cars it will produce Iron Dome components"
+2026-03-25 21:28:32.153762,2026-03-24T18:12:54Z,Manufacturing,0.1779,Figma AI Agents Now Write Directly to the Design Canvas
+2026-03-25 21:28:32.153875,2026-03-24T18:04:02Z,Manufacturing,0.0258,Why did McCain plan to shut New Zealand factory? #food
+2026-03-25 21:28:32.154082,2026-03-24T17:44:56Z,Manufacturing,-0.0258,The D.C. Streetcar's Other Failures
+2026-03-25 21:28:32.154208,2026-03-24T17:25:44Z,Manufacturing,-0.5423,"THE BLADE 4K Review: Tsui Hark's Dark, Grimy, Kinetic, Chaotic Classic"
+2026-03-25 21:28:32.154325,2026-03-24T17:22:01Z,Manufacturing,0.5719,"Arm releases first in-house chip, with Meta as debut customer"
+2026-03-25 21:28:32.154495,2026-03-24T16:58:39Z,Manufacturing,-0.0531,Obituary: Sportscar pioneer Bob Tullius
+2026-03-25 21:28:32.154699,2026-03-24T16:57:41Z,Manufacturing,-0.8481,Glenisk says it returned to profit following 2021 fire
+2026-03-25 21:28:32.154799,2026-03-24T16:55:14Z,Manufacturing,0.3182,1957 Ford Thunderbird
+2026-03-25 21:28:32.154855,2026-03-24T16:50:11Z,Manufacturing,0.4404,Organic yoghurt-maker Glenisk says it will show return to profit for 2025
+2026-03-25 21:28:32.469958,2026-03-24T21:25:24Z,Inflation_Sentiment,0.7096,EXPLAINER: What to know about CBN’s 2026 banking recapitalisation exercise
+2026-03-25 21:28:32.470128,2026-03-24T21:23:11Z,Inflation_Sentiment,-0.7003,"2026 NCAA Tournament: TV ratings surge across first, second rounds of March Madness"
+2026-03-25 21:28:32.470214,2026-03-24T20:50:17Z,Inflation_Sentiment,-0.7506,Fuel crisis: New Zealand rural towns struggle with few alternative options
+2026-03-25 21:28:32.470330,2026-03-24T20:40:46Z,Inflation_Sentiment,0.6597,"Ares, Apollo cap private credit fund withdrawals as exodus grows"
+2026-03-25 21:28:32.470518,2026-03-24T20:34:07Z,Inflation_Sentiment,0.5683,This energy focussed ASX small-cap could surge 50% as earnings build
+2026-03-25 21:28:32.470673,2026-03-24T20:32:00Z,Inflation_Sentiment,-0.1761,The most dangerous oil export hub in the world
+2026-03-25 21:28:32.470774,2026-03-24T20:30:26Z,Inflation_Sentiment,-0.5106,'Substantial' increase in fake or illegal weight-loss drugs seized by HPRA last year
+2026-03-25 21:28:32.470879,2026-03-24T20:25:00Z,Inflation_Sentiment,-0.1027,Climate-Fueled Heat Waves Are Creating a Water Crisis in the Southwest
+2026-03-25 21:28:32.470999,2026-03-24T20:24:50Z,Inflation_Sentiment,-0.5267,Google searches for ‘help with mortgage’ surge to the highest level on record
+2026-03-25 21:28:32.471254,2026-03-24T19:53:31Z,Inflation_Sentiment,-0.6786,"In Australia's most food insecure suburbs, lines for aid are doubling"
+2026-03-25 21:28:32.471392,2026-03-24T19:49:08Z,Inflation_Sentiment,-0.8442,Oil trades surged before Trump's Iran post. Some experts are suspicious.
+2026-03-25 21:28:32.471482,2026-03-24T19:45:00Z,Inflation_Sentiment,0.4588,Rangers Have Eyes On 25-Year-Old Cetic Target: Should The Club Prioritise Him?
+2026-03-25 21:28:32.471571,2026-03-24T19:44:00Z,Inflation_Sentiment,0.0,"Gelatide Drops Claims Evaluated: 2026 Report on the Gela Tide Liquid Formula Ingredients, Pricing, and What Consumers Should Verify Before Purchasing"
+2026-03-25 21:28:32.471676,2026-03-24T19:38:40Z,Inflation_Sentiment,0.2732,"RBI takes stock, asks banks to detail West Asia exposure"
