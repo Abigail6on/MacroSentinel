@@ -6,7 +6,7 @@ Dep. Variable:               Strategy   R-squared:                       0.327
 Model:                            OLS   Adj. R-squared:                  0.200
 Method:                 Least Squares   F-statistic:                     2.586
 Date:                Tue, 31 Mar 2026   Prob (F-statistic):             0.0892
-Time:                        21:29:47   Log-Likelihood:                 112.48
+Time:                        22:25:08   Log-Likelihood:                 112.48
 No. Observations:                  20   AIC:                            -217.0
 Df Residuals:                      16   BIC:                            -213.0
 Df Model:                           3                                         
