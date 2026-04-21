@@ -6,7 +6,7 @@ Dep. Variable:               Strategy   R-squared:                       0.406
 Model:                            OLS   Adj. R-squared:                  0.287
 Method:                 Least Squares   F-statistic:                     3.412
 Date:                Tue, 21 Apr 2026   Prob (F-statistic):             0.0451
-Time:                        20:00:54   Log-Likelihood:                 106.66
+Time:                        20:54:18   Log-Likelihood:                 106.66
 No. Observations:                  19   AIC:                            -205.3
 Df Residuals:                      15   BIC:                            -201.5
 Df Model:                           3                                         
@@ -15,9 +15,9 @@ Covariance Type:            nonrobust
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
 const          0.0004      0.000      1.650      0.120      -0.000       0.001
-MKT           -0.0486      0.022     -2.201      0.044      -0.096      -0.002
+MKT           -0.0486      0.022     -2.200      0.044      -0.096      -0.002
 SMB           -0.0684      0.051     -1.335      0.202      -0.178       0.041
-HML           -0.0021      0.001     -1.603      0.130      -0.005       0.001
+HML           -0.0021      0.001     -1.602      0.130      -0.005       0.001
 ==============================================================================
 Omnibus:                        0.305   Durbin-Watson:                   2.153
 Prob(Omnibus):                  0.859   Jarque-Bera (JB):                0.441
@@ -31,7 +31,7 @@ Notes:
 ==================================================
 🎯 KEY TAKEAWAYS FOR YOUR RESUME / INTERVIEW
 ==================================================
-Annualized True Alpha (Intercept): 10.6457%
+Annualized True Alpha (Intercept): 10.6458%
 Market Beta (Correlation to SPY):  -0.05
 Significance: LOW (p=0.1196).
 -> Conclusion: Returns are largely explained by broader market movements (or needs more data points).
