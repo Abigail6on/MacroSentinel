@@ -22719,3 +22719,62 @@ Timestamp,Published_At,Indicator,Sentiment,Headline
 2026-04-22 15:04:04.170473,2026-04-21T14:00:00Z,Inflation_Sentiment,0.8225,"Implementation of ML Flow for leprosy contacts in Brazil: Opportunities, pitfalls, and safeguards"
 2026-04-22 15:04:04.170715,2026-04-21T14:00:00Z,Inflation_Sentiment,-0.8225,Risk-taking responses to crash experience: Evidence from China
 2026-04-22 15:04:04.170863,2026-04-21T14:00:00Z,Inflation_Sentiment,-0.2023,Predicting student mental health through entropy-based features and interpretable cross-attention transformer networks
+2026-04-22 16:49:07.283660,2026-04-21T15:06:40Z,Monetary_Policy,0.7065,Trump's Fed chair pick Kevin Warsh vows to safeguard independence at confirmation hearing
+2026-04-22 16:49:07.283803,2026-04-21T14:51:00Z,Monetary_Policy,0.4588,Fed Chair nominee Warsh calls for major Fed policy reforms
+2026-04-22 16:49:07.284142,2026-04-21T14:25:47Z,Monetary_Policy,-0.8481,"Trump disappointed if Warsh doesn’t cut rates, Fed markets stable"
+2026-04-22 16:49:07.284231,2026-04-21T13:53:30Z,Monetary_Policy,0.0258,"Kevin Warsh set to testify that the Fed will remain ""strictly independent"""
+2026-04-22 16:49:07.284316,2026-04-21T09:00:00Z,Monetary_Policy,0.0,3 things to know about Fed chair nominee Kevin Warsh
+2026-04-22 16:49:07.284619,2026-04-21T08:40:15Z,Monetary_Policy,0.6757,US dollar edges higher as Iran ceasefire deadline approaches
+2026-04-22 16:49:07.284824,2026-04-21T08:40:15Z,Monetary_Policy,0.5106,US dollar edges higher as Iran ceasefire deadline approaches
+2026-04-22 16:49:07.284998,2026-04-21T05:06:52Z,Monetary_Policy,0.7351,US Stock Market: Warsh faces Senate test as Fed independence and rate policy take centre stage
+2026-04-22 16:49:07.285201,2026-04-21T01:17:34Z,Monetary_Policy,0.8316,Trump’s Fed chair pick to face lawmakers at key confirmation hearing
+2026-04-22 16:49:07.285349,2026-04-21T01:10:00Z,Monetary_Policy,0.6808,Why an AI Soft Landing Might Look Like Victorian England
+2026-04-22 16:49:07.285452,2026-04-20T21:17:18Z,Monetary_Policy,0.7351,Kevin Warsh set to face lawmakers in Fed chair confirmation hearing
+2026-04-22 16:49:07.285556,2026-04-20T20:46:00Z,Monetary_Policy,-0.4939,The stock market’s record rally now faces these two big risks
+2026-04-22 16:49:07.285744,2026-04-20T20:26:29Z,Monetary_Policy,0.7579,"Fed nominee Kevin Warsh to face Senate grilling over independence, interest rates at Tuesday confirmation hearing"
+2026-04-22 16:49:07.285892,2026-04-20T18:45:53Z,Monetary_Policy,-0.4504,Why Australia's big gas producers haven't jacked up domestic prices despite war
+2026-04-22 16:49:07.286167,2026-04-20T15:55:55Z,Monetary_Policy,-0.9152,UAE officials reportedly warned they may be forced to use yuan or other currencies if they run low on dollars amid the Iran war
+2026-04-22 16:49:07.447649,2026-04-21T16:09:11Z,Labor_Market,0.8126,Workers might be feeling better about the job market
+2026-04-22 16:49:07.447851,2026-04-21T15:40:00Z,Labor_Market,0.8455,How many jobs will AI create for humans?
+2026-04-22 16:49:07.447911,2026-04-21T15:00:00Z,Labor_Market,0.0,A Life Hack for the Ultra-Wealthy Is Going Mainstream
+2026-04-22 16:49:07.448010,2026-04-21T13:49:39Z,Labor_Market,0.0,Kevin Warsh Faces Senators as Trump's Pick to Lead the Federal Reserve
+2026-04-22 16:49:07.448155,2026-04-21T13:39:05Z,Labor_Market,0.4215,WATCH LIVE: Kevin Warsh testifies in Senate Banking confirmation hearing for Fed chair
+2026-04-22 16:49:07.448309,2026-04-21T13:34:52Z,Labor_Market,0.6936,"India has jobs, but it needs better ones"
+2026-04-22 16:49:07.448558,2026-04-21T13:30:00Z,Labor_Market,0.7914,"Focus on French HealthTech’s ecosystem : Panorama France HealthTech 2026 ‘s review: a mature, innovative and resilient sector facing a more demanding environment"
+2026-04-22 16:49:07.448693,2026-04-21T13:00:00Z,Labor_Market,-0.6369,Wind and solar focus threaten America’s and South Africa’s economy
+2026-04-22 16:49:07.448741,2026-04-21T12:57:26Z,Labor_Market,0.0,Chancellor statement to Parliament
+2026-04-22 16:49:07.448862,2026-04-21T12:52:59Z,Labor_Market,-0.296,U.S. Retail Sales Soar as Consumer Spending Broadly Surges
+2026-04-22 16:49:07.448977,2026-04-21T12:00:00Z,Labor_Market,0.2263,Entangled In Russia's Faltering Economy: The Fate Of Its Respected Central Banker
+2026-04-22 16:49:07.449121,2026-04-21T11:48:35Z,Labor_Market,0.2732,Trump's Fed nominee to face tough hearing before Senate panel
+2026-04-22 16:49:07.449163,2026-04-21T11:44:04Z,Labor_Market,0.1779,The Strongman Era Has Peaked
+2026-04-22 16:49:07.449300,2026-04-21T11:08:01Z,Labor_Market,-0.0754,"Inside Kevin Warsh’s opening statement: Inflation is a choice, independence is essential, and a couple of notable name drops"
+2026-04-22 16:49:07.593428,2026-04-21T16:38:58Z,Manufacturing,0.2023,1975 Chevrolet Caprice Classic Convertible 454
+2026-04-22 16:49:07.593474,2026-04-21T16:27:00Z,Manufacturing,0.0,"Ask AI: ""Describe Isaac Seaver's Blacksmith and Machinist Occupations in 1870 to 1890"""
+2026-04-22 16:49:07.593693,2026-04-21T16:24:00Z,Manufacturing,0.5106,NipsApp Game Studios Announces AI-Driven VR Solutions for Surgical Training and Nuclear Safety
+2026-04-22 16:49:07.593842,2026-04-21T16:16:57Z,Manufacturing,0.1531,2009 Ferrari F430 Challenge Race Car
+2026-04-22 16:49:07.593977,2026-04-21T15:56:19Z,Manufacturing,0.6249,Great British Motoring: A Brief History of the British Motor Car – From the First Horseless Carriages to Modern Supercars
+2026-04-22 16:49:07.594087,2026-04-21T15:00:21Z,Manufacturing,0.5574,Govt proposes to increase minimum distance between new sugar mills to 25 km
+2026-04-22 16:49:07.594165,2026-04-21T14:50:15Z,Manufacturing,0.0,1968 Chevrolet Chevelle 300 Deluxe Coupe 327 4-Speed
+2026-04-22 16:49:07.594250,2026-04-21T14:42:52Z,Manufacturing,0.5106,"What’s up with… D2D uptake, Deutsche Telekom, Telefónica"
+2026-04-22 16:49:07.594396,2026-04-21T14:40:11Z,Manufacturing,0.6874,RoW 1990 Porsche 928 GT 5-Speed
+2026-04-22 16:49:07.594562,2026-04-21T14:26:10Z,Manufacturing,-0.5432,Hyundai unable to offset Middle East sales losses amid conflict – report
+2026-04-22 16:49:07.594667,2026-04-21T14:19:49Z,Manufacturing,0.5859,Your favorite brands got worse on purpose
+2026-04-22 16:49:07.594843,2026-04-21T14:05:51Z,Manufacturing,0.128,(PR) Lenovo Brings Production-Scale AI to Hannover Messe 2026
+2026-04-22 16:49:07.594957,2026-04-21T14:00:04Z,Manufacturing,0.0,Original-Owner 2011 Ducati 1198SP
+2026-04-22 16:49:07.595100,2026-04-21T13:40:12Z,Manufacturing,0.6369,12k-Mile 2021 Aston Martin DBX
+2026-04-22 16:49:07.595273,2026-04-21T13:11:28Z,Manufacturing,0.9184,U-he Announces Zebra 3
+2026-04-22 16:49:07.752381,2026-04-21T16:48:32Z,Inflation_Sentiment,-0.2732,"US falls behind in hypersonic race as China, Russia gain edge"
+2026-04-22 16:49:07.752580,2026-04-21T16:40:50Z,Inflation_Sentiment,0.8126,Koei Tecmo Revises Earnings Forecast & Profits Surge
+2026-04-22 16:49:07.752698,2026-04-21T16:30:26Z,Inflation_Sentiment,0.1027,"Fertility expert says, ‘IVF is oversold in India’; points out how sleep, diet, and stress impact sperm and eggs"
+2026-04-22 16:49:07.752932,2026-04-21T16:30:00Z,Inflation_Sentiment,-0.3626,Norway Pumps Near Capacity as Spare Output Buffer Disappears
+2026-04-22 16:49:07.753042,2026-04-21T16:30:00Z,Inflation_Sentiment,0.7351,I Finally Let My Husband Try Something New in Bed While I Was Pregnant. That Was a Mistake.
+2026-04-22 16:49:07.753117,2026-04-21T16:30:00Z,Inflation_Sentiment,-0.5574,This 30% off Shark plug-in vacuum might just outperform your cordless
+2026-04-22 16:49:07.753219,2026-04-21T16:23:23Z,Inflation_Sentiment,0.4404,This is not an Onion headline: The Onion wants to acquire Infowars from Alex Jones’ bankruptcy proceedings
+2026-04-22 16:49:07.753524,2026-04-21T16:21:48Z,Inflation_Sentiment,0.8271,April-listed Powerica posts 226% YoY Q3 PAT growth; repays Rs 525 crore debt post IPO
+2026-04-22 16:49:07.753657,2026-04-21T16:00:00Z,Inflation_Sentiment,0.0516,Venezuela's Orinoco Belt is an Environmental Nightmare
+2026-04-22 16:49:07.753928,2026-04-21T15:54:51Z,Inflation_Sentiment,0.0,"$2 Billion Per Day Spent by US on Iran War Could Have Saved 87 Million Lives, Says UN Humanitarian Chief"
+2026-04-22 16:49:07.754223,2026-04-21T15:51:50Z,Inflation_Sentiment,0.9764,POSCO Holdings Stock Jumps 8% on Low-Carbon Project Approval and Technical Breakout
+2026-04-22 16:49:07.754420,2026-04-21T15:46:05Z,Inflation_Sentiment,0.6808,Amprius Technologies Stock Surges 13% as AI Battery Demand and 2026 Outlook Fuel Momentum
+2026-04-22 16:49:07.754514,2026-04-21T15:44:00Z,Inflation_Sentiment,-0.5256,Brain injuries are surging from e-bike and scooter crashes in NYC — and a two-hour window is most dangerous
+2026-04-22 16:49:07.754650,2026-04-21T15:43:40Z,Inflation_Sentiment,-0.6124,Purdue Pharma to be sentenced in criminal opioids case
+2026-04-22 16:49:07.754897,2026-04-21T15:33:42Z,Inflation_Sentiment,0.3939,What’s the psychology behind hyper-aware minds in a noisy world? Is being too aware hurting you?
