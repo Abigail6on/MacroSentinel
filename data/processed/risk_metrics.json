@@ -1,5 +1,5 @@
 {
-    "VaR_95": -0.036,
-    "CVaR_95": -0.089,
-    "Max_Drawdown": -0.381
+    "VaR_95": 0.0,
+    "CVaR_95": 0.0,
+    "Max_Drawdown": NaN
 }
