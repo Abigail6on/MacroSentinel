@@ -2,27 +2,27 @@
 
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:               Strategy   R-squared:                       0.005
-Model:                            OLS   Adj. R-squared:                 -0.181
-Method:                 Least Squares   F-statistic:                   0.02776
-Date:                Wed, 29 Apr 2026   Prob (F-statistic):              0.994
-Time:                        17:16:29   Log-Likelihood:                 118.02
-No. Observations:                  20   AIC:                            -228.0
-Df Residuals:                      16   BIC:                            -224.1
+Dep. Variable:               Strategy   R-squared:                       0.007
+Model:                            OLS   Adj. R-squared:                 -0.180
+Method:                 Least Squares   F-statistic:                   0.03592
+Date:                Wed, 29 Apr 2026   Prob (F-statistic):              0.991
+Time:                        19:08:04   Log-Likelihood:                 117.61
+No. Observations:                  20   AIC:                            -227.2
+Df Residuals:                      16   BIC:                            -223.2
 Df Model:                           3                                         
 Covariance Type:            nonrobust                                         
 ==============================================================================
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-const       5.752e-05      0.000      0.294      0.773      -0.000       0.000
-MKT           -0.0041      0.031     -0.132      0.897      -0.070       0.062
-SMB            0.0030      0.042      0.071      0.945      -0.087       0.093
-HML           -0.0062      0.022     -0.282      0.782      -0.053       0.040
+const       3.947e-05      0.000      0.196      0.847      -0.000       0.000
+MKT           -0.0043      0.032     -0.134      0.895      -0.072       0.063
+SMB            0.0092      0.044      0.210      0.836      -0.083       0.102
+HML           -0.0066      0.023     -0.291      0.775      -0.055       0.042
 ==============================================================================
-Omnibus:                        8.799   Durbin-Watson:                   2.227
-Prob(Omnibus):                  0.012   Jarque-Bera (JB):                6.166
-Skew:                           1.235   Prob(JB):                       0.0458
-Kurtosis:                       4.139   Cond. No.                         289.
+Omnibus:                        7.765   Durbin-Watson:                   2.173
+Prob(Omnibus):                  0.021   Jarque-Bera (JB):                5.229
+Skew:                           1.157   Prob(JB):                       0.0732
+Kurtosis:                       3.957   Cond. No.                         293.
 ==============================================================================
 
 Notes:
@@ -31,7 +31,7 @@ Notes:
 ==================================================
 🎯 KEY TAKEAWAYS FOR YOUR RESUME / INTERVIEW
 ==================================================
-Annualized True Alpha (Intercept): 1.4495%
+Annualized True Alpha (Intercept): 0.9946%
 Market Beta (Correlation to SPY):  -0.00
-Significance: LOW (p=0.7726).
+Significance: LOW (p=0.8468).
 -> Conclusion: Returns are largely explained by broader market movements (or needs more data points).
