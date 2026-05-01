@@ -25575,3 +25575,61 @@ Timestamp,Published_At,Indicator,Sentiment,Headline
 2026-05-01 20:01:07.479828,2026-04-30T18:22:37Z,Inflation_Sentiment,0.4754,How American Dads Became the Parents Their Fathers Never Were...
 2026-05-01 20:01:07.479923,2026-04-30T18:10:00Z,Inflation_Sentiment,0.5719,Trump withdraws wellness influencer and MAHA activist Casey Means as surgeon general nominee
 2026-05-01 20:01:07.480114,2026-04-30T18:06:00Z,Inflation_Sentiment,0.4404,Axsome Therapeutics Announces FDA Approval of AUVELITY® (dextromethorphan HBr and bupropion HCl) for the Treatment of Agitation Associated with Dementia due to Alzheimer’s Disease
+2026-05-01 20:56:35.392335,2026-04-30T19:33:37Z,Monetary_Policy,0.4118,"Fed holds rates steady amid global risks, economic growth concerns"
+2026-05-01 20:56:35.392581,2026-04-30T14:30:32Z,Monetary_Policy,0.5106,"Dow Jones Surges Over 500 Points to Near 49,400 as Earnings Optimism and Easing Tensions Lift Wall Street"
+2026-05-01 20:56:35.392875,2026-04-30T12:07:29Z,Monetary_Policy,-0.6124,"India bonds return near March-end lows after volatile month; oil, treasuries add to downside risks"
+2026-05-01 20:56:35.392906,2026-04-30T12:00:00Z,Monetary_Policy,0.0,The ‘Great Man’ Presidency
+2026-05-01 20:56:35.393014,2026-04-30T11:04:10Z,Monetary_Policy,-0.2263,Kevin Warsh's Fed job challenges and new pictures of D.C. gala shooting suspect: Morning Rundown
+2026-05-01 20:56:35.393241,2026-04-30T10:48:28Z,Monetary_Policy,-0.7845,"Sensex today | Stock Market Highlights: Sensex, Nifty close in red as market breadth turns sharply negative"
+2026-05-01 20:56:35.393443,2026-04-30T10:33:37Z,Monetary_Policy,0.5423,"Why market fell today? Sensex slumps 583 pts, Nifty below 24,000; 7 key triggers"
+2026-05-01 20:56:35.393623,2026-04-30T10:28:42Z,Monetary_Policy,0.9246,"Silver rallies ₹7,100 to ₹2.4 lakh/kg in futures trade on strong global trends"
+2026-05-01 20:56:35.393849,2026-04-30T09:53:26Z,Monetary_Policy,-0.9601,Oil worries spook European markets before ECB and BoE decisions
+2026-05-01 20:56:35.394043,2026-04-30T09:53:08Z,Monetary_Policy,-0.7391,"EM stocks, FX fall on renewed Iran war risks, but set for monthly gains"
+2026-05-01 20:56:35.394145,2026-04-30T09:19:28Z,Monetary_Policy,-0.7783,Bitcoin eyes $75K after 'most hawkish' FOMC as oil hits highest since 2022
+2026-05-01 20:56:35.394231,2026-04-30T07:53:06Z,Monetary_Policy,-0.7717,Stocks Slip as Oil Surge Feeds Inflation Concerns: Markets Wrap
+2026-05-01 20:56:35.394325,2026-04-30T06:31:57Z,Monetary_Policy,0.1027,Ouch. The U.S. 30-year Treasury yield just hit 5% and bitcoin may pay the price
+2026-05-01 20:56:35.394439,2026-04-30T05:30:04Z,Monetary_Policy,-0.4588,Gold Steadies After Three-day Fall as Fed Signals Inflation Risk
+2026-05-01 20:56:35.394631,2026-04-30T03:58:04Z,Monetary_Policy,0.7506,"Why is market falling today? Sensex slumps over 850 points, Nifty below 24,000; 7 key factors"
+2026-05-01 20:56:35.559303,2026-04-30T20:25:37Z,Labor_Market,0.0772,AOC to challenge Schumer?
+2026-05-01 20:56:35.559369,2026-04-30T20:09:53Z,Labor_Market,0.0,An Oral History of StockX: 10 Years of Building the Hype Economy
+2026-05-01 20:56:35.559583,2026-04-30T19:46:08Z,Labor_Market,-0.5346,Who Is the Real Villain of The Devil Wears Prada 2?
+2026-05-01 20:56:35.559638,2026-04-30T18:59:07Z,Labor_Market,0.0,3 mortgage rate questions borrowers should ask after the Fed rate pause
+2026-05-01 20:56:35.559747,2026-04-30T18:27:52Z,Labor_Market,0.2023,Giorgia Meloni’s Populist Formula Failed
+2026-05-01 20:56:35.559861,2026-04-30T18:23:49Z,Labor_Market,0.2023,"‘Indian workers are central to Middle East oil — yet, they’re unseen’"
+2026-05-01 20:56:35.560021,2026-04-30T18:17:32Z,Labor_Market,-0.6956,Routine returns but Iranians struggle to afford daily life
+2026-05-01 20:56:35.560266,2026-04-30T18:01:28Z,Labor_Market,-0.6842,"India’s demographic dividend at risk as jobs, skills gap persist"
+2026-05-01 20:56:35.560407,2026-04-30T18:00:48Z,Labor_Market,-0.6369,Oil Prices and Supply Chain Stress Sour Economic Outlook
+2026-05-01 20:56:35.560543,2026-04-30T17:36:00Z,Labor_Market,0.8074,"Osun 2027: Oyebamiji woos workers with welfare, inclusive governance"
+2026-05-01 20:56:35.560697,2026-04-30T17:17:42Z,Labor_Market,0.8178,AI’s entry-level hiring nightmare is another gift to boomers’ retirement plans
+2026-05-01 20:56:35.560941,2026-04-30T17:09:54Z,Labor_Market,-0.7351,"Tax refunds and AI boom have offset some US economic pain from Iran war and high gas prices, so far"
+2026-05-01 20:56:35.561072,2026-04-30T16:50:08Z,Labor_Market,0.3182,"AI Boom Boosts US Economy, Offering Way to Blunt War Impact"
+2026-05-01 20:56:35.748115,2026-04-30T20:35:06Z,Manufacturing,0.4019,2024 Lamborghini Revuelto
+2026-05-01 20:56:35.748246,2026-04-30T20:25:16Z,Manufacturing,-0.296,1970 Chevrolet Nova Coupe Street Machine 4-Speed at No Reserve
+2026-05-01 20:56:35.748356,2026-04-30T20:08:16Z,Manufacturing,0.2023,1971 Chevrolet Corvette Convertible LS5 454/365 4-Speed
+2026-05-01 20:56:35.748520,2026-04-30T20:03:55Z,Manufacturing,0.7003,"Rivian downsizes DOE loan to $4.5B, while boosting capacity of Georgia factory | TechCrunch"
+2026-05-01 20:56:35.748606,2026-04-30T19:54:45Z,Manufacturing,0.0,Rivian’s revenue is up as R2 production kicks into gear
+2026-05-01 20:56:35.748682,2026-04-30T19:44:32Z,Manufacturing,0.0,Rivian downsizes its goals for its EV factory in Georgia
+2026-05-01 20:56:35.748762,2026-04-30T19:38:24Z,Manufacturing,0.4588,turbo-attn added to PyPI
+2026-05-01 20:56:35.748935,2026-04-30T19:25:15Z,Manufacturing,-0.4767,Wyden to Force Declassification of Secret Court Opinion on FISA “Serious Abuses”
+2026-05-01 20:56:35.749040,2026-04-30T19:20:57Z,Manufacturing,-0.296,1963 Chevrolet Corvair Monza 900 Convertible at No Reserve
+2026-05-01 20:56:35.749112,2026-04-30T19:13:02Z,Manufacturing,0.0,Original-Owner 1957 Ford Thunderbird E-Code
+2026-05-01 20:56:35.749255,2026-04-30T19:12:07Z,Manufacturing,0.8834,Hermanos Espinoza on Their Rapid Rise: 'We Like to Sing the Truth'
+2026-05-01 20:56:35.749280,2026-04-30T18:52:07Z,Manufacturing,0.0,piface added to PyPI
+2026-05-01 20:56:35.749361,2026-04-30T18:35:53Z,Manufacturing,-0.2023,Mississippi Bans Fake Milk to Support Human Health and Farmers
+2026-05-01 20:56:35.749526,2026-04-30T18:01:13Z,Manufacturing,0.8957,Continually improving our agent harness · Cursor
+2026-05-01 20:56:35.749713,2026-04-30T18:00:51Z,Manufacturing,0.7167,"Despite Defeat of Pesticide Liability Shield, House Farm Bill Still 'Has Industry Fingerprints All Over It'"
+2026-05-01 20:56:35.950995,2026-04-30T20:52:41Z,Inflation_Sentiment,-0.9501,Up to 20K sailors trapped near Strait of Hormuz as Trump's war rages
+2026-05-01 20:56:35.951108,2026-04-30T20:37:54Z,Inflation_Sentiment,-0.8957,Iran War Spending Worth More Than Miles And Miles Of Border Wall
+2026-05-01 20:56:35.951358,2026-04-30T20:37:28Z,Inflation_Sentiment,0.6395,Vibhor Kumar: The Calm Platform Test: Is Your PostgreSQL Strategy Enterprise-Ready?
+2026-05-01 20:56:35.951447,2026-04-30T20:37:00Z,Inflation_Sentiment,0.0,New Nevada Community Health Needs Assessment and Implementation Strategy from Intermountain Health Released
+2026-05-01 20:56:35.951528,2026-04-30T20:33:00Z,Inflation_Sentiment,0.0,New Nevada Community Health Needs Assessment and Implementation Strategy from Intermountain Health Released
+2026-05-01 20:56:35.951588,2026-04-30T20:25:37Z,Inflation_Sentiment,0.0772,AOC to challenge Schumer?
+2026-05-01 20:56:35.951756,2026-04-30T20:20:00Z,Inflation_Sentiment,-0.9061,Summer of discontent... Now unions threaten STRIKE ACTION at major airport during World Cup and Commonwealth Games
+2026-05-01 20:56:35.951990,2026-04-30T19:59:04Z,Inflation_Sentiment,0.8734,"Alphabet adds $420 billion in market cap today, and will it soon become world’s most valuable public company? Global markets react to record valuation jump"
+2026-05-01 20:56:35.952159,2026-04-30T19:45:06Z,Inflation_Sentiment,0.765,Samsung discloses its Q1 2026 earnings with a 48x growth in semiconductor operating profit
+2026-05-01 20:56:35.952336,2026-04-30T19:45:02Z,Inflation_Sentiment,0.5994,Trump’s Budget Plunders Birth Control and Reproductive Health Programs—With Open Derision for Americans Who Need Them
+2026-05-01 20:56:35.952589,2026-04-30T19:43:50Z,Inflation_Sentiment,-0.7731,"A Flashing Red Warning Signal: In California, Gasoline Is 6 Now Dollars A Gallon And Diesel Is Now 7 Dollars A Gallon"
+2026-05-01 20:56:35.952694,2026-04-30T19:32:00Z,Inflation_Sentiment,0.3182,Lancaster County homeless count hits 17-year high; advocates call for action
+2026-05-01 20:56:35.952816,2026-04-30T19:32:00Z,Inflation_Sentiment,0.3612,Homeless count in Lancaster County reaches 17-year high; advocates call for action
+2026-05-01 20:56:35.953039,2026-04-30T19:23:50Z,Inflation_Sentiment,-0.9246,"In its careful way, the Bondi royal commission report is still damning"
+2026-05-01 20:56:35.953178,2026-04-30T19:15:00Z,Inflation_Sentiment,-0.0129,The Peculiar Politics of Hospitals

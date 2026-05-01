@@ -4,9 +4,9 @@
 ==============================================================================
 Dep. Variable:               Strategy   R-squared:                       0.087
 Model:                            OLS   Adj. R-squared:                 -0.096
-Method:                 Least Squares   F-statistic:                    0.4767
+Method:                 Least Squares   F-statistic:                    0.4765
 Date:                Fri, 01 May 2026   Prob (F-statistic):              0.703
-Time:                        20:01:18   Log-Likelihood:                 109.66
+Time:                        20:56:46   Log-Likelihood:                 109.66
 No. Observations:                  19   AIC:                            -211.3
 Df Residuals:                      15   BIC:                            -207.5
 Df Model:                           3                                         
@@ -14,15 +14,15 @@ Covariance Type:            nonrobust
 ==============================================================================
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-const       6.096e-06      0.000      0.026      0.979      -0.000       0.001
-MKT           -0.0119      0.036     -0.334      0.743      -0.088       0.064
-SMB           -0.0317      0.048     -0.657      0.521      -0.135       0.071
-HML           -0.0094      0.024     -0.399      0.695      -0.060       0.041
+const       5.624e-06      0.000      0.024      0.981      -0.000       0.001
+MKT           -0.0116      0.035     -0.326      0.749      -0.087       0.064
+SMB           -0.0321      0.048     -0.666      0.515      -0.135       0.071
+HML           -0.0093      0.024     -0.393      0.700      -0.060       0.041
 ==============================================================================
-Omnibus:                        4.735   Durbin-Watson:                   1.380
-Prob(Omnibus):                  0.094   Jarque-Bera (JB):                2.635
-Skew:                           0.856   Prob(JB):                        0.268
-Kurtosis:                       3.631   Cond. No.                         288.
+Omnibus:                        4.757   Durbin-Watson:                   1.380
+Prob(Omnibus):                  0.093   Jarque-Bera (JB):                2.649
+Skew:                           0.857   Prob(JB):                        0.266
+Kurtosis:                       3.637   Cond. No.                         287.
 ==============================================================================
 
 Notes:
@@ -31,7 +31,7 @@ Notes:
 ==================================================
 🎯 KEY TAKEAWAYS FOR YOUR RESUME / INTERVIEW
 ==================================================
-Annualized True Alpha (Intercept): 0.1536%
+Annualized True Alpha (Intercept): 0.1417%
 Market Beta (Correlation to SPY):  -0.01
-Significance: LOW (p=0.9795).
+Significance: LOW (p=0.9811).
 -> Conclusion: Returns are largely explained by broader market movements (or needs more data points).
