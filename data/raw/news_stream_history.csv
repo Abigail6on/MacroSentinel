@@ -25234,3 +25234,62 @@ Timestamp,Published_At,Indicator,Sentiment,Headline
 2026-04-30 22:41:13.811635,2026-04-29T21:07:30Z,Inflation_Sentiment,0.0018,The surprising reason why buying guns helps endangered species
 2026-04-30 22:41:13.811910,2026-04-29T21:00:00Z,Inflation_Sentiment,-0.4588,Fertilizer Prices Have Doubled Since the Strait Closed
 2026-04-30 22:41:13.812033,2026-04-29T20:56:34Z,Inflation_Sentiment,0.8926,"Top Business & Market Headlines Today — BL Morning Report, April 30, 2026"
+2026-05-01 14:46:17.141963,2026-04-30T14:30:32Z,Monetary_Policy,0.5106,"Dow Jones Surges Over 500 Points to Near 49,400 as Earnings Optimism and Easing Tensions Lift Wall Street"
+2026-05-01 14:46:17.142279,2026-04-30T12:07:29Z,Monetary_Policy,-0.6124,"India bonds return near March-end lows after volatile month; oil, treasuries add to downside risks"
+2026-05-01 14:46:17.142313,2026-04-30T12:00:00Z,Monetary_Policy,0.0,The ‘Great Man’ Presidency
+2026-05-01 14:46:17.142430,2026-04-30T11:04:10Z,Monetary_Policy,-0.2263,Kevin Warsh's Fed job challenges and new pictures of D.C. gala shooting suspect: Morning Rundown
+2026-05-01 14:46:17.142688,2026-04-30T10:48:28Z,Monetary_Policy,-0.7845,"Sensex today | Stock Market Highlights: Sensex, Nifty close in red as market breadth turns sharply negative"
+2026-05-01 14:46:17.142932,2026-04-30T10:33:37Z,Monetary_Policy,0.5423,"Why market fell today? Sensex slumps 583 pts, Nifty below 24,000; 7 key triggers"
+2026-05-01 14:46:17.143125,2026-04-30T10:28:42Z,Monetary_Policy,0.9246,"Silver rallies ₹7,100 to ₹2.4 lakh/kg in futures trade on strong global trends"
+2026-05-01 14:46:17.143376,2026-04-30T09:53:26Z,Monetary_Policy,-0.9601,Oil worries spook European markets before ECB and BoE decisions
+2026-05-01 14:46:17.143592,2026-04-30T09:53:08Z,Monetary_Policy,-0.7391,"EM stocks, FX fall on renewed Iran war risks, but set for monthly gains"
+2026-05-01 14:46:17.143708,2026-04-30T09:19:28Z,Monetary_Policy,-0.7783,Bitcoin eyes $75K after 'most hawkish' FOMC as oil hits highest since 2022
+2026-05-01 14:46:17.143804,2026-04-30T07:53:06Z,Monetary_Policy,-0.7717,Stocks Slip as Oil Surge Feeds Inflation Concerns: Markets Wrap
+2026-05-01 14:46:17.143926,2026-04-30T06:31:57Z,Monetary_Policy,0.1027,Ouch. The U.S. 30-year Treasury yield just hit 5% and bitcoin may pay the price
+2026-05-01 14:46:17.144058,2026-04-30T05:30:04Z,Monetary_Policy,-0.4588,Gold Steadies After Three-day Fall as Fed Signals Inflation Risk
+2026-05-01 14:46:17.144267,2026-04-30T03:58:04Z,Monetary_Policy,0.7506,"Why is market falling today? Sensex slumps over 850 points, Nifty below 24,000; 7 key factors"
+2026-05-01 14:46:17.144445,2026-04-30T02:45:55Z,Monetary_Policy,0.0516,Rupee to encounter fresh strain as Fed's hawkish tilt compounds oil pain
+2026-05-01 14:46:17.242036,2026-04-30T14:42:27Z,Labor_Market,-0.7783,Trump Effect: Jobless Claims Fall to Lowest Level Since 1969
+2026-05-01 14:46:17.242407,2026-04-30T14:20:19Z,Labor_Market,-0.93,Soaring food and petrol prices... and SIX interest rate hikes plunging the UK towards recession: BoE leads dire warnings over 'Trumpflation' risks - with no end in sight to Iran chaos
+2026-05-01 14:46:17.242656,2026-04-30T14:08:38Z,Labor_Market,-0.7595,"US jobless aid filings fall to 189,000 despite economic headwinds and war in Iran"
+2026-05-01 14:46:17.242763,2026-04-30T13:48:15Z,Labor_Market,-0.0803,Morning Minute: Bitcoin Falls After Powell's Likely Final FOMC
+2026-05-01 14:46:17.242903,2026-04-30T13:46:02Z,Labor_Market,0.6908,"US Economy Grows a Solid 2%, Boosted by Surging AI Investment"
+2026-05-01 14:46:17.243029,2026-04-30T13:44:21Z,Labor_Market,-0.6724,US labour market remains steady as jobless claims fall below expectations
+2026-05-01 14:46:17.243151,2026-04-30T13:30:00Z,Labor_Market,-0.4404,"With AI, Headline isn’t the story"
+2026-05-01 14:46:17.243196,2026-04-30T13:02:57Z,Labor_Market,0.0,"US jobless aid filings fall to 189,000 last week despite headwinds"
+2026-05-01 14:46:17.243267,2026-04-30T13:00:00Z,Labor_Market,0.0,"Christine Lagarde, Luis de Guindos: Monetary policy statement"
+2026-05-01 14:46:17.243437,2026-04-30T13:00:00Z,Labor_Market,-0.6249,California Republican goes scorched earth in Congress over oil armageddon crippling the state
+2026-05-01 14:46:17.243508,2026-04-30T12:33:28Z,Labor_Market,0.2732,The US economy bounced back in the first quarter of 2026
+2026-05-01 14:46:17.243549,2026-04-30T12:10:00Z,Labor_Market,-0.4767,All the Sad Young Chinese Professionals
+2026-05-01 14:46:17.243685,2026-04-30T12:09:04Z,Labor_Market,-0.1263,Soaring fuel prices in Pakistan threaten economic and political crises
+2026-05-01 14:46:17.243889,2026-04-30T11:58:01Z,Labor_Market,-0.8641,Iranian economic collapse may come too late for Trump
+2026-05-01 14:46:17.244008,2026-04-30T11:56:53Z,Labor_Market,-0.8385,Tech sector is cutting jobs but this time it feels much different
+2026-05-01 14:46:17.339962,2026-04-30T14:10:13Z,Manufacturing,-0.296,1967 Chevrolet Impala Sport Coupe at No Reserve
+2026-05-01 14:46:17.340045,2026-04-30T13:53:00Z,Manufacturing,0.0,Nordic Fibreboard AS Audited Annual Report 2025
+2026-05-01 14:46:17.340123,2026-04-30T13:29:20Z,Manufacturing,0.4215,mysql_distillery added to PyPI
+2026-05-01 14:46:17.340340,2026-04-30T13:05:34Z,Manufacturing,-0.4242,"We Visited the Set of Zach Cregger’s Resident Evil, One of 2026’s Most Exciting Movies — Here’s Everything We Learned About the Video Game Adaptation"
+2026-05-01 14:46:17.340682,2026-04-30T12:41:17Z,Manufacturing,-0.791,Two Wars: One Thrives on Death and Chaos vs One Thrives on Humanity
+2026-05-01 14:46:17.340760,2026-04-30T12:30:17Z,Manufacturing,0.0,1962 Austin-Healey 3000 BT7 Mk II
+2026-05-01 14:46:17.340804,2026-04-30T12:26:11Z,Manufacturing,0.0,India’s Quality Leap: IFQM Leads CXO Study Mission to Japan with JUSE
+2026-05-01 14:46:17.340987,2026-04-30T11:38:55Z,Manufacturing,0.6597,China's commercial space sector: advancing from tech verification to commercial scale
+2026-05-01 14:46:17.341135,2026-04-30T11:38:55Z,Manufacturing,0.6369,Australia takes leap forward in self-reliance with launch of rocket motor manufacturing
+2026-05-01 14:46:17.341341,2026-04-30T11:05:00Z,Manufacturing,0.8225,"COVID-19 Detection Test Kits and Consumables Market Analysis Report 2026: $13.23 Bn Opportunities, Trends, Competitive Landscape, Strategies, and Forecasts, 2020-2025, 2025-2030F, 2035F"
+2026-05-01 14:46:17.341477,2026-04-30T10:00:13Z,Manufacturing,0.6597,unrealized prototypes by modernist architect vjenceslav richter awaken from archival dreams
+2026-05-01 14:46:17.341760,2026-04-30T09:38:18Z,Manufacturing,-0.5267,"800,000 Used EVs Set to Flood Market, Threatening Carmakers With Billions in Losses"
+2026-05-01 14:46:17.341938,2026-04-30T09:37:50Z,Manufacturing,0.7096,Disney Plus Adapts Bestselling Novel 'Namiya General Store' Into K-Drama With All-Star Lineup - ZAPZEE - Premier Korean Entertainment Magazine
+2026-05-01 14:46:17.342062,2026-04-30T08:15:00Z,Manufacturing,-0.7269,Trump’s plan for ultra-fast meat processing would be a disaster for workers and the environment
+2026-05-01 14:46:17.496671,2026-04-30T14:46:00Z,Inflation_Sentiment,-0.8999,"New MMI Data Reveals Americans Are Carrying More Debt Than Ever: Average Unsecured Debt Tops $32,000, Up 10% Year-Over-Year"
+2026-05-01 14:46:17.496797,2026-04-30T14:36:23Z,Inflation_Sentiment,-0.6249,Airlines brace for ATF price revision amid global oil volatility
+2026-05-01 14:46:17.497020,2026-04-30T14:29:22Z,Inflation_Sentiment,0.6124,MARA bets $1.5 billion on Ohio power plant to anchor flagship AI campus
+2026-05-01 14:46:17.497162,2026-04-30T14:24:36Z,Inflation_Sentiment,0.5796,"Whitecap’s cash flow almost doubles, but profit falls on hedging losses"
+2026-05-01 14:46:17.497502,2026-04-30T14:20:19Z,Inflation_Sentiment,-0.93,Soaring food and petrol prices... and SIX interest rate hikes plunging the UK towards recession: BoE leads dire warnings over 'Trumpflation' risks - with no end in sight to Iran chaos
+2026-05-01 14:46:17.497653,2026-04-30T14:14:15Z,Inflation_Sentiment,0.2732,US energy CEOs get 16% pay raise to $12.3m average as bills soar
+2026-05-01 14:46:17.497775,2026-04-30T14:13:11Z,Inflation_Sentiment,-0.0516,Health Secretary gives address on NHS performance
+2026-05-01 14:46:17.498046,2026-04-30T14:05:27Z,Inflation_Sentiment,-0.9493,The Fertilizer Fault Line: The Hidden System That Could Trigger the Next Global Crisis
+2026-05-01 14:46:17.498239,2026-04-30T14:00:44Z,Inflation_Sentiment,-0.7906,Poland’s Military Boom Is Running on Borrowed Money – and Borrowed Time
+2026-05-01 14:46:17.498413,2026-04-30T14:00:00Z,Inflation_Sentiment,0.5859,Effects of mindful breathing meditation on stereotype expression in two randomized controlled double-blinded trials
+2026-05-01 14:46:17.498537,2026-04-30T14:00:00Z,Inflation_Sentiment,-0.1531,Implementation fidelity of Ethiopia’s Malaria test-and-treat guideline amid a resurgence in Amhara Region: A mixed-methods study
+2026-05-01 14:46:17.498651,2026-04-30T14:00:00Z,Inflation_Sentiment,0.3818,Type 1 and Type 2 diabetes in the UK press: A diachronic corpus-based analysis
+2026-05-01 14:46:17.498825,2026-04-30T14:00:00Z,Inflation_Sentiment,0.6808,A service provider perspective in Irish horseracing on the availability of retirement specific support services for professional jockeys and perceived barriers and facilitators to their use
+2026-05-01 14:46:17.499035,2026-04-30T14:00:00Z,Inflation_Sentiment,-0.836,"“I called people to carry me to the latrine”: Podoconiosis patients’ access to water, sanitation, and hygiene in Butaro, Rwanda"
+2026-05-01 14:46:17.499191,2026-04-30T14:00:00Z,Inflation_Sentiment,-0.3071,BRD4 modulates antimicrobial defense via non-canonical NRF2 activation in macrophages to confer protection against sepsis
