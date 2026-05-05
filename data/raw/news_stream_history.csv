@@ -26165,3 +26165,63 @@ Timestamp,Published_At,Indicator,Sentiment,Headline
 2026-05-05 15:39:13.282518,2026-05-04T14:19:33Z,Inflation_Sentiment,0.6369,"Bitcoin surges past $80K amid US-Iran de-escalation, easing macro risks"
 2026-05-05 15:39:13.282727,2026-05-04T14:18:01Z,Inflation_Sentiment,0.899,"NIO delivers 29,356 vehicles in April, but growth slows sharply from Q1 pace"
 2026-05-05 15:39:13.283020,2026-05-04T14:17:20Z,Inflation_Sentiment,-0.7269,Energy crisis fuels calls to cut methane emissions
+2026-05-05 17:13:36.065560,2026-05-04T16:03:11Z,Monetary_Policy,0.6908,"In Commercial Real Estate Financing, Clear Shifts Mean New Approaches"
+2026-05-05 17:13:36.065754,2026-05-04T14:30:25Z,Monetary_Policy,0.0772,Joly unveils $1.5 billion in tariff relief after Trump ratchets up trade war
+2026-05-05 17:13:36.065884,2026-05-04T10:49:18Z,Monetary_Policy,0.2023,"Bitcoin bulls set sights on $90,000 this week after briefly reclaiming $80,000"
+2026-05-05 17:13:36.066000,2026-05-04T09:44:17Z,Monetary_Policy,-0.765,"Silver futures plunge Rs 3,917 to Rs 2.47 lakh/kg on weak global trends"
+2026-05-05 17:13:36.066064,2026-05-04T09:16:40Z,Monetary_Policy,0.0,"Gold futures slide to ₹1.50 lakh/10g as oil surge, dollar weigh on bullion"
+2026-05-05 17:13:36.066180,2026-05-04T08:13:23Z,Monetary_Policy,0.743,Gold Dips With Focus on US Hormuz Plan and Iran Peace Talks
+2026-05-05 17:13:36.066326,2026-05-04T07:35:10Z,Monetary_Policy,-0.9217,"Gold edges lower on rate fears, Iran tensions cap downside"
+2026-05-05 17:13:36.066572,2026-05-04T05:04:16Z,Monetary_Policy,-0.6249,"Fed’s Kashkari warns Iran conflict complicates rate policy, hints at possible hike"
+2026-05-05 17:13:36.066755,2026-05-04T01:53:43Z,Monetary_Policy,0.8658,Gold dips as inflation concerns linger; markets watch US-Iran talks
+2026-05-05 17:13:36.066975,2026-05-04T00:10:42Z,Monetary_Policy,0.0258,US Stock Market: Traders grapple with tail risk as stocks regain highs
+2026-05-05 17:13:36.067104,2026-05-03T21:22:10Z,Monetary_Policy,-0.1027,Hawkish RBA Shapes as Global Outlier With Third Hike Priced In
+2026-05-05 17:13:36.067230,2026-05-03T17:20:59Z,Monetary_Policy,-0.0258,Federal Reserve shifts focus to potential rate hikes amid inflation concerns
+2026-05-05 17:13:36.067335,2026-05-03T16:18:23Z,Monetary_Policy,0.128,7 Reasons Why Wall Street May Regret Trump Nominating Kevin Warsh for Fed Chair
+2026-05-05 17:13:36.067456,2026-05-03T14:00:00Z,Monetary_Policy,-0.5719,Traders grapple with two-sided tail risk as stocks regain highs
+2026-05-05 17:13:36.067559,2026-05-03T09:00:00Z,Monetary_Policy,-0.5023,"Fed whisperer splits on Powell: A+ as steward, but ‘I don’t think you could give him high marks on the economy’"
+2026-05-05 17:13:36.174201,2026-05-04T17:09:16Z,Labor_Market,-0.7845,BofA throws cold water on AI apocalypse panic: 60% of today’s jobs didn’t exist in 1940
+2026-05-05 17:13:36.174510,2026-05-04T17:06:12Z,Labor_Market,-0.5789,"America is lucky it’s no longer a manufacturing powerhouse—it’s what’s protecting the U.S. economy from the worst of the oil shock, top economist says"
+2026-05-05 17:13:36.174592,2026-05-04T16:19:08Z,Labor_Market,0.0,The faces of quantum
+2026-05-05 17:13:36.174805,2026-05-04T15:15:00Z,Labor_Market,0.1635,"Job candidate calls out interviewer for ghosting them 3 times, then reposting the job: 'Thank you for wasting my time.'"
+2026-05-05 17:13:36.175100,2026-05-04T14:57:36Z,Labor_Market,0.6124,US stock market today: Why Dow Jones is down while S&P 500 and Nasdaq rise today — Dow crashes over 160 points as oil surges above $100 and Iran tensions rattle blue-chip stocks
+2026-05-05 17:13:36.175184,2026-05-04T14:27:38Z,Labor_Market,0.1531,"New college graduates overestimate starting salaries by nearly $24,000, report finds"
+2026-05-05 17:13:36.175352,2026-05-04T14:21:35Z,Labor_Market,0.5994,Northern Trust Pension Universe Data: Flat Returns for Canadian Pension Plans in Q1 as Geopolitical Tensions Intensified
+2026-05-05 17:13:36.175537,2026-05-04T14:20:00Z,Labor_Market,-0.6956,A couple in their 70s sold their home for a $700K ‘BoomerBus’ — now they have to rework their plan around $5 gas
+2026-05-05 17:13:36.175702,2026-05-04T14:10:25Z,Labor_Market,0.6705,Dara Khosrowshahi on replacing Uber drivers — and himself — with AI
+2026-05-05 17:13:36.175913,2026-05-04T14:02:23Z,Labor_Market,-0.4939,Trump’s Smartest Supporters Know the Iran War Is a Disaster
+2026-05-05 17:13:36.176014,2026-05-04T13:54:10Z,Labor_Market,0.6808,Modi’s party poised for big wins in Indian state elections
+2026-05-05 17:13:36.176098,2026-05-04T13:34:02Z,Labor_Market,0.296,"Full transcript of ""Face the Nation with Margaret Brennan,"" May 3, 2026"
+2026-05-05 17:13:36.176195,2026-05-04T13:31:59Z,Labor_Market,0.3818,Proof Trump’s Plan to Dismantle the Black Middle Class Is Actually Working
+2026-05-05 17:13:36.176330,2026-05-04T13:15:49Z,Labor_Market,-0.8126,The Real Job Destruction from AI Is Hitting Before Careers Can Start
+2026-05-05 17:13:36.176613,2026-05-04T12:12:47Z,Labor_Market,0.4767,Why the RBI is weighing a rare 2013-crisis playbook to arrest rupee slide to record lows?
+2026-05-05 17:13:36.282031,2026-05-04T17:06:12Z,Manufacturing,-0.5789,"America is lucky it’s no longer a manufacturing powerhouse—it’s what’s protecting the U.S. economy from the worst of the oil shock, top economist says"
+2026-05-05 17:13:36.282235,2026-05-04T17:00:00Z,Manufacturing,-0.1531,Blank Check: All the Bikes We’d Buy if Money Were No Object
+2026-05-05 17:13:36.282333,2026-05-04T16:29:14Z,Manufacturing,0.0,Show HN: The Rouge is my attempt at an AI product factory
+2026-05-05 17:13:36.282439,2026-05-04T16:00:18Z,Manufacturing,0.0,1974 Ford F-250 Ranger Highboy 4×4 4-Speed
+2026-05-05 17:13:36.282529,2026-05-04T16:00:00Z,Manufacturing,0.4404,Zero-Downtime Laravel Deployments with GitHub Actions: A Complete CI/CD Pipeline for Production
+2026-05-05 17:13:36.282644,2026-05-04T16:00:00Z,Manufacturing,0.7184,Vicat - Q1 2026 Trading update
+2026-05-05 17:13:36.282740,2026-05-04T15:30:00Z,Manufacturing,0.4588,From Tribal Knowledge to Intelligent Trade: How SourceReady is Rewiring Global Sourcing
+2026-05-05 17:13:36.282821,2026-05-04T14:48:01Z,Manufacturing,0.4404,Ornamenting the Future: An Interview With Bethan Laura Wood
+2026-05-05 17:13:36.282866,2026-05-04T14:41:08Z,Manufacturing,0.0,sci-hub-mcp-server added to PyPI
+2026-05-05 17:13:36.282940,2026-05-04T14:00:00Z,Manufacturing,0.4019,Denim Powers Crystal International’s Sustainability Push
+2026-05-05 17:13:36.283204,2026-05-04T13:30:00Z,Manufacturing,0.0258,"SCADA Market Size to Surpass USD 30.66 Billion by 2035, Fueled by Industrial Automation Mandates, Smart Grid Investment, and Critical Infrastructure Modernization | Research by SNS Insider"
+2026-05-05 17:13:36.283297,2026-05-04T13:01:00Z,Manufacturing,0.0,WONKA 2 Reportedly Set to Begin Production This August as Sequel Plans Move Forward
+2026-05-05 17:13:36.283457,2026-05-04T13:00:03Z,Manufacturing,-0.4939,46k-Mile 1998 Porsche 911 Carrera Cabriolet 6-Speed
+2026-05-05 17:13:36.283522,2026-05-04T13:00:00Z,Manufacturing,0.4767,"Gap targets improved traceability operations, data collection"
+2026-05-05 17:13:36.283725,2026-05-04T12:48:22Z,Manufacturing,0.5719,Triumphant return of one of America's favorite celebrity-loved cars is run off the road over petty court case
+2026-05-05 17:13:36.386038,2026-05-04T17:06:12Z,Inflation_Sentiment,-0.5789,"America is lucky it’s no longer a manufacturing powerhouse—it’s what’s protecting the U.S. economy from the worst of the oil shock, top economist says"
+2026-05-05 17:13:36.386162,2026-05-04T17:00:58Z,Inflation_Sentiment,0.5719,Caring for the caregivers builds dementia-friendly cities
+2026-05-05 17:13:36.386271,2026-05-04T17:00:00Z,Inflation_Sentiment,-0.0041,"Despite battle against high-tech drone deliveries, prison contraband is on the rise"
+2026-05-05 17:13:36.386500,2026-05-04T16:53:04Z,Inflation_Sentiment,0.9393,Saffron wave deepens erosion of secular norms
+2026-05-05 17:13:36.386622,2026-05-04T16:31:46Z,Inflation_Sentiment,-0.7269,"Transportation Sec Claims Gas Prices Will Drop Fast, Contradicting Fed Reports"
+2026-05-05 17:13:36.386766,2026-05-04T16:27:37Z,Inflation_Sentiment,-0.7845,Report Gives Eerie ‘Point of No Return’ Evacuation Warning to New Orleans
+2026-05-05 17:13:36.386910,2026-05-04T16:22:24Z,Inflation_Sentiment,-0.0644,"Goldman: AI will save the economy someday. First, it has to stop inflating it"
+2026-05-05 17:13:36.387010,2026-05-04T16:14:14Z,Inflation_Sentiment,-0.4939,"Spring wildfire risk in Alberta escalates with windy, dry conditions"
+2026-05-05 17:13:36.387171,2026-05-04T16:00:00Z,Inflation_Sentiment,-0.7845,80% of Hotels Say World Cup Bookings Are Missing Forecasts
+2026-05-05 17:13:36.387505,2026-05-04T15:50:44Z,Inflation_Sentiment,0.8442,Social Security benefit cap proposal warning: will this new limit quietly cut how much retirees receive annually?
+2026-05-05 17:13:36.387599,2026-05-04T15:32:45Z,Inflation_Sentiment,0.1531,SEBI’s proposed broker rules will boost resilience
+2026-05-05 17:13:36.387762,2026-05-04T15:30:00Z,Inflation_Sentiment,0.714,"Trump’s New Pick for Surgeon General, Splitting Pro-Life and MAHA Voices"
+2026-05-05 17:13:36.387991,2026-05-04T15:27:09Z,Inflation_Sentiment,0.7096,"Q4 Results Today Highlights: Ambuja Cements, Aditya Birla Capital, BHEL, Exide Industries, Petronet, Godrej Properties, Tata Tech, Sobha Q4 profits rise, Ather Energy narrows loss"
+2026-05-05 17:13:36.388126,2026-05-04T15:10:20Z,Inflation_Sentiment,-0.3612,6 essential emergency fund rules every Indian household should know to stay debt-free
+2026-05-05 17:13:36.388280,2026-05-04T15:06:13Z,Inflation_Sentiment,0.886,Nigeria tops Africa for energy investments under Tinubu — Report
