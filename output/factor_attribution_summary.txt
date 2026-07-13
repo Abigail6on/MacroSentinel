@@ -4,9 +4,9 @@
 ==============================================================================
 Dep. Variable:               Strategy   R-squared:                       0.178
 Model:                            OLS   Adj. R-squared:                 -0.011
-Method:                 Least Squares   F-statistic:                    0.9414
+Method:                 Least Squares   F-statistic:                    0.9408
 Date:                Mon, 13 Jul 2026   Prob (F-statistic):              0.449
-Time:                        20:07:09   Log-Likelihood:                 94.867
+Time:                        21:44:08   Log-Likelihood:                 94.866
 No. Observations:                  17   AIC:                            -181.7
 Df Residuals:                      13   BIC:                            -178.4
 Df Model:                           3                                         
@@ -15,14 +15,14 @@ Covariance Type:            nonrobust
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
 const         -0.0003      0.000     -1.016      0.328      -0.001       0.000
-MKT            0.0091      0.043      0.211      0.836      -0.084       0.102
+MKT            0.0090      0.043      0.208      0.838      -0.084       0.102
 SMB            0.0047      0.038      0.124      0.903      -0.077       0.086
-HML            0.0327      0.026      1.264      0.228      -0.023       0.088
+HML            0.0326      0.026      1.263      0.229      -0.023       0.088
 ==============================================================================
-Omnibus:                        3.395   Durbin-Watson:                   2.516
-Prob(Omnibus):                  0.183   Jarque-Bera (JB):                1.797
+Omnibus:                        3.397   Durbin-Watson:                   2.516
+Prob(Omnibus):                  0.183   Jarque-Bera (JB):                1.799
 Skew:                          -0.786   Prob(JB):                        0.407
-Kurtosis:                       3.261   Cond. No.                         185.
+Kurtosis:                       3.261   Cond. No.                         186.
 ==============================================================================
 
 Notes:
@@ -31,7 +31,7 @@ Notes:
 ==================================================
 🎯 KEY TAKEAWAYS FOR YOUR RESUME / INTERVIEW
 ==================================================
-Annualized True Alpha (Intercept): -6.5155%
+Annualized True Alpha (Intercept): -6.5164%
 Market Beta (Correlation to SPY):  0.01
-Significance: LOW (p=0.3281).
+Significance: LOW (p=0.3282).
 -> Conclusion: Returns are largely explained by broader market movements (or needs more data points).
