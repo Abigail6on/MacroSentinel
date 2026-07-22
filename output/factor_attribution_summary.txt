@@ -6,7 +6,7 @@ Dep. Variable:               Strategy   R-squared:                       0.108
 Model:                            OLS   Adj. R-squared:                 -0.070
 Method:                 Least Squares   F-statistic:                    0.6082
 Date:                Wed, 22 Jul 2026   Prob (F-statistic):              0.620
-Time:                        20:16:17   Log-Likelihood:                 105.32
+Time:                        21:56:14   Log-Likelihood:                 105.32
 No. Observations:                  19   AIC:                            -202.6
 Df Residuals:                      15   BIC:                            -198.9
 Df Model:                           3                                         
@@ -17,7 +17,7 @@ Covariance Type:            nonrobust
 const         -0.0002      0.000     -0.657      0.521      -0.001       0.000
 MKT           -0.0057      0.051     -0.112      0.912      -0.114       0.102
 SMB           -0.0019      0.041     -0.046      0.964      -0.090       0.086
-HML            0.0233      0.025      0.915      0.374      -0.031       0.078
+HML            0.0233      0.026      0.915      0.375      -0.031       0.078
 ==============================================================================
 Omnibus:                        5.172   Durbin-Watson:                   2.487
 Prob(Omnibus):                  0.075   Jarque-Bera (JB):                3.263
@@ -31,7 +31,7 @@ Notes:
 ==================================================
 🎯 KEY TAKEAWAYS FOR YOUR RESUME / INTERVIEW
 ==================================================
-Annualized True Alpha (Intercept): -4.1869%
+Annualized True Alpha (Intercept): -4.1870%
 Market Beta (Correlation to SPY):  -0.01
-Significance: LOW (p=0.5212).
+Significance: LOW (p=0.5211).
 -> Conclusion: Returns are largely explained by broader market movements (or needs more data points).
